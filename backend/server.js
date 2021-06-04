@@ -9,7 +9,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
 mongoose.Promise = Promise
 
-//A model for new Positive Thought
+//Model for Positive Thought
 const PositiveThought = mongoose.model('PositiveThought', {
   message: String
 })
@@ -79,6 +79,27 @@ console.log(username, password)
     })
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error })
+  }
+})
+
+//An endpoint to signin
+app.post('/signin', async (req, res) => {
+  const { username, password } = req.body
+
+  try {
+    const user = await User.findOne({ username })
+
+    if (user && bcrypt.compareSync(password, user.password)) {
+      res.json({
+        userId: user._id,
+        username: user.username,
+        accessToken: user.accessToken
+      })
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }                          
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request', error });
   }
 })
 
