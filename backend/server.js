@@ -9,7 +9,7 @@ import crypto from 'crypto'
 dotenv.config()
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 mongoose.Promise = Promise
 
 //Model for Positive Thought
