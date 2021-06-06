@@ -1,9 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import user from "./reducers/user";
+import Home from "./components/Home"
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -15,7 +16,10 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <div>Hello</div>
+        <Switch>
+         <Route exact path="/" />
+         <Route path="/signup" component={Home}  />
+        </Switch>
       </Provider>
     </BrowserRouter>
   );
