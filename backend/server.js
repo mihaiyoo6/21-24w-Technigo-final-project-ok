@@ -34,6 +34,22 @@ const User = mongoose.model('User', {
   }
 })
 
+const authenticateUser = async (req, res, next) => {
+  const accessToken = req.header('Authorization')
+
+  try {
+    const user = await User.findOne({ accessToken })
+      if (user) {
+        next()
+      } else {
+        res.status(401).json({ success:false, message: "Not authenticated" })
+      }
+  } catch (error){
+    res.status(400).json({ success:false, message: "Invalid request", error })
+  }
+}
+
+
 const port = process.env.PORT || 3004
 const app = express()
 
@@ -47,11 +63,13 @@ app.get('/', (req, res) => {
 })
 
 //An endpoint to get all thoughts
+app.get('/sharing_one', authenticateUser)
 app.get('/sharing_one', async (req, res) => {
   const positivethoughts = await PositiveThought.find()
   res.json({ positivethoughts });
 })
 
+app.post('/sharing_one', authenticateUser)
 app.post('/sharing_one', async (req, res) => {
   const { message } = req.body
 

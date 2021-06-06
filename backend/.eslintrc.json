@@ -50,14 +50,14 @@
         "SwitchCase": 1
       }
     ],
-    "no-alert": "error",
-    "no-console": "error",
-    "no-debugger": "error",
+    "no-alert": "off",
+    "no-console": "off",
+    "no-debugger": "off",
     "no-else-return": "off",
     "no-irregular-whitespace": "error",
     "no-trailing-spaces": "off",
     "no-multiple-empty-lines": [
-      "error",
+      "off",
       {
         "max": 1
       }
