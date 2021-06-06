@@ -83,7 +83,6 @@ app.post('/sharing_one', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body
-console.log(username, password)
 
   try {
     const salt = bcrypt.genSaltSync() 
