@@ -1,9 +1,12 @@
+import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import listEndpoints from 'express-list-endpoints'
 import bcrypt from 'bcrypt'
 import crypto from 'crypto'
+
+dotenv.config()
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
