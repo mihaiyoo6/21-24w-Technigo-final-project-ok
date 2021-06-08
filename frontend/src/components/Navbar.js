@@ -14,7 +14,7 @@ const Logo = styled.div`
 const Navbar = () => {
     return (
         <NavbarContainer>
-            <Logo> Tröttis</Logo>
+            <Logo>Tröttis</Logo>
         </NavbarContainer>
     )
 }
