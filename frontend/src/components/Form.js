@@ -15,7 +15,6 @@ const AccessContainer = styled.div`
  border: 1px solid black;
  margin:0; 
 `
-
 const SigninFormWrapper = styled.div`
   background-color:#E7E4DE;
   height:250px; 
@@ -26,7 +25,6 @@ const SigninFormWrapper = styled.div`
   align-items:center;
   justify-content:center;
 `
-
 const SigninForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -69,6 +67,19 @@ const SignupWrapper = styled.div`
   margin:0;
 `
 
+const Button = styled.button`
+width:100px;
+background-color: #AAAC48;
+font-size:1.2em;
+margin:1em 1em 2em 1em;
+border-radius: 5px;
+padding:.5em;
+color:white;
+border-color:white;
+justify-content:center;
+cursor: grab;
+`
+
 const SignupTitle = styled.p`
  font-family: 'Roboto', sans-serif;
  color:white;
@@ -84,24 +95,9 @@ const SignupText = styled.p`
  font-weight:200;
  margin:0px 20px 15px 20px;
  text-align:center;
- `
-
- const Button = styled.button`
-  width:100px;
-  background-color: #AAAC48;
-  font-size:1.2em;
-  margin:1em 1em 2em 1em;
-  border-radius: 5px;
-  padding:.5em;
-  color:white;
-  border-color:white;
-  justify-content:center;
-  cursor: grab;
-
 `
 
-
-const Form = () => {
+const Home = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [mode, setMode] = useState(null)
@@ -117,62 +113,59 @@ const Form = () => {
     }  
 },[accessToken, history])
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = (e) =>{
       e.preventDefault();
 
       const options = {
-        method: 'POST',
-        headers: {
-         'Content-Type': ' application/json'
-        },
+          method: 'POST',
+          headers: {
+              'Content-Type': ' application/json'
+          },
           body: JSON.stringify({ username, password })
       }
-        fetch(API_URL(mode), options)
+      fetch(API_URL(mode), options)
         .then(res => res.json()) 
         .then(data => {
-          console.log(data)
-          if(data.success){
-            dispatch(user.actions.setUsername(data.username))
-            dispatch(user.actions.setAccessToken(data.accessToken))
-            dispatch(user.actions.setErrors(null));
+            console.log(data)
+            if(data.success){
+                dispatch(user.actions.setUsername(data.username))
+                dispatch(user.actions.setAccessToken(data.accessToken))
+                dispatch(user.actions.setErrors(null));
 
             } else {
-              dispatch(user.actions.setErrors(data))
+                dispatch(user.actions.setErrors(data))
             }
         })
-        .catch()   
+            .catch()
+    
   }
+
     return (
       <AccessContainer>
         <SigninFormWrapper>
-          <WelcomeTitle>Welcome back!</WelcomeTitle>  
           <SigninForm onSubmit={onFormSubmit}>
+            <WelcomeTitle>Welcome back!</WelcomeTitle>  
             <label htlmFor="username"></label>
-              <InputField
-                type="text"
-                value={username}
-                placeholder="username"
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <label htmlFor="password"></label>
-              <InputField
-                type="password"
-                name="password"
-                autocomplete="off"
-                value={password}
-                placeholder="password"
-                onChange={(e)=> setPassword(e.target.value)}
-              />
-            </SigninForm>
-            
-              <Button type="submit" onClick={() => setMode('signin')}>Login</Button>
-            
-        </SigninFormWrapper> 
+            <InputField
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label htmlFor="password"></label> 
+            <InputField
+              type="password"
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
+            />
+            <Button type="submit" onClick={() => setMode('signin')}>Login</Button>
+          </SigninForm>
+        </SigninFormWrapper>
+
         <SignupWrapper>
-          <SignupTitle> Join us!</SignupTitle>
+        <SignupTitle> Join us!</SignupTitle>
           <SignupText>Enter your personal details and start a journey with us</SignupText>
-            <Button type="submit" onClick={() => setMode('signup')}>Signup</Button>
-        </SignupWrapper>
+          <Button type="submit" onClick={() => setMode('signup')}>Signup</Button>
+        </SignupWrapper>  
       </AccessContainer>  
     )
 }

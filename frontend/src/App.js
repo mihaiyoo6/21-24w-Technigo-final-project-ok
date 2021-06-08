@@ -4,7 +4,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import user from "./reducers/user";
-import Form from "./components/Form"
+import Home from "./components/Form"
 
 const reducer = combineReducers({
   user: user.reducer,
