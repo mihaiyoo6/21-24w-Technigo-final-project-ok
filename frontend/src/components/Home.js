@@ -1,8 +1,8 @@
 import React from 'react'
-import { createGlobalStyle } from styled-components/macro
+import styled, { createGlobalStyle } from 'styled-components/macro'
 
-
-
+import Navbar from 'components/Navbar'
+/* 
 const GlobalStyle = createGlobalStyle`
   html {
     height:100%
@@ -15,14 +15,16 @@ const GlobalStyle = createGlobalStyle`
     height:100%;
     
   }
-`
+` */
 
 
 const Home = () => {
     return (
-        <GlobalStyle>
-          Hello 
-        </GlobalStyle>
+      <>
+        <Navbar />
+          <div>Hello</div>
+      </>    
+        
     )
 }
 
