@@ -5,9 +5,11 @@ import styled from 'styled-components/macro'
 
 import { API_URL } from '../reusable/urls'
 
-import HomeFeaturedArticle from 'components/HomeFeaturedArticle'
-import HomeSignin from 'components/HomeSignin'
 import Navbar from 'components/Navbar'
+import HomeFeaturedArticle from 'components/HomeFeaturedArticle'
+import HomeIntroText from 'components/HomeIntroText'
+import HomeSignin from 'components/HomeSignin'
+
 
 import user from '../reducers/user'
 import HomeSignup from './HomeSignup'
@@ -59,34 +61,7 @@ const InputField = styled.input`
 ` 
 
 
-/* const SignupWrapper = styled.div`
-  background-color: #155306;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  border: 1px solid black;
-  margin:0;
-` */
 
-
-/* const SignupTitle = styled.p`
- font-family: 'Roboto', sans-serif;
- color:white;
- font-weight:500;
- font-size:30px;
- margin-top:30px;
-`
-
-const SignupText = styled.p`
- font-family: 'Roboto', sans-serif;
- color:white;
- font-size:1.3em;
- font-weight:200;
- margin:0px 20px 15px 20px;
- text-align:center;
-` */
 
 const Home = () => {
   const [username, setUsername] = useState('')
@@ -142,6 +117,7 @@ const handleSubmit = (e) => {
       <>
         <Navbar />
         <HomeFeaturedArticle />
+        <HomeIntroText />
         <AccessContainer>
           <SigninFormWrapper>
             <HomeSignin>

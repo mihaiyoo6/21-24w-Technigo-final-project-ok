@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HomeText = () => {
+const HomeIntroText = () => {
     return (
         <div>
             Home Text
@@ -8,4 +8,4 @@ const HomeText = () => {
     )
 }
 
-export default HomeText
+export default HomeIntroText
