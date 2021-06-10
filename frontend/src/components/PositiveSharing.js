@@ -6,6 +6,37 @@ import { API_URL } from "../reusable/urls";
 
 import sharings from "../reducers/sharings";
 
+
+const SharingContainer = styled.div`
+  background-color:#4838a8;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;    
+`
+
+const SharingWrapper = styled.div`
+  background-color:#ffffff;
+  padding:10px;
+  margin:30px;
+  border-radius:20px;
+  
+`
+
+const Title = styled.text`
+  font-size:40px;
+  color:#fff;
+  margin:50px 30px;
+  align-text:center;
+`
+const Sharing = styled.text`
+  font-size: 20px;
+  padding:40px;
+`
+
+
 const PositiveSharing = () => {
     const accessToken = useSelector((store) => store.user.accessToken);
     const sharingItems = useSelector(store => store.sharings.items)
