@@ -63,21 +63,21 @@ app.get('/', (req, res) => {
 })
 
 //An endpoint to get all thoughts
-app.get('/sharing_one', authenticateUser)
-app.get('/sharing_one', async (req, res) => {
+app.get('/pos_sharing', authenticateUser)
+app.get('/pos_sharing', async (req, res) => {
   const positivethoughts = await PositiveThought.find()
   res.json({ positivethoughts });
 })
 
-app.post('/sharing_one', authenticateUser)
-app.post('/sharing_one', async (req, res) => {
+app.post('/pos_sharing', authenticateUser)
+app.post('/pos_sharing', async (req, res) => {
   const { message } = req.body
 
   try {
     const newPositiveThought = await new PositiveThought ({ message }).save()
-    res.json({ newPositiveThought });
+    res.json({ success:true, newPositiveThought });
   } catch (error) {
-    res.status(400).json({ message: 'Invalid request', error })
+    res.status(400).json({ success:false, message: 'Invalid request', error })
   }
 })
 
@@ -98,7 +98,7 @@ app.post('/signup', async (req, res) => {
      accessToken: newUser.accessToken
     })
   } catch (error) {
-    res.status(400).json({ message: 'Invalid request', error })
+    res.status(400).json({ success:false, message: 'Invalid request', error })
   }
 })
 
@@ -116,10 +116,10 @@ app.post('/signin', async (req, res) => {
         accessToken: user.accessToken
       })
     } else {
-      res.status(404).json({ message: 'User not found' });
+      res.status(404).json({ success:false, message: 'User not found' });
     }                          
   } catch (error) {
-    res.status(400).json({ message: 'Invalid request', error });
+    res.status(400).json({ success:false, message: 'Invalid request', error });
   }
 })
 
