@@ -33,36 +33,6 @@ const SigninFormWrapper = styled.div`
   align-items:center;
   justify-content:center;
 `
-
-
-const SigninForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-
-
-const InputField = styled.input`
-  margin: 5px;
-  border-radius: 5px;
-  width: 220px;
-  align-items:center;
-  justify-content:center;
-  color:#155306; 
-  font-size:16px;
-  height:18px;
-
-  &::-webkit-input-placeholder {
-    color: #155306;
-    padding-left:5px;
-  }
-` 
-
-
-
-
 const Home = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -120,26 +90,20 @@ const handleSubmit = (e) => {
         <HomeIntroText />
         <AccessContainer>
           <SigninFormWrapper>
-            <HomeSignin>
-              <SigninForm 
-                onSubmitFunction={handleSubmit}
-              >
-              <InputField
-                type={username}
-                usernameValue={username}
-                onUsernameChangeFunction={onUsernameChange}
-              />
-              <InputField
-                type={password}
-                value={password}
-                onPasswordChangeFunction={onPasswordChange}
-                />
-              </SigninForm>
-            </HomeSignin>
+            <HomeSignin
+              handleSubmit={handleSubmit}
+              username={username}
+              password={password}
+              onUsernameChange={onUsernameChange}
+              onPasswordChange={onPasswordChange}
+
+            />
+              
           </SigninFormWrapper>
         </AccessContainer>
         <HomeSignup/>
       </>  
+     
 )}
 
 export default Home

@@ -44,22 +44,22 @@ justify-content:center;
 cursor: grab;
 `
 
-const HomeSignin = ( { onSubmitFunction,usernameValue, onUsernameChangeFunction, passwordValue, onPasswordChangeFunction }) => {
+const HomeSignin = ( { handleSubmit,username, onPasswordChange, password, onUsernameChange }) => {
   return (
     <>
       <WelcomeTitle>Welcome back!</WelcomeTitle>        
-        <SigninForm onSubmit={onSubmitFunction}>
-          <label htlmFor={usernameValue}></label>
+        <SigninForm onSubmit={handleSubmit}>
+          <label htlmFor={username}></label>
           <InputField
-            type={usernameValue}
-            value={usernameValue}
-            onChange={onUsernameChangeFunction}
+            type="text"
+            value={username}
+            onChange={onUsernameChange}
           />
-          <label htmlFor={passwordValue}></label> 
+          <label htmlFor={password}></label> 
           <InputField
-            type={passwordValue}
-            value={passwordValue}
-            onChange={onPasswordChangeFunction}
+            type="password"
+            value={password}
+            onChange={onPasswordChange}
           />
         <Button type="submit">Login</Button>
       </SigninForm> 
