@@ -9,8 +9,8 @@ const WelcomeTitle = styled.p`
   text-align:center;
   font-family: 'Roboto', sans-serif;
   color:#155306;
-  margin: 20px 0;
-  height:300px;
+  margin: 30px 0; /* not applying */
+  height:400px;
 `
 
 const InputField = styled.input`
