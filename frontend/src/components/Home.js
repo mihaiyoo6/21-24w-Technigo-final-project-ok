@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
+import './home.css'
 
 import { API_URL } from '../reusable/urls'
 
@@ -19,7 +20,6 @@ const AccessContainer = styled.div`
  height:300px;
  display:flex;
  flex-direction:column;
- border: 1px solid black;
  margin:0; 
 `
 
@@ -27,7 +27,7 @@ const SigninFormWrapper = styled.div`
   background-color:#E7E4DE;
   height:250px; 
   flex-direction: column;
-  border: 1px solid black;
+  border-top: 1px solid black;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -96,7 +96,6 @@ const handleSubmit = (e) => {
               password={password}
               onUsernameChange={onUsernameChange}
               onPasswordChange={onPasswordChange}
-
             />
               
           </SigninFormWrapper>

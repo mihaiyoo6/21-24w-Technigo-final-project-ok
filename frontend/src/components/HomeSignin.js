@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
+
+
 const WelcomeTitle = styled.p`
   font-size:2em;
   font-weight:600;
   text-align:center;
   font-family: 'Roboto', sans-serif;
   color:#155306;
+  margin: 20px 0;
+  height:300px;
 `
 
 const InputField = styled.input`
@@ -17,7 +21,7 @@ const InputField = styled.input`
   justify-content:center;
   color:#155306; 
   font-size:16px;
-  height:18px;
+  height:30px;
 
   &::-webkit-input-placeholder {
     color: #155306;

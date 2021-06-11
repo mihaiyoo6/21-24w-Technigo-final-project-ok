@@ -8,7 +8,6 @@ const SignupWrapper = styled.div`
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  border: 1px solid black;
   margin:0;
 ` 
 
@@ -18,13 +17,13 @@ const SignupTitle = styled.p`
  color:white;
  font-weight:500;
  font-size:30px;
- margin-top:30px;
+ margin:20px 0;
 `
 
 const SignupText = styled.p`
  font-family: 'Roboto', sans-serif;
  color:white;
- font-size:1.3em;
+ font-size:1.2em;
  font-weight:200;
  margin:0px 20px 15px 20px;
  text-align:center;

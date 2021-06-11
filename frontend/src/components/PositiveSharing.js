@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch, batch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components/macro"
 
 import { API_URL } from "../reusable/urls";
 
@@ -22,9 +23,7 @@ const SharingWrapper = styled.div`
   padding:10px;
   margin:30px;
   border-radius:20px;
-  
 `
-
 const Title = styled.text`
   font-size:40px;
   color:#fff;
@@ -75,7 +74,7 @@ const PositiveSharing = () => {
   
         return (
             <SharingContainer>
-             <Title>Happy Thoughts for your daily life</Title>
+             <Title>Share what you are thankful for</Title>
                 {sharingItems.map(sharing => (
                   <SharingWrapper key={sharing._id}>
                     <Sharing>
