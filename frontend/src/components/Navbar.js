@@ -1,39 +1,21 @@
 import React from 'react'
-import styled from 'styled-components/macro'
 
+import './home.css'
 
-const Container = styled.div`
-  width:100%;
-  background-color:#155306;
-  height:150px;
-  color: #155306;
- `
-
- const Logo = styled.p`
- font-family: 'Pacifico', cursive;
- font-size:30px; 
- color:white;
-`
-
-const Menu = styled.ul`
-
-
-`
-
-const NavbarItem = styled.li`
-
-`
 
 const Navbar = () => {
-    return (
-        <Container>
-          <Logo>Tröttis</Logo>
-          <Menu>
-            <NavbarItem>About</NavbarItem> 
-            <NavbarItem>Contact</NavbarItem>  
-          </Menu>
-        </Container>
-    )
+  return (
+    <header className ="header">
+      <nav className="navbar">
+        <ul className="list">
+          <li className="logo">Tröttis</li>
+          <li className="items"><a className="link" href= "/pos_sharing">About</a></li>
+          <li className="items"><a className="link" href= "/pos_sharing">Directory</a></li>
+          <li className="items"><a className="link" href= "/pos_sharing">Sharing</a></li>        
+        </ul>
+      </nav>
+    </header>
+  )
 }
 
 export default Navbar

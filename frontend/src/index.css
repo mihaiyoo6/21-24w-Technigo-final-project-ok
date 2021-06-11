@@ -13,14 +13,20 @@
 		monospace;
 } */
 
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+	text-decoration: none;
+}
+
+body {
+	font-size: 1.2em;
+	font-weight: 200;
+}
+
 /* .main-container {
 	width: 100vw;
 	height: 100vh;
 }
  */
-
-* {
-	margin: 0;
-	box-sizing: border-box;
-	font-family: "Roboto", sans-serif;
-}

@@ -9,7 +9,7 @@ const WelcomeTitle = styled.p`
   text-align:center;
   font-family: 'Roboto', sans-serif;
   color:#155306;
-  margin: 30px 0; /* not applying */
+  margin: 30px 0; 
   height:400px;
 `
 

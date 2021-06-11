@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 
 import FeaturedImage from '../assets/forest3.jpeg' 
 
-
 const FeaturedBgImage = styled.div`
   background-image: url(${FeaturedImage});
   background-size:cover;
@@ -12,6 +11,7 @@ const FeaturedBgImage = styled.div`
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+  cursor: pointer;
 ` 
 
 const FeaturedTag = styled.p`
@@ -21,37 +21,39 @@ const FeaturedTag = styled.p`
   color:white;
   width: fit-content;
   margin-left:30px;
+  letter-spacing:1.5px;
+  padding:5px;
 `
 
 const FeaturedTitle = styled.h1`
   font-size:1.6em;
   color:white;
   margin:5px 30px;
+  text-decoration:underline;
+  
 `
 const FeaturedSubtitle = styled.h2`
-  font-size:1.3em;
+  font-size:1.2em;
   color:white;
   margin: 0 0 30px 30px;
   font-weight:200;
-
+  text-decoration:underline;
 `
 
-
 const FeaturedArticle = () => {
-    return (
-        <>
-        <FeaturedBgImage>
-     
+  return (
+    <>
+      <FeaturedBgImage>
         <FeaturedTag>Featured</FeaturedTag>
         <FeaturedTitle>
-            Knowing the physical signs of burnout
+          Are you having burnout symptoms?
         </FeaturedTitle>
         <FeaturedSubtitle>
-            It can be more than just tiredness
+          Take this quizz and find it out >>
         </FeaturedSubtitle>
-        </FeaturedBgImage>
-      </>     
-    )
+      </FeaturedBgImage>
+    </>     
+  )
 }
 
 export default FeaturedArticle

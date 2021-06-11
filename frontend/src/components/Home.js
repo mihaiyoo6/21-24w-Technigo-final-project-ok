@@ -15,6 +15,11 @@ import HomeSignin from 'components/HomeSignin'
 import user from '../reducers/user'
 import HomeSignup from './HomeSignup'
 
+const MainContainer = styled.div`
+	width: 100vw;
+	height: 100vh;
+`
+
 const AccessContainer = styled.div`
  width:100%
  height:300px;
@@ -86,6 +91,7 @@ const handleSubmit = (e) => {
 
     return (
       <>
+       <MainContainer>
         <Navbar />
         <HomeFeaturedArticle />
         <HomeIntroText />
@@ -102,6 +108,7 @@ const handleSubmit = (e) => {
           </SigninFormWrapper>
         </AccessContainer>
         <HomeSignup/>
+        </MainContainer>
       </>  
      
 )}
