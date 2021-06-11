@@ -2,7 +2,6 @@ import React from 'react'
 
 import './home.css'
 
-
 const Navbar = () => {
   return (
     <header className ="header">

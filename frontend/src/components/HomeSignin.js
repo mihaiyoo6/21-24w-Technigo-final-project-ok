@@ -1,31 +1,34 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-
-
+const SigninFormWrapper = styled.div`
+  background-color:#E7E4DE;
+  border-top: 1px solid black;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center; 
+  padding:20px 30px;
+`
 const WelcomeTitle = styled.p`
   font-size:2em;
   font-weight:600;
-  text-align:center;
-  font-family: 'Roboto', sans-serif;
   color:#155306;
-  margin: 30px 0; 
-  height:400px;
+  margin: 30px 0;   
 `
-
 const InputField = styled.input`
   margin: 5px;
   border-radius: 5px;
-  width: 220px;
+  width: 230px;
   align-items:center;
   justify-content:center;
   color:#155306; 
-  font-size:16px;
-  height:30px;
+  font-size:1em;
+  height:1.8em;
 
   &::-webkit-input-placeholder {
     color: #155306;
-    padding-left:5px;
+    padding-left:10px;
   }
 ` 
 const SigninForm = styled.form`
@@ -36,22 +39,23 @@ const SigninForm = styled.form`
 `
 
 const Button = styled.button`
-width:100px;
-background-color: #AAAC48;
-font-size:1.2em;
-margin:1em 1em 2em 1em;
-border-radius: 5px;
-padding:.5em;
-color:white;
-border-color:white;
-justify-content:center;
-cursor: grab;
+  width:100px;
+  background-color: #AAAC48;
+  font-size:1.2em;
+  margin:1em 1em 2em 1em;
+  border-radius: 5px;
+  padding:.5em;
+  color:white;
+  border-color:white;
+  justify-content:center;
+  cursor: grab;
 `
 
 const HomeSignin = ( { handleSubmit,username, onPasswordChange, password, onUsernameChange }) => {
   return (
     <>
-      <WelcomeTitle>Welcome back!</WelcomeTitle>        
+      <SigninFormWrapper>
+        <WelcomeTitle>Welcome back!</WelcomeTitle>        
         <SigninForm onSubmit={handleSubmit}>
           <label htlmFor={username}></label>
           <InputField
@@ -65,11 +69,10 @@ const HomeSignin = ( { handleSubmit,username, onPasswordChange, password, onUser
             value={password}
             onChange={onPasswordChange}
           />
-        <Button type="submit">Login</Button>
-      </SigninForm> 
-     
-    </>    
-        
+          <Button type="submit">Login</Button>
+        </SigninForm>
+      </SigninFormWrapper>    
+    </>           
   )
 }
 

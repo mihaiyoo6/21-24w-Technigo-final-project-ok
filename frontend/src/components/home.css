@@ -2,11 +2,7 @@
 
 .navbar {
 	background-color: #155306;
-
-	/* display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center; */
+	padding: 20px 30px;
 }
 
 .list {
@@ -30,8 +26,9 @@
 	text-align: center;
 }
 
-.item {
+.items {
 	width: 100%;
+	font-size: 1.2em;
 }
 
 .link {
