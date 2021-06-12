@@ -8,6 +8,8 @@ import crypto from 'crypto'
 
 dotenv.config()
 
+import resources from './data.json'
+
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 mongoose.Promise = Promise
@@ -33,6 +35,54 @@ const User = mongoose.model('User', {
     default:() => crypto.randomBytes(128).toString('hex')
   }
 })
+
+const resourceSchema = new mongoose.Schema ({
+  picture: String,
+  first_name: String,
+  last_name: String,
+  email: String,
+  company: String,
+  country: String,
+  city: String,
+  website:String,
+  remote:Boolean,
+  category:String
+})
+
+//Model from resourcesSchema
+const Resource = mongoose.model('Resource', resourceSchema)
+
+/* ,"city":,"website":,"remote":false,"category": */
+
+const newResource = new Resource({
+  picture: "http://dummyimage.com/104x100.png/ff4444/ffffff",
+  first_name: "Hali",
+  last_name: "Hansed",
+  email: "hhansed0@geocities.jp",
+  company: "Aufderhar-Swaniawski",
+  country: "Denmark",
+  city: "København",
+  website:"joomla.org",
+  remote:false,
+  category:"sed lacus"
+})
+newResource.save()
+
+
+//Seeding of our database
+if (process.env.RESET_DB) {
+  
+  const seedDB = async () => {
+    await Resource.deleteMany()
+
+    await resources.forEach(item => {
+      const newResource = new Resource(item)
+      newResource.save()
+    })
+  }    
+  seedDB()
+}
+
 
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization')
