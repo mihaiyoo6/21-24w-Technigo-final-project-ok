@@ -10,6 +10,7 @@ const SigninFormWrapper = styled.div`
   justify-content:center; 
   padding:20px 30px;
 `
+
 const WelcomeTitle = styled.p`
   font-size:2em;
   font-weight:600;
@@ -51,7 +52,7 @@ const Button = styled.button`
   cursor: grab;
 `
 
-const HomeSignin = ( { handleSubmit,username, onPasswordChange, password, onUsernameChange }) => {
+const HomeSignin = ({ handleSubmit,username, onPasswordChange, password, onUsernameChange }) => {
   return (
     <>
       <SigninFormWrapper>
@@ -71,7 +72,7 @@ const HomeSignin = ( { handleSubmit,username, onPasswordChange, password, onUser
           />
           <Button type="submit">Login</Button>
         </SigninForm>
-      </SigninFormWrapper>    
+      </SigninFormWrapper>
     </>           
   )
 }

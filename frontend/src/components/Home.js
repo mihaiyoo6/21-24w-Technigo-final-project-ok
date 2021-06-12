@@ -25,11 +25,11 @@ const AccessContainer = styled.div`
  flex-direction:column;
  margin:0; 
 `
+
 const Home = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   
-
   const accessToken = useSelector(store => store.user.accessToken)
   const dispatch = useDispatch()
   const history = useHistory()
@@ -82,6 +82,7 @@ const Home = () => {
         <HomeFeaturedArticle />
         <HomeIntroText />
         <AccessContainer>
+        
           <HomeSignin
             handleSubmit={handleSubmit}
             username={username}
@@ -90,6 +91,7 @@ const Home = () => {
             onPasswordChange={onPasswordChange}
           />
           <HomeSignup/>
+         
         </AccessContainer>
       </MainContainer>
     </>   

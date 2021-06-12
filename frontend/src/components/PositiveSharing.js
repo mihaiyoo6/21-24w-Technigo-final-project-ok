@@ -62,7 +62,7 @@ const PositiveSharing = () => {
            .then(data => {
               if (data.success) {
                 batch(() => {
-                  dispatch(sharings.actions.setSharings(data.thoughts));
+                  dispatch(sharings.actions.setSharings(data.sharings));
                   dispatch(sharings.actions.setErrors(null));
                 });
               } else {
@@ -71,7 +71,7 @@ const PositiveSharing = () => {
           });
       }, [accessToken, dispatch]); 
 
-  
+      console.log(sharingItems) 
         return (
             <SharingContainer>
              <Title>Share what you are thankful for</Title>
