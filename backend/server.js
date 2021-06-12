@@ -8,7 +8,7 @@ import crypto from 'crypto'
 
 dotenv.config()
 
-import resources from './data.json'
+import Resources1 from './data.json'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
@@ -36,7 +36,7 @@ const User = mongoose.model('User', {
   }
 })
 
-const resourceSchema = new mongoose.Schema ({
+const resource1Schema = new mongoose.Schema ({
   picture: String,
   first_name: String,
   last_name: String,
@@ -50,11 +50,11 @@ const resourceSchema = new mongoose.Schema ({
 })
 
 //Model from resourcesSchema
-const Resource = mongoose.model('Resource', resourceSchema)
+const Resource1 = mongoose.model('Resource1', resource1Schema)
 
-/* ,"city":,"website":,"remote":false,"category": */
 
-const newResource = new Resource({
+
+const newResource1 = new Resource1({
   picture: "http://dummyimage.com/104x100.png/ff4444/ffffff",
   first_name: "Hali",
   last_name: "Hansed",
@@ -66,18 +66,18 @@ const newResource = new Resource({
   remote:false,
   category:"sed lacus"
 })
-newResource.save()
+newResource1.save()
 
 
 //Seeding of our database
 if (process.env.RESET_DB) {
   
   const seedDB = async () => {
-    await Resource.deleteMany()
+    await Resource1.deleteMany()
 
-    await resources.forEach(item => {
-      const newResource = new Resource(item)
-      newResource.save()
+    await Resources1.forEach(item => {
+      const newResource1 = new Resource1(item)
+      newResource1.save()
     })
   }    
   seedDB()
@@ -110,6 +110,12 @@ app.use(express.json())
 // Start defining your routes here
 app.get('/', (req, res) => {
   res.send(listEndpoints(app))
+})
+
+
+app.get('/resources_1', async (req, res) => {
+  const resources_1 = await Resource1.find()
+  res.json(resources_1);
 })
 
 //An endpoint to get all thoughts
