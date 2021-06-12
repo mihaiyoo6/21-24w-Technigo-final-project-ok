@@ -122,7 +122,7 @@ app.get('/resources_1', async (req, res) => {
 app.get('/pos_sharing', authenticateUser)
 app.get('/pos_sharing', async (req, res) => {
   const positivethoughts = await PositiveThought.find()
-  res.json({ positivethoughts });
+  res.json({ success: true, positivethoughts });
 })
 
 app.post('/pos_sharing', authenticateUser)
@@ -149,6 +149,7 @@ app.post('/signup', async (req, res) => {
     }).save()
 
     res.json({
+     success: true, 
      userID: newUser._id,
      username: newUser.username,
      accessToken: newUser.accessToken
@@ -167,6 +168,7 @@ app.post('/signin', async (req, res) => {
 
     if (user && bcrypt.compareSync(password, user.password)) {
       res.json({
+        success: true, 
         userId: user._id,
         username: user.username,
         accessToken: user.accessToken
