@@ -52,8 +52,6 @@ const resource1Schema = new mongoose.Schema ({
 //Model from resourcesSchema
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
-
-
 const newResource1 = new Resource1({
   picture: "http://dummyimage.com/104x100.png/ff4444/ffffff",
   first_name: "Hali",
