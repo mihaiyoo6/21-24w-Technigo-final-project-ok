@@ -63,6 +63,7 @@ const Home = () => {
       fetch(API_URL('signin'), options)
         .then(res => res.json()) 
         .then(data => {
+          (console.log(data))
           if(data.success) {
             dispatch(user.actions.setUsername(data.username))
             dispatch(user.actions.setAccessToken(data.accessToken))

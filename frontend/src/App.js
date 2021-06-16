@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import user from "./reducers/user";
 import Home from "./components/Home"
 import PositiveSharing from "components/PositiveSharing";
-import Directory from "components/Directory"
+import Resources1 from "components/Resources1"
 const reducer = combineReducers({
   user: user.reducer,
 });
@@ -21,7 +21,7 @@ export const App = () => {
          <Route exact path="/" />
          <Route path="/signup" component={Home} />
          <Route path="/pos_sharing" component={PositiveSharing} />
-         <Route path="/directory" component={Directory} />
+         <Route path="/resources_1" component={Resources1} />
         </Switch>
       </Provider>
     </BrowserRouter>

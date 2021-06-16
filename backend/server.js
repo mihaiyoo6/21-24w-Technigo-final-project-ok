@@ -37,15 +37,15 @@ const User = mongoose.model('User', {
 })
 
 const resource1Schema = new mongoose.Schema ({
-  picture: String,
-  first_name: String,
-  last_name: String,
-  email: String,
-  company: String,
-  country: String,
-  city: String,
+  resourceID:Number, 
+  first_name:String,
+  last_name:String,
+  email:String,
+  company:String,
+  country:String,
+  city:String,
   website:String,
-  remote:Boolean,
+  modality:String,
   category:String
 })
 
