@@ -107,7 +107,8 @@
        "modality":"in-person",
        "category":"Dialectical Behavior Therapy"
     },
-    {
+    {  
+       "resourceID":10,
        "first_name":"Clemence",
        "last_name":"Thewles",
        "email":"cthewles9@comcast.net",
@@ -119,6 +120,7 @@
        "category":"Psychodynamic Psychotherapy"
     },
     {
+       "resourceID":11,
        "first_name":"Maribeth",
        "last_name":"Bonnar",
        "email":"mbonnara@businessweek.com",
@@ -129,7 +131,8 @@
        "modality":"in-person, remote",
        "category":"Art Therapy"
     },
-    {
+    {  
+       "resourceID":12,
        "first_name":"Carmine",
        "last_name":"Duthy",
        "email":"cduthyb@cisco.com",
@@ -140,7 +143,8 @@
        "modality":"in-person, remote",
        "category":"Animal Therapy"
     },
-    {
+    {  
+       "resourceID":13,
        "first_name":"Hazlett",
        "last_name":"Lardge",
        "email":"hlardgec@aol.com",
@@ -152,6 +156,7 @@
        "category":"Supportive therapy"
     },
     {
+       "resourceID":14,
        "first_name":"Gustie",
        "last_name":"Stairs",
        "email":"gstairsd@webnode.com",
@@ -163,6 +168,7 @@
        "category":"Integrative Therapy"
     },
     {
+       "resourceID":15,
        "first_name":"Obie",
        "last_name":"Galliford",
        "email":"ogalliforde@altervista.org",
@@ -174,6 +180,7 @@
        "category":"Interpersonal Therapy"
     },
     {
+       "resourceID":16,
        "first_name":"Mable",
        "last_name":"Deignan",
        "email":"mdeignanf@spotify.com",
@@ -185,6 +192,7 @@
        "category":"Art Therapy"
     },
     {
+       "resourceID":17,
        "first_name":"Arni",
        "last_name":"Ealden",
        "email":"aealdeng@cbslocal.com",
@@ -196,6 +204,7 @@
        "category":"Yoga"
     },
     {
+       "resourceID":18,
        "first_name":"Ardelia",
        "last_name":"Jessard",
        "email":"ajessardh@wisc.edu",
@@ -207,6 +216,7 @@
        "category":"Somatic Therapy"
     },
     {
+       "resourceID":19,
        "first_name":"Adair",
        "last_name":"Dunlea",
        "email":"adunleai@diigo.com",
@@ -218,6 +228,7 @@
        "category":"Dearmouring"
     },
     {
+       "resourceID":20,
        "first_name":"Klara",
        "last_name":"Bolton",
        "email":"kboltonj@mlb.com",

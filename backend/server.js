@@ -53,16 +53,16 @@ const resource1Schema = new mongoose.Schema ({
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
 const newResource1 = new Resource1({
-  picture: "http://dummyimage.com/104x100.png/ff4444/ffffff",
-  first_name: "Hali",
-  last_name: "Hansed",
-  email: "hhansed0@geocities.jp",
-  company: "Aufderhar-Swaniawski",
-  country: "Denmark",
-  city: "København",
-  website:"joomla.org",
-  modality:"in-person, remote",
-  category:"yoga"
+  "resourceID":1, 
+  "first_name":"Hali",
+  "last_name":"Hansed",
+  "email":"hhansed0@geocities.jp",
+  "company":"Aufderhar-Swaniawski",
+  "country":"Denmark",
+  "city":"København",
+  "website":"joomla.org",
+  "modality":"in-person, remote",
+  "category":"Reiki"
 })
 newResource1.save()
 
