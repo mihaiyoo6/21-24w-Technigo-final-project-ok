@@ -61,25 +61,10 @@ const newResource1 = new Resource1({
   country: "Denmark",
   city: "København",
   website:"joomla.org",
-  remote:false,
-  category:"sed lacus"
+  modality:"in-person, remote",
+  category:"yoga"
 })
 newResource1.save()
-
-
-//Seeding of our database
-if (process.env.RESET_DB) {
-  
-  const seedDB = async () => {
-    await Resource1.deleteMany()
-
-    await Resources1.forEach(item => {
-      const newResource1 = new Resource1(item)
-      newResource1.save()
-    })
-  }    
-  seedDB()
-}
 
 
 const authenticateUser = async (req, res, next) => {
@@ -110,9 +95,9 @@ app.get('/', (req, res) => {
   res.send(listEndpoints(app))
 })
 
-
 app.get('/resources_1', async (req, res) => {
-  const resources_1 = await Resource1.find()
+  const { currentCategory } = req.query
+  const resources_1 = await Resource1.find({ category: currentCategory })
   res.json(resources_1);
 })
 
