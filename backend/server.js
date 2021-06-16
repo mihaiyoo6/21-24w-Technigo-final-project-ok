@@ -8,7 +8,7 @@ import crypto from 'crypto'
 
 dotenv.config()
 
-import Resources1 from './data.json'
+import data from './data.json'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
@@ -37,7 +37,6 @@ const User = mongoose.model('User', {
 })
 
 const resource1Schema = new mongoose.Schema ({
-  resourceID:Number, 
   first_name:String,
   last_name:String,
   email:String,
@@ -53,7 +52,6 @@ const resource1Schema = new mongoose.Schema ({
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
 const newResource1 = new Resource1({
-  "resourceID":1, 
   "first_name":"Hali",
   "last_name":"Hansed",
   "email":"hhansed0@geocities.jp",
@@ -66,6 +64,19 @@ const newResource1 = new Resource1({
 })
 newResource1.save()
 
+//Seeding of our database
+if (process.env.RESET_DB) {
+  
+  const seedDB = async () => {
+    await Resource1.deleteMany()
+
+    await data.forEach(item => {
+      const newResource1 = new Resource1(item)
+      newResource1.save()
+    })
+  }    
+  seedDB()
+}
 
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization')
@@ -83,7 +94,7 @@ const authenticateUser = async (req, res, next) => {
 }
 
 
-const port = process.env.PORT || 3004
+const port = process.env.PORT || 3005
 const app = express()
 
 // Add middlewares to enable cors and json body parsing
