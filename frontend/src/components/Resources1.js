@@ -32,17 +32,17 @@ const Resources1 = () => {
                   return resource
                 } else if(resource.category.toLowerCase().includes(searchTerm.toLowerCase())) {
                   return resource
-                }
+              }
               }).map((resource) => {
                 return (
-                  
+                  <>
                     <div key={resource._id}>
                       <div>{resource.first_name}{resource.last_name}</div>
                       <div>{resource.city}{resource.location}</div>
                       <div>{resource.remote}</div>
                       <div>{resource.category}</div>
                     </div>
-                
+                  </>
                 )
               })}
             </div> 
