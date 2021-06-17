@@ -52,17 +52,17 @@ const Button = styled.button`
   cursor: grab;
 `
 
-const HomeSignin = ({ handleSubmit,username, onPasswordChange, password, onUsernameChange }) => {
+const HomeSignin = ({ handleSubmit,usernameOrEmail, onPasswordChange, password, onUsernameOrEmailChange }) => {
   return (
     <>
       <SigninFormWrapper>
         <WelcomeTitle>Welcome back!</WelcomeTitle>        
         <SigninForm onSubmit={handleSubmit}>
-          <label htlmFor={username}></label>
+          <label htlmFor={usernameOrEmail}></label>
           <InputField
             type="text"
-            value={username}
-            onChange={onUsernameChange}
+            value={usernameOrEmail}
+            onChange={onUsernameOrEmailChange}
           />
           <label htmlFor={password}></label> 
           <InputField
