@@ -19,6 +19,8 @@ const Resources1 = () => {
         <button onClick={() => setCurrentCategory("Yoga")}>Yoga</button>
         <button onClick={() => setCurrentCategory("Reiki")}>Reiki</button>
         <button onClick={() => setCurrentCategory("Integrative Therapy")}>Integrative Therapy</button>
+          
+        <div>
           <input 
             type="text" 
             placeholder="Search..." 
@@ -26,27 +28,27 @@ const Resources1 = () => {
               setSearchTerm(event.target.value)
             }}
           />
-            <div>
-              {resources.filter((resource) => {
-                if(searchTerm === '') {
-                  return resource
-                } else if(resource.category.toLowerCase().includes(searchTerm.toLowerCase())) {
-                  return resource
-              }
-              }).map((resource) => {
-                return (
-                  <>
-                    <div key={resource._id}>
-                      <div>{resource.first_name}{resource.last_name}</div>
-                      <div>{resource.city}{resource.location}</div>
-                      <div>{resource.remote}</div>
-                      <div>{resource.category}</div>
-                    </div>
-                  </>
-                )
-              })}
-            </div> 
-          </>
+            
+          {resources.filter((resource) => {
+            if(searchTerm === '') {
+              return resource
+            } else if(resource.category.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return resource
+            }
+          }).map((resource) => {
+            return (
+              <>
+                <div key={resource._id}>
+                  <div>{resource.first_name}{resource.last_name}</div>
+                  <div>{resource.city}{resource.location}</div>
+                  <div>{resource.remote}</div>
+                  <div>{resource.category}</div>
+                </div>
+              </>
+            )
+          })}
+        </div>
+      </>
     )
 }
 
