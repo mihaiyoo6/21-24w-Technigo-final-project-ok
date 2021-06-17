@@ -30,6 +30,13 @@ const User = mongoose.model('User', {
     type:String,
     required:true
   },
+  email:{
+    type:mongoose.SchemaTypes.Email,
+    trim:true,
+    lowercase:true,
+    unique:[true, 'This email is already in use, please try with another one'],
+    required:[true, 'Email is required']
+  },
   accessToken: {
     type:String,
     default:() => crypto.randomBytes(128).toString('hex')
@@ -155,16 +162,22 @@ app.post('/signup', async (req, res) => {
 
 //An endpoint to signin
 app.post('/signin', async (req, res) => {
-  const { username, password } = req.body
+  const { usernameOrEmail, password } = req.body
 
   try {
-    const user = await User.findOne({ username })
+    const user = await User.findOne({ 
+      $or: [
+        { username: usernameOrEmail },
+        { email: usernameOrEmail }
+      ]
+    })
 
     if (user && bcrypt.compareSync(password, user.password)) {
       res.json({
         success: true, 
         userId: user._id,
         username: user.username,
+        email:user.email,
         accessToken: user.accessToken
       })
     } else {
