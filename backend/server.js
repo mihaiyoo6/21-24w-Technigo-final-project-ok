@@ -31,7 +31,7 @@ const User = mongoose.model('User', {
     required:true
   },
   email:{
-    type:mongoose.SchemaTypes.Email,
+    type:String,
     trim:true,
     lowercase:true,
     unique:[true, 'This email is already in use, please try with another one'],
