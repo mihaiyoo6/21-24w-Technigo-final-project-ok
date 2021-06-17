@@ -8,7 +8,7 @@ import crypto from 'crypto'
 
 dotenv.config()
 
-import data from './data.json'
+/* import data from './data.json' */
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
@@ -72,7 +72,7 @@ const newResource1 = new Resource1({
 newResource1.save()
 
 //Seeding of our database
-if (process.env.RESET_DB) {
+/* if (process.env.RESET_DB) {
   
   const seedDB = async () => {
     await Resource1.deleteMany()
@@ -83,7 +83,7 @@ if (process.env.RESET_DB) {
     })
   }    
   seedDB()
-}
+} */
 
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization')
