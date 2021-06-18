@@ -8,7 +8,7 @@ import crypto from 'crypto'
 
 dotenv.config()
 
-/* import data from './data.json' */
+import data from './data.json'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
@@ -44,6 +44,7 @@ const User = mongoose.model('User', {
 })
 
 const resource1Schema = new mongoose.Schema ({
+  picture:String,
   first_name:String,
   last_name:String,
   email:String,
@@ -59,20 +60,21 @@ const resource1Schema = new mongoose.Schema ({
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
 const newResource1 = new Resource1({
-  "first_name":"Hali",
-  "last_name":"Hansed",
-  "email":"hhansed0@geocities.jp",
-  "company":"Aufderhar-Swaniawski",
-  "country":"Denmark",
-  "city":"København",
-  "website":"joomla.org",
-  "modality":"in-person, remote",
-  "category":"Reiki"
+  "picture": "https://robohash.org/commodinatushic.png?size=50x50&set=set1",
+  "first_name": "Jody",
+  "last_name": "Gee",
+  "email": "jgee0@zdnet.com",
+  "company": "Gutkowski-Kilback",
+  "country": "Sweden",
+  "city": "Stockholm",
+  "website": "jugem.jp",
+  "modality": null,
+  "category": null
 })
 newResource1.save()
 
 //Seeding of our database
-/* if (process.env.RESET_DB) {
+if (process.env.RESET_DB) {
   
   const seedDB = async () => {
     await Resource1.deleteMany()
@@ -83,7 +85,7 @@ newResource1.save()
     })
   }    
   seedDB()
-} */
+} 
 
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization')
@@ -114,8 +116,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/resources_1', async (req, res) => {
-  const { currentCategory } = req.query
-  const resources_1 = await Resource1.find({ category: currentCategory })
+  const resources_1 = await Resource1.find()
   res.json(resources_1);
 })
 
