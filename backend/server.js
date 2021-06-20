@@ -68,8 +68,8 @@ const newResource1 = new Resource1({
   "country": "Sweden",
   "city": "Stockholm",
   "website": "jugem.jp",
-  "modality": null,
-  "category": null
+  "modality": "in-person, remote",
+  "category": "Reiki"
 })
 newResource1.save()
 
