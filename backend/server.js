@@ -18,17 +18,11 @@ mongoose.Promise = Promise
 const positiveThoughtSchema = mongoose.Schema({
   message: {
     type:String,
-    required:true,
+    required:[true,"Please share a thought"],
     unique:true,
     trim:true,
-    validate: {
-      validator: (value) => {
-        return /^[^0-9]+$/.test(value)
-      },
-      message: "Numbers are not allowed. Try again, please."
-    },
-    minlength: [5, "Your message is too short. Min 5 characters, please."],
-    maxlength: [140, "Your message is too long. Max 140 characters, please."]
+    minlength: [10, "Your message is too short. Min 5 characters, please."],
+    maxlength: [100, "Your message is too long. Max 140 characters, please."]
   },
   thumbsup:{
     type:Number,
@@ -152,11 +146,11 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-/* app.get('/pos_sharing', authenticateUser)
- */
- 
-/* app.post('/pos_sharing', authenticateUser) */
-
+/* app.get('/pos_sharing', authenticateUser)*/
+app.get('/pos_sharing', async (req, res) => {
+  const allPositiveThoughts = await PositiveThought.find().sort({ createdAt: -1 });
+  res.json(allPositiveThoughts);
+});
 
  app.post('/pos_sharing', async (req, res) => {
   try {
@@ -170,17 +164,6 @@ app.get('/resources_1', async (req, res) => {
     }
   }) 
  
-
-/*   const { message } = req.body
-
-  try {
-    const newPositiveThought = await new PositiveThought ({ message }).save()
-    res.json({ success:true, newPositiveThought });
-  } catch (error) {
-    res.status(400).json({ success:false, message: 'Invalid request', error })
-  }
-}) */
-
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body
 
