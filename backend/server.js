@@ -151,15 +151,8 @@ app.get('/resources_1', async (req, res) => {
  
 /* app.post('/pos_sharing', authenticateUser) */
 
-app.post('/pos_sharing', async (req, res) => {
-  try {
-  const newPositiveThought = await new PositiveThought(req.body).save();
-    res.json(newPositiveThought)
-  } catch(error){
-    res.status(400).json(error)
-  } 
-})
-/*  app.post('/pos_sharing', async (req, res) => {
+
+ app.post('/pos_sharing', async (req, res) => {
   try {
     const newPositiveThought = await new PositiveThought(req.body).save()
     res.json(newPositiveThought)
@@ -169,7 +162,7 @@ app.post('/pos_sharing', async (req, res) => {
     }
     res.status(400).json(error)
     }
-  }) */
+  }) 
  
 
 /*   const { message } = req.body
