@@ -163,6 +163,21 @@ app.get('/pos_sharing', async (req, res) => {
     res.status(400).json(error)
     }
   }) 
+
+  app.delete('/pos_sharing/:_id', async (req, res) => {
+    const { _id } = req.params
+  
+    try {
+      const deletedPositiveThought = await PositiveThought.findByIdAndDelete({ _id });
+      if (deletedPositiveThought) {
+        res.json(deletedPositiveThought);
+      } else {
+        res.status(404).json({ message: 'Not found' })
+      }
+    } catch (error) {
+      res.status(400).json({ message: 'Invalid request', error })
+    }
+  })
  
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body
