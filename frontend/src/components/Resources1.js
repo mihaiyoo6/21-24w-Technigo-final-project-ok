@@ -27,20 +27,23 @@ const Resources1 = () => {
             }}
           />
             <div>
-              {resources.filter((resource) => {
+              {resources.filter((res) => {
                 if(searchTerm === '') {
-                  return resource
-                } else if(resource.category.toLowerCase().includes(searchTerm.toLowerCase())) {
-                  return resource
-                  
+                  return res
+                } else {
+                  return (
+                  res.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  res.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  res.city.toLowerCase().includes(searchTerm.toLowerCase()) 
+                )  
               }
               }).map((resource) => {
                 return (
                   <>
                     <div key={resource._id}>
                       <div>{resource.first_name}{resource.last_name}</div>
-                      <div>{resource.city}{resource.location}</div>
-                      <div>{resource.remote}</div>
+                      <div>{resource.city}{resource.country}</div>
+                      <div>{resource.modality}</div>
                       <div>{resource.category}</div>
                     </div>
                   </>
