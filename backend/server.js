@@ -142,8 +142,13 @@ app.get('/', (req, res) => {
 
 app.get('/resources_1', async (req, res) => {
   const { currentCategory } = req.query
-  const resources_1 = await Resource1.find({ category: currentCategory })
-  res.json(resources_1);
+  if (currentCategory) {
+    const resources_1 = await Resource1.find({ category: currentCategory })
+    res.json(resources_1);
+  } else {
+    const resources_1 = await Resource1.find()
+    res.json(resources_1);
+  }
 })
 
 //An endpoint to get all thoughts
