@@ -15,34 +15,21 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, us
 mongoose.Promise = Promise
 
 //Model for Positive Thought
-/* const positiveThoughtSchema = mongoose.model(PositiveThought, {
-  message: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    validate: {
-      validator: (value) => {
-        return /^[^0-9]+$/.test(value)
-      },
-      message: "Numbers are not allowed. Try again, please."
-    },
-    minlength: [5, "Your message is too short. Min 5 characters, please."],
-    maxlength: [140, "Your message is too long. Max 140 characters, please."]
+const positiveThoughtSchema = mongoose.Schema({
+  message: String,
+  thumbsup:{
+    type:Number,
+    default:0
   },
-  thumbsup: {
-    type: Number,
-    default: 0
-  },
-  createdAt: {
-    type: Date,
+  createdAT:{
+    type:Date,
     default: Date.now
-  }
+  }    
 })
 
-//Thought model
+//PositiveThought model
 const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
- */
+ 
 
 //A model for User
 const User = mongoose.model('User', {
@@ -146,11 +133,17 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-/* app.get('/pos_sharing', authenticateUser) */
-/* npm  */
+/* app.get('/pos_sharing', authenticateUser)
+ */
  
 /* app.post('/pos_sharing', authenticateUser) */
-/* app.post('/pos_sharing', async (req, res) => {
+
+app.post('/pos_sharing', async (req, res) => {
+  console.log("hello")
+  const newPositiveThought = await new PositiveThought(req.body).save();
+    res.json(newPositiveThought) 
+})
+/*  app.post('/pos_sharing', async (req, res) => {
   try {
     const newPositiveThought = await new PositiveThought(req.body).save()
     res.json(newPositiveThought)
@@ -160,8 +153,8 @@ app.get('/resources_1', async (req, res) => {
     }
     res.status(400).json(error)
     }
-  })
- */
+  }) */
+ 
 
 /*   const { message } = req.body
 

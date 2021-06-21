@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+/* import React, { useEffect } from "react";
 import { useSelector, useDispatch, batch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro"
@@ -87,3 +87,4 @@ const PositiveSharing = () => {
         };
  
 export default PositiveSharing
+ */
