@@ -116,8 +116,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/resources_1', async (req, res) => {
-  const { currentCategory } = req.query
-  const resources_1 = await Resource1.find({ category: currentCategory })
+  const resources_1 = await Resource1.find()
   res.json(resources_1);
 })
 
