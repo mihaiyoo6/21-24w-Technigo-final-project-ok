@@ -15,9 +15,34 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, us
 mongoose.Promise = Promise
 
 //Model for Positive Thought
-const PositiveThought = mongoose.model('PositiveThought', {
-  message: String
+/* const positiveThoughtSchema = mongoose.model(PositiveThought, {
+  message: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    validate: {
+      validator: (value) => {
+        return /^[^0-9]+$/.test(value)
+      },
+      message: "Numbers are not allowed. Try again, please."
+    },
+    minlength: [5, "Your message is too short. Min 5 characters, please."],
+    maxlength: [140, "Your message is too long. Max 140 characters, please."]
+  },
+  thumbsup: {
+    type: Number,
+    default: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 })
+
+//Thought model
+const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
+ */
 
 //A model for User
 const User = mongoose.model('User', {
@@ -121,15 +146,24 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-app.get('/pos_sharing', authenticateUser)
-app.get('/pos_sharing', async (req, res) => {
-  const positivethoughts = await PositiveThought.find()
-  res.json({ success: true, positivethoughts });
-})
+/* app.get('/pos_sharing', authenticateUser) */
+/* npm  */
+ 
+/* app.post('/pos_sharing', authenticateUser) */
+/* app.post('/pos_sharing', async (req, res) => {
+  try {
+    const newPositiveThought = await new PositiveThought(req.body).save()
+    res.json(newPositiveThought)
+    } catch (error) {
+      if (error.code === 11000) {
+      res.status(400).json({ message: 'Duplicated value', fields: error.keyValue })
+    }
+    res.status(400).json(error)
+    }
+  })
+ */
 
-app.post('/pos_sharing', authenticateUser)
-app.post('/pos_sharing', async (req, res) => {
-  const { message } = req.body
+/*   const { message } = req.body
 
   try {
     const newPositiveThought = await new PositiveThought ({ message }).save()
@@ -137,7 +171,7 @@ app.post('/pos_sharing', async (req, res) => {
   } catch (error) {
     res.status(400).json({ success:false, message: 'Invalid request', error })
   }
-})
+}) */
 
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body

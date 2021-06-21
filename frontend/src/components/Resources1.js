@@ -10,7 +10,7 @@ const Resources1 = () => {
      useEffect(() => {
        console.log(currentCategory)
       fetch("https://final-project-dannuzak.herokuapp.com/resources_1")
-        .then((response) => response.json())
+        .then((response) => (response.json()))
         .then((json) => setResources(json))
   },[currentCategory]) 
   
@@ -32,6 +32,7 @@ const Resources1 = () => {
                   return resource
                 } else if(resource.category.toLowerCase().includes(searchTerm.toLowerCase())) {
                   return resource
+                  
               }
               }).map((resource) => {
                 return (
