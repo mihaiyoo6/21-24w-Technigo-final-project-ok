@@ -16,7 +16,20 @@ mongoose.Promise = Promise
 
 //Model for Positive Thought
 const positiveThoughtSchema = mongoose.Schema({
-  message: String,
+  message: {
+    type:String,
+    required:true,
+    unique:true,
+    trim:true,
+    validate: {
+      validator: (value) => {
+        return /^[^0-9]+$/.test(value)
+      },
+      message: "Numbers are not allowed. Try again, please."
+    },
+    minlength: [5, "Your message is too short. Min 5 characters, please."],
+    maxlength: [140, "Your message is too long. Max 140 characters, please."]
+  },
   thumbsup:{
     type:Number,
     default:0
@@ -139,9 +152,12 @@ app.get('/resources_1', async (req, res) => {
 /* app.post('/pos_sharing', authenticateUser) */
 
 app.post('/pos_sharing', async (req, res) => {
-  console.log("hello")
+  try {
   const newPositiveThought = await new PositiveThought(req.body).save();
-    res.json(newPositiveThought) 
+    res.json(newPositiveThought)
+  } catch(error){
+    res.status(400).json(error)
+  } 
 })
 /*  app.post('/pos_sharing', async (req, res) => {
   try {
