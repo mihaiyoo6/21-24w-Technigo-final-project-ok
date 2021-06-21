@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-/* import Resources from "../data.json" */
 
 const Resources1 = () => {
   const [resources, setResources] = useState([])
@@ -12,12 +11,17 @@ const Resources1 = () => {
        fetch(`https://final-project-dannuzak.herokuapp.com/resources_1?currentCategory=${currentCategory}`)
         .then((response) => (response.json()))
         .then((json) => setResources(json))
-  },[currentCategory]) 
+    },[currentCategory]) 
   
     return (
       <>
+        <h1>Directory</h1>
+        <p>A list of specialists in different disciplines that can support you.</p>
         <button onClick={() => setCurrentCategory("Yoga")}>Yoga</button>
         <button onClick={() => setCurrentCategory("Reiki")}>Reiki</button>
+        <button onClick={() => setCurrentCategory("Dearmouring")}>Dearmouring</button>
+        <button onClick={() => setCurrentCategory("Eye movement desensitization and reprocessing (EDMR)")}>EDMR</button>
+        <button onClick={() => setCurrentCategory("Somatic Therapy")}>Somatic Therapy</button>
         <button onClick={() => setCurrentCategory("Integrative Therapy")}>Integrative Therapy</button>
           <input 
             type="text" 
@@ -44,10 +48,15 @@ const Resources1 = () => {
                 return (
                   <>
                     <div key={resource._id}>
-                      <div>{resource.first_name}{resource.last_name}</div>
-                      <div>{resource.city}{resource.country}</div>
-                      <div>{resource.modality}</div>
-                      <div>{resource.category}</div>
+                      <p>{resource.first_name} {resource.last_name}</p>
+                      <p>Company:{resource.company}</p>
+                      <p>Email:{resource.email}</p>
+                      <p>Website:{resource.website}</p>
+                      <p><p>Phone number:+46 73 480 00 00</p></p>
+                      <p>Modality: {resource.modality}</p>
+                      <p><p>Location:{resource.city}, {resource.country}</p></p>
+                      <p>{resource.category}</p>
+                      <img src={resource.picture} alt="something" />
                     </div>
                   </>
                 )

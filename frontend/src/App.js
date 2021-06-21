@@ -7,6 +7,7 @@ import user from "./reducers/user";
 import Home from "./components/Home"
 import PositiveSharing from "components/PositiveSharing";
 import Resources1 from "components/Resources1"
+
 const reducer = combineReducers({
   user: user.reducer,
 });
