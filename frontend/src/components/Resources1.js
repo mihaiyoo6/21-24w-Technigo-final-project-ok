@@ -9,7 +9,7 @@ const Resources1 = () => {
 
      useEffect(() => {
        console.log(currentCategory)
-      fetch("https://final-project-dannuzak.herokuapp.com/resources_1")
+       fetch(`https://final-project-dannuzak.herokuapp.com/resources_1?currentCategory=${currentCategory}`)
         .then((response) => (response.json()))
         .then((json) => setResources(json))
   },[currentCategory]) 
