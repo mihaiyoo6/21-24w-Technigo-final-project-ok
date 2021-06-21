@@ -34,10 +34,13 @@ const Resources1 = () => {
                   return (
                   res.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   res.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  res.city.toLowerCase().includes(searchTerm.toLowerCase()) 
+                  res.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  res.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  res.modality.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  res.category.toLowerCase().includes(searchTerm.toLowerCase())
                 )  
-              }
-              }).map((resource) => {
+              }})
+              .map((resource) => {
                 return (
                   <>
                     <div key={resource._id}>
