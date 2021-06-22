@@ -28,6 +28,10 @@ const positiveThoughtSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
+  hearts: {
+    type: Number,
+    default: 0
+  },
   createdAT: {
     type: Date,
     default: Date.now
@@ -197,7 +201,8 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
       },
       {
         $inc: {
-          thumbsup: 1
+          thumbsup: 1,
+          hearts: 1
         }
       },
       {
