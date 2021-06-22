@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/* import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch, batch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
@@ -8,7 +8,6 @@ import user from "../reducers/user";
 
 const SignupPage = () => {
     const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
   
     const accessToken = useSelector((store) => store.user.accessToken);
@@ -70,3 +69,4 @@ const SignupPage = () => {
         }
  
 export default SignupPage
+ */
