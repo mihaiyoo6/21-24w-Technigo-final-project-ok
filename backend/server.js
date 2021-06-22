@@ -129,11 +129,13 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// Start defining your routes here
+// ENDPOINTS start here
 app.get('/', (req, res) => {
   res.send(listEndpoints(app))
 })
 
+//An endpoint to get all the resources 
+app.get('/resources_1', authenticateUser)
 app.get('/resources_1', async (req, res) => {
   const { currentCategory } = req.query
   if (currentCategory) {
@@ -146,13 +148,15 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-/* app.get('/pos_sharing', authenticateUser)*/
+app.get('/pos_sharing', authenticateUser)
 app.get('/pos_sharing', async (req, res) => {
   const allPositiveThoughts = await PositiveThought.find().sort({ createdAt: -1 });
   res.json(allPositiveThoughts);
 });
 
- app.post('/pos_sharing', async (req, res) => {
+//An endpoint to share a positive thought
+app.post('/pos_sharing', authenticateUser)
+app.post('/pos_sharing', async (req, res) => {
   try {
     const newPositiveThought = await new PositiveThought(req.body).save()
     res.json(newPositiveThought)
@@ -164,8 +168,9 @@ app.get('/pos_sharing', async (req, res) => {
     }
   }) 
 
-  app.delete('/pos_sharing/:_id', async (req, res) => {
-    const { _id } = req.params
+//An endpoint to detele a positive thought
+app.delete('/pos_sharing/:_id', async (req, res) => {
+  const { _id } = req.params
   
     try {
       const deletedPositiveThought = await PositiveThought.findByIdAndDelete({ _id });
@@ -179,8 +184,10 @@ app.get('/pos_sharing', async (req, res) => {
     }
   })
  
-  app.post('/pos_sharing/:_id/emojis', async (req, res) => {
-    const { _id } = req.params;
+//An endpoint to increase the amount of thumbsup
+app.post('/pos_sharing/:_id/emojis', authenticateUser)
+app.post('/pos_sharing/:_id/emojis', async (req, res) => {
+  const { _id } = req.params;
   
     try {
       const updatedPositiveThought = await PositiveThought.findOneAndUpdate(
@@ -206,6 +213,7 @@ app.get('/pos_sharing', async (req, res) => {
     }
   });
 
+//An endpoint to signup
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body
 
