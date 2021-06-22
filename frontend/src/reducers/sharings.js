@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+/* import { createSlice } from "@reduxjs/toolkit"
 
 const sharings = createSlice({
   name:"sharings",
@@ -16,4 +16,4 @@ const sharings = createSlice({
   }
 })
 
-export default sharings;
+export default sharings; */

@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import moment from 'moment'
 
-import { API_URL_POS_SHARING } from '../reusable/urls'
+import { API_URL_POS_SHARING, THUMBSUP_URL } from '../reusable/urls'
 
 const PositiveSharing = () => {
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
@@ -40,6 +40,18 @@ useEffect(() => {
       setNewPositiveThought('')
   }
 
+  const onThumbsupIncrease = (_id) => {
+    const options = {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+  }
+    fetch(THUMBSUP_URL(_id), options)
+     .then(res => res.json())
+     .then(() => fetchPositiveThoughts())
+     .catch(err => console.error(err))
+}
 
      return (
       <div>
@@ -58,6 +70,9 @@ useEffect(() => {
           <div key={thought._id}>
             <h4>{thought.message}</h4>
             <p>{moment(thought.created).fromNow()}</p>
+            <button onClick={onThumbsupIncrease(thought._id)}>
+              {thought.thumbsup}👍
+            </button>
           </div>
         ))}
       </div>
