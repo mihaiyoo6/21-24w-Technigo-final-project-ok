@@ -11,7 +11,7 @@ dotenv.config()
 import data from './data.json'
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
 mongoose.Promise = Promise
 
 //Model for Positive Thought
@@ -179,6 +179,33 @@ app.get('/pos_sharing', async (req, res) => {
     }
   })
  
+  app.post('/pos_sharing/:_id/emojis', async (req, res) => {
+    const { _id } = req.params;
+  
+    try {
+      const updatedPositiveThought = await PositiveThought.findOneAndUpdate(
+        {
+          _id: _id
+        },
+        { 
+          $inc: {
+            thumbsup: 1
+          }
+        },
+        {
+          new: true
+        }
+      );
+      if (updatedPositiveThought) {
+        res.json(updatedPositiveThought);
+      } else {
+        res.status(404).json({ message: 'Not found' })
+      }
+    } catch (error) {
+      res.status(400).json({ message: 'Invalid request', error });
+    }
+  });
+
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body
 
