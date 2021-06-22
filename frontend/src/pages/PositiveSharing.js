@@ -20,13 +20,26 @@ useEffect(() => {
 
   const onNewPositiveThoughtChange = (event) => {
     setNewPositiveThought(event.target.value)
-
   }
 
-  const onFormSubmit =(event) =>{
+  const onFormSubmit =(event) => {
     event.preventDefault()
-    console.log('Form submitted', newPositiveThought)
+
+    const options = {
+      method:'POST',
+      headers:{
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({ message:newPositiveThought})
+    }
+
+    fetch(API_URL_POS_SHARING, options)
+      .then(res => res.json())
+      .then(() => fetchPositiveThoughts())
+      .catch(err => console.error(err))
+      setNewPositiveThought('')
   }
+
 
      return (
       <div>
