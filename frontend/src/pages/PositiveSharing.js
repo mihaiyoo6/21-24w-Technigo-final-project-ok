@@ -44,7 +44,7 @@ const PositiveSharing = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json'
       },
     }
     fetch(THUMBSUP_URL(_id), options)
@@ -70,7 +70,7 @@ const PositiveSharing = () => {
         <div key={thought._id}>
           <h4>{thought.message}</h4>
           <p>{moment(thought.created).fromNow()}</p>
-          <button onClick={onThumbsupIncrease(thought._id)}>
+          <button onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
           </button>  
           {/* <button><span role="img" aria-label="thumbsup">👍</span></button> */}

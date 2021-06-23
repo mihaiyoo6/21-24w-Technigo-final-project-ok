@@ -78,9 +78,9 @@ const Home = () => {
         
           <HomeSignin
             handleSubmit={handleSubmit}
-            usernameOrEmail={username}
+            username={username}
             password={password}
-            onUsernameOrEmailChange={onUsernameChange}
+            onUsernameChange={onUsernameChange}
             onPasswordChange={onPasswordChange}
           />
           {errorMessage ? <p> {errorMessage.message}</p> : ''}
