@@ -9,7 +9,7 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
       <SigninFormWrapper>
         <WelcomeTitle>Welcome back!</WelcomeTitle>        
         <SigninForm onSubmit={handleSubmit}>
-          <label htlmfor={username}></label>
+          <label htlmFor={username}></label>
           <InputField
             type="text"
             value={username}

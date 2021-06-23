@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { batch, useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
@@ -14,26 +14,12 @@ import HomeSignin from 'components/HomeSignin'
 import user from '../reducers/user'
 import HomeSignup from '../components/HomeSignup'
 
-const MainContainer = styled.div`
-	width: 100vw;
-	height: 100vh;
-`
-const AccessContainer = styled.div`
- width:100%
- height:300px;
- display:flex;
- flex-direction:column;
- margin:0; 
 
- @media ${device.tablet} {
-  flex-direction:row;
-  
-}
-`
 
 const Home = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const errorMessage = useSelector(store => store.user.errors);
   
   const accessToken = useSelector(store => store.user.accessToken)
   const dispatch = useDispatch()
@@ -70,10 +56,11 @@ const Home = () => {
         .then(data => {
           (console.log(data))
           if(data.success) {
+            batch(() => {
             dispatch(user.actions.setUsername(data.username))
             dispatch(user.actions.setAccessToken(data.accessToken))
             dispatch(user.actions.setErrors(null));
-
+          })
           } else {
             dispatch(user.actions.setErrors(data))
           }
@@ -96,12 +83,30 @@ const Home = () => {
             onUsernameOrEmailChange={onUsernameChange}
             onPasswordChange={onPasswordChange}
           />
+          {errorMessage ? <p> {errorMessage.message}</p> : ''}
           <HomeSignup/>
          
         </AccessContainer>
       </MainContainer>
     </>   
 )}
+
+const MainContainer = styled.div`
+	width: 100vw;
+	height: 100vh;
+`
+const AccessContainer = styled.div`
+ width:100%
+ height:300px;
+ display:flex;
+ flex-direction:column;
+ margin:0; 
+
+ @media ${device.tablet} {
+  flex-direction:row;
+  
+}
+`
 
 export default Home
         
