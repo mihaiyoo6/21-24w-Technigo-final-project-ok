@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import './resources1.css'
 
 const Resources1 = () => {
   const [resources, setResources] = useState([])

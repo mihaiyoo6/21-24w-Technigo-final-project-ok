@@ -8,12 +8,16 @@
 .list {
 	list-style: none;
 	padding: 0px;
+	display: flex;
+	flex-direction: column;
 }
 
 .items {
 	padding: 15px 0px;
 	cursor: pointer;
 	font-weight: 200;
+	width: 100%;
+	font-size: 1.2em;
 }
 
 .logo {
@@ -22,13 +26,8 @@
 	font-family: "Pacifico", cursive;
 	font-size: 2.5em;
 	cursor: default;
-	user-select: none; /* redirect home */
+	user-select: none;
 	text-align: center;
-}
-
-.items {
-	width: 100%;
-	font-size: 1.2em;
 }
 
 .link {
@@ -41,7 +40,7 @@ nav ul li:hover .link {
 
 nav ul li.items {
 	position: relative;
-	width: 100%;
+	/* width: 100%; */
 	margin-top: 10px;
 	text-align: center;
 }
@@ -53,4 +52,47 @@ nav ul li.items:hover {
 
 nav ul li.items:hover:after {
 	opacity: 0;
+}
+
+@media (min-width: 768px) {
+	/*** Navbar ***/
+
+	.list {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.logo {
+		/*to keep its length independently of the size of the page*/
+		font-size: 2.8em;
+		text-align: start;
+	}
+
+	.items {
+		width: 170px;
+		align-self: center;
+		justify-content: flex-end;
+		margin-left: 15px;
+	}
+
+	nav ul li.items:after {
+		position: absolute;
+		content: "";
+		left: 0;
+		bottom: 5px;
+		height: 2px;
+		width: 100%;
+		background: cyan;
+		opacity: 0;
+		transition: all 0.2s linear;
+	}
+
+	nav ul li.items:hover:after {
+		opacity: 1;
+		bottom: 8px;
+	}
+
+	nav ul li.items:hover {
+		box-shadow: none;
+	}
 }

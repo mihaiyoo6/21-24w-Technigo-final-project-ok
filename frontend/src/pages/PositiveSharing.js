@@ -73,6 +73,7 @@ const PositiveSharing = () => {
           {/* <button onClick={onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
           </button>  */}
+          <button>👍</button>
         </div>
       ))}
     </div>

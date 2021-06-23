@@ -3,6 +3,24 @@ import styled from 'styled-components/macro'
 
 import FeaturedImage from '../assets/forest3.jpeg' 
 
+
+const FeaturedArticle = () => {
+  return (
+    <>
+      <FeaturedBgImage>
+        <FeaturedTag>Featured</FeaturedTag>
+        <FeaturedTitle>
+          Are you having burnout symptoms?
+        </FeaturedTitle>
+        <FeaturedSubtitle>
+          Take this quizz and find it out >>
+        </FeaturedSubtitle>
+      </FeaturedBgImage>
+    </>     
+  )
+}
+
+
 const FeaturedBgImage = styled.div`
   background-image: url(${FeaturedImage});
   background-size:cover;
@@ -39,21 +57,5 @@ const FeaturedSubtitle = styled.h2`
   font-weight:200;
   text-decoration:underline;
 `
-
-const FeaturedArticle = () => {
-  return (
-    <>
-      <FeaturedBgImage>
-        <FeaturedTag>Featured</FeaturedTag>
-        <FeaturedTitle>
-          Are you having burnout symptoms?
-        </FeaturedTitle>
-        <FeaturedSubtitle>
-          Take this quizz and find it out >>
-        </FeaturedSubtitle>
-      </FeaturedBgImage>
-    </>     
-  )
-}
 
 export default FeaturedArticle
