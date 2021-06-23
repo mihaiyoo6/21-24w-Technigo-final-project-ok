@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
+import Navbar from 'components/Navbar'
+import HeroImage from 'components/HeroImage'
+
 import './resources1.css'
 
 const Resources1 = () => {
@@ -16,8 +19,10 @@ const Resources1 = () => {
   
     return (
       <>
-        <h1>Directory</h1>
-        <p>A list of specialists in different disciplines that can support you.</p>
+        <Navbar />
+        <HeroImage />
+         <h1>Directory</h1>
+         <p>A list of specialists in different disciplines that can support you.</p>
         <button onClick={() => setCurrentCategory("Yoga")}>Yoga</button>
         <button onClick={() => setCurrentCategory("Reiki")}>Reiki</button>
         <button onClick={() => setCurrentCategory("Dearmouring")}>Dearmouring</button>
