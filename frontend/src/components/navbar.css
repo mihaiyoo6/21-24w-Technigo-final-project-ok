@@ -26,12 +26,11 @@
 	font-family: "Pacifico", cursive;
 	font-size: 2.5em;
 	cursor: default;
-	user-select: none;
 	text-align: center;
 }
 
 .link {
-	color: white;
+	color: #fff;
 }
 
 nav ul li:hover .link {

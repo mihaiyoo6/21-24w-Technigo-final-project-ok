@@ -7,6 +7,7 @@ import user from "./reducers/user";
 import Home from "./pages/Home"
 import PositiveSharing from "pages/PositiveSharing";
 import Resources1 from "pages/Resources1"
+import Signup from "pages/Signup"
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -22,6 +23,7 @@ export const App = () => {
          <Route exact path="/" component={Home}/>
          <Route path="/pos_sharing" component={PositiveSharing}/> 
          <Route path="/resources_1" component={Resources1} />
+         <Route path="/signup" component={Signup} />
         </Switch>
       </Provider>
     </BrowserRouter>

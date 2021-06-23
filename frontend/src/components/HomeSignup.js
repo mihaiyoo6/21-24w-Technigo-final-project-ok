@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
+import { Link } from 'react-router-dom'
+
 import { device } from '../Commons/breakpoints'
 
 const HomeSignup = () => {
@@ -9,7 +11,7 @@ const HomeSignup = () => {
       <SignupWrapper>
         <SignupTitle> Join us!</SignupTitle>
           <SignupText>Enter your personal details and start a journey with us</SignupText>
-            <Button type="submit">Signup</Button>
+           <Link to="/signup" ><Button type="submit">Signup</Button></Link>
           </SignupWrapper>        
         </>
   )

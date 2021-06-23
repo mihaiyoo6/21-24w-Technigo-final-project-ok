@@ -1,3 +1,19 @@
+import React from 'react'
+
+const Signup = () => {
+  return (
+    <div>
+      Signup
+    </div>
+  )
+}
+
+export default Signup
+
+
+
+
+
 /* import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch, batch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
@@ -6,7 +22,7 @@ import { API_URL } from '../reusable/urls'
 
 import user from "../reducers/user";
 
-const SignupPage = () => {
+const Signup = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
   
@@ -29,7 +45,7 @@ const SignupPage = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ username, email, password })
+          body: JSON.stringify({ username, password })
         }
     
         fetch(API_URL('signup'), options)
@@ -63,10 +79,10 @@ const SignupPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button type='submit'>Sign up</button>
-              {errorMessage ? <p>{error.Message.message}</p> : ''}
+            {errorMessage ? <p>{error.Message.message}</p> : ''} 
             </form>
           )
         }
  
-export default SignupPage
- */
+export default Signup */
+ 
