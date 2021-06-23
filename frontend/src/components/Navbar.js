@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './home.css'
+import './navbar.css'
 
 const Navbar = () => {
   return (

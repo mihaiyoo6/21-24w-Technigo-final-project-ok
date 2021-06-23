@@ -1,6 +1,20 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
+import { device } from '../Commons/breakpoints'
+
+const HomeSignup = () => {
+  return (
+    <>
+      <SignupWrapper>
+        <SignupTitle> Join us!</SignupTitle>
+          <SignupText>Enter your personal details and start a journey with us</SignupText>
+            <Button type="submit">Signup</Button>
+          </SignupWrapper>        
+        </>
+  )
+}
+
 const SignupWrapper = styled.div`
   background-color: #155306;
   border-top: 1px solid black;
@@ -9,8 +23,12 @@ const SignupWrapper = styled.div`
   align-items:center;
   justify-content:center;
   padding:20px 30px;
-` 
 
+  @media ${device.tablet} {
+    width:50%;
+    
+   }  
+` 
 
 const SignupTitle = styled.p`
   font-family: 'Roboto', sans-serif;
@@ -27,6 +45,9 @@ const SignupText = styled.p`
   font-weight:200;
   margin:0px 20px 15px 20px;
   text-align:center;
+
+  @media ${device.tablet} {
+    font-size:1.3em;
 `
 
 const Button = styled.button`
@@ -42,16 +63,5 @@ const Button = styled.button`
   cursor: grab;
 `
 
-const HomeSignup = () => {
-  return (
-    <>
-      <SignupWrapper>
-        <SignupTitle> Join us!</SignupTitle>
-          <SignupText>Enter your personal details and start a journey with us</SignupText>
-            <Button type="submit">Signup</Button>
-          </SignupWrapper>        
-        </>
-  )
-}
 
 export default HomeSignup

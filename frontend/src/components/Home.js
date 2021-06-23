@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import './home.css'
 
+
+
+import { device } from '../Commons/breakpoints'
 import { API_URL } from '../reusable/urls'
 
 import Navbar from 'components/Navbar'
@@ -24,6 +26,11 @@ const AccessContainer = styled.div`
  display:flex;
  flex-direction:column;
  margin:0; 
+
+ @media ${device.tablet} {
+  flex-direction:row;
+  
+}
 `
 
 const Home = () => {

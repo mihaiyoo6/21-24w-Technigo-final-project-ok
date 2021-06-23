@@ -3,6 +3,8 @@ import styled from 'styled-components/macro'
 
 import FeaturedImage from '../assets/forest3.jpeg' 
 
+import { device } from '../Commons/breakpoints'
+
 
 const FeaturedArticle = () => {
   return (
@@ -30,6 +32,10 @@ const FeaturedBgImage = styled.div`
   flex-direction:column;
   justify-content:flex-end;
   cursor: pointer;
+
+@media ${device.tablet} {
+  padding:20px 30px;
+}
 ` 
 
 const FeaturedTag = styled.p`

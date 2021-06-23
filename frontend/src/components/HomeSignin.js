@@ -1,6 +1,35 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
+import { device } from '../Commons/breakpoints'
+
+
+const HomeSignin = ({ handleSubmit,usernameOrEmail, onPasswordChange, password, onUsernameOrEmailChange }) => {
+  return (
+    <>
+      <SigninFormWrapper>
+        <WelcomeTitle>Welcome back!</WelcomeTitle>        
+        <SigninForm onSubmit={handleSubmit}>
+          <label htlmFor={usernameOrEmail}></label>
+          <InputField
+            type="text"
+            value={usernameOrEmail}
+            onChange={onUsernameOrEmailChange}
+          />
+          <label htmlFor={password}></label> 
+          <InputField
+            type="password"
+            value={password}
+            onChange={onPasswordChange}
+          />
+          <Button type="submit">Login</Button>
+        </SigninForm>
+      </SigninFormWrapper>
+    </>           
+  )
+}
+
+
 const SigninFormWrapper = styled.div`
   background-color:#E7E4DE;
   border-top: 1px solid black;
@@ -9,6 +38,10 @@ const SigninFormWrapper = styled.div`
   align-items:center;
   justify-content:center; 
   padding:20px 30px;
+  
+  @media ${device.tablet} {
+    width:50%;
+  }
 `
 
 const WelcomeTitle = styled.p`
@@ -17,6 +50,7 @@ const WelcomeTitle = styled.p`
   color:#155306;
   margin: 30px 0;   
 `
+
 const InputField = styled.input`
   margin: 5px;
   border-radius: 5px;
@@ -52,29 +86,5 @@ const Button = styled.button`
   cursor: grab;
 `
 
-const HomeSignin = ({ handleSubmit,usernameOrEmail, onPasswordChange, password, onUsernameOrEmailChange }) => {
-  return (
-    <>
-      <SigninFormWrapper>
-        <WelcomeTitle>Welcome back!</WelcomeTitle>        
-        <SigninForm onSubmit={handleSubmit}>
-          <label htlmFor={usernameOrEmail}></label>
-          <InputField
-            type="text"
-            value={usernameOrEmail}
-            onChange={onUsernameOrEmailChange}
-          />
-          <label htmlFor={password}></label> 
-          <InputField
-            type="password"
-            value={password}
-            onChange={onPasswordChange}
-          />
-          <Button type="submit">Login</Button>
-        </SigninForm>
-      </SigninFormWrapper>
-    </>           
-  )
-}
 
 export default HomeSignin

@@ -8,7 +8,7 @@ const size = {
     desktop: '2560px'
   }
 
-  const device = {
+  export const device = {
     mobileS: `(min-width: ${size.mobileS})`,
     mobileM: `(min-width: ${size.mobileM})`,
     mobileL: `(min-width: ${size.mobileL})`,
@@ -19,4 +19,4 @@ const size = {
     desktopL: `(min-width: ${size.desktop})`
   };
 
-  export default { size, device }
+  
