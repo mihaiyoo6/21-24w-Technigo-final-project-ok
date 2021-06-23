@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
-
-
 import { device } from '../Commons/breakpoints'
 import { API_URL } from '../reusable/urls'
 
@@ -34,7 +32,7 @@ const AccessContainer = styled.div`
 `
 
 const Home = () => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   
   const accessToken = useSelector(store => store.user.accessToken)
@@ -48,9 +46,9 @@ const Home = () => {
     }  
   },[accessToken, history])
 
-  const onUsernameOrEmailChange = (e) => { 
-    setUsernameOrEmail(e.target.value)
-  }     
+  const onUsernameChange = (e) => { 
+    setUsername(e.target.value)
+  }      
 
   const onPasswordChange = (e) => {
     setPassword(e.target.value)
@@ -64,7 +62,7 @@ const Home = () => {
       headers: {
         'Content-Type': ' application/json'
       },
-      body: JSON.stringify({ usernameOrEmail, password }) //before: username
+      body: JSON.stringify({ username, password }) //before: username
     }
 
       fetch(API_URL('signin'), options)
@@ -73,7 +71,6 @@ const Home = () => {
           (console.log(data))
           if(data.success) {
             dispatch(user.actions.setUsername(data.username))
-            dispatch(user.actions.setEmail(data.email))  
             dispatch(user.actions.setAccessToken(data.accessToken))
             dispatch(user.actions.setErrors(null));
 
@@ -94,9 +91,9 @@ const Home = () => {
         
           <HomeSignin
             handleSubmit={handleSubmit}
-            usernameOrEmail={usernameOrEmail}
+            usernameOrEmail={username}
             password={password}
-            onUsernameOrEmailChange={onUsernameOrEmailChange}
+            onUsernameOrEmailChange={onUsernameChange}
             onPasswordChange={onPasswordChange}
           />
           <HomeSignup/>

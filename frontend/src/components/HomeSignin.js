@@ -3,18 +3,17 @@ import styled from 'styled-components/macro'
 
 import { device } from '../Commons/breakpoints'
 
-
-const HomeSignin = ({ handleSubmit,usernameOrEmail, onPasswordChange, password, onUsernameOrEmailChange }) => {
+const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUsernameChange }) => {
   return (
     <>
       <SigninFormWrapper>
         <WelcomeTitle>Welcome back!</WelcomeTitle>        
         <SigninForm onSubmit={handleSubmit}>
-          <label htlmFor={usernameOrEmail}></label>
+          <label htlmFor={username}></label>
           <InputField
             type="text"
-            value={usernameOrEmail}
-            onChange={onUsernameOrEmailChange}
+            value={username}
+            onChange={onUsernameChange}
           />
           <label htmlFor={password}></label> 
           <InputField
