@@ -15,20 +15,20 @@ import user from '../reducers/user'
 import HomeSignup from '../components/HomeSignup'
 
 
-
 const Home = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const errorMessage = useSelector(store => store.user.errors);
+  
   
   const accessToken = useSelector(store => store.user.accessToken)
+  const errorMessage = useSelector(store => store.user.errors);
   const dispatch = useDispatch()
   const history = useHistory()
 
   useEffect(() => {
     console.log('checking access token', accessToken)
     if(accessToken) {
-      history.push('/')
+      history.push('/pos_sharing')
     }  
   },[accessToken, history])
 
@@ -48,7 +48,7 @@ const Home = () => {
       headers: {
         'Content-Type': ' application/json'
       },
-      body: JSON.stringify({ username, password }) //before: username
+      body: JSON.stringify({ username, password }) 
     }
 
       fetch(API_URL('signin'), options)
