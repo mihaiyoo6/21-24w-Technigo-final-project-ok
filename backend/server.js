@@ -49,13 +49,6 @@ const User = mongoose.model('User', {
     type: String,
     required: true
   },
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: [true, 'This email is already in use, please try with another one'],
-    required: [true, 'Email is required']
-  },
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
@@ -239,29 +232,23 @@ app.post('/signup', async (req, res) => {
 
 //An endpoint to signin
 app.post('/signin', async (req, res) => {
-  const { usernameOrEmail, password } = req.body
+  const { username, password } = req.body
 
   try {
-    const user = await User.findOne({
-      $or: [
-        { username: usernameOrEmail },
-        { email: usernameOrEmail }
-      ]
-    })
+    const user = await User.findOne({ username })
 
     if (user && bcrypt.compareSync(password, user.password)) {
       res.json({
-        success: true,
+        success: true, 
         userId: user._id,
         username: user.username,
-        email: user.email,
         accessToken: user.accessToken
       })
     } else {
-      res.status(404).json({ success: false, message: 'User not found' });
-    }
+      res.status(404).json({ success:false, message: 'User not found' });
+    }                          
   } catch (error) {
-    res.status(400).json({ success: false, message: 'Invalid request', error });
+    res.status(400).json({ success:false, message: 'Invalid request', error });
   }
 })
 
