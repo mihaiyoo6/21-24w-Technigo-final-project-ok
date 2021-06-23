@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 
-import { API_URL_POS_SHARING, /* THUMBSUP_URL */ } from '../reusable/urls'
+import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
 
 const PositiveSharing = () => {
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
@@ -40,7 +40,7 @@ const PositiveSharing = () => {
     setNewPositiveThought('')
   }
 
- /*  const onThumbsupIncrease = (_id) => {
+ const onThumbsupIncrease = (_id) => {
     const options = {
       method: 'POST',
       headers: {
@@ -51,7 +51,7 @@ const PositiveSharing = () => {
       .then(res => res.json())
       .then(() => fetchPositiveThoughts())
       .catch(err => console.error(err)) 
-  }  */
+  }  
 
   return (
     <div>
@@ -63,17 +63,17 @@ const PositiveSharing = () => {
           value={newPositiveThought}
           onChange={onNewPositiveThoughtChange}
         />
-        <button type="onSubmit">Send</button>
+        <button type="onSubmit"> Send </button>
       </form>
 
       {positiveThoughtsList.map(thought => (
         <div key={thought._id}>
           <h4>{thought.message}</h4>
           <p>{moment(thought.created).fromNow()}</p>
-          {/* <button onClick={onThumbsupIncrease(thought._id)}>
+          <button onClick={onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
-          </button>  */}
-          <button><span role="img" aria-label="thumbsup">👍</span></button>
+          </button>  
+          {/* <button><span role="img" aria-label="thumbsup">👍</span></button> */}
         </div>
       ))}
     </div>
