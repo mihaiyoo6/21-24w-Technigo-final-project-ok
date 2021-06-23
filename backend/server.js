@@ -180,7 +180,7 @@ app.delete('/pos_sharing/:_id', async (req, res) => {
 
 //An endpoint to increase the amount of thumbsup
 /* app.post('/pos_sharing/:_id/emojis', authenticateUser) */
-/* app.post('/pos_sharing/:_id/emojis', async (req, res) => {
+app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   const { _id } = req.params;
 
   try {
@@ -205,7 +205,7 @@ app.delete('/pos_sharing/:_id', async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error });
   }
-}); */
+}); 
 
 //An endpoint to signup
 app.post('/signup', async (req, res) => {
@@ -236,6 +236,8 @@ app.post('/signin', async (req, res) => {
 
   try {
     const user = await User.findOne({ username })
+
+    console.log(user)
 
     if (user && bcrypt.compareSync(password, user.password)) {
       res.json({
