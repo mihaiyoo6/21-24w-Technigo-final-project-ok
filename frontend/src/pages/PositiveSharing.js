@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import moment from 'moment'
 
 import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
 
 const PositiveSharing = () => {
+  
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
+
+  const accessToken = useSelector(store => store.user.accessToken)
 
   useEffect(() => {
     fetchPositiveThoughts()
   }, [])
 
   const fetchPositiveThoughts = () => {
-    fetch(API_URL_POS_SHARING)
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }     
+    }
+
+    fetch(API_URL_POS_SHARING, options)
       .then(res => res.json())
-      .then(thoughts => setPositiveThoughtsList(thoughts))
-      .catch(err => console.error(err))
+      .then((thoughts) => {
+        if(thoughts.success) {
+        setPositiveThoughtsList(thoughts.allPositiveThoughts)
+        }
+      })
+      .catch(err => console.error(err)) 
+    
   }
 
   const onNewPositiveThoughtChange = (event) => {
@@ -28,7 +44,8 @@ const PositiveSharing = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        Authorization: accessToken
       },
       body: JSON.stringify({ message: newPositiveThought })
     }
@@ -67,7 +84,9 @@ const PositiveSharing = () => {
       </form>
 
       {positiveThoughtsList.map(thought => (
+      
         <div key={thought._id}>
+          
           <h4>{thought.message}</h4>
           <p>{moment(thought.created).fromNow()}</p>
           <button onClick={() => onThumbsupIncrease(thought._id)}>
