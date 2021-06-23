@@ -21,7 +21,7 @@ const positiveThoughtSchema = mongoose.Schema({
     required: [true, "Please share a thought"],
     unique: true,
     trim: true,
-    minlength: [10, "Your message is too short. Min 5 characters, please."],
+    minlength: [5, "Your message is too short. Min 5 characters, please."],
     maxlength: [100, "Your message is too long. Max 140 characters, please."]
   },
   thumbsup: {
@@ -130,15 +130,23 @@ app.get('/resources_1', async (req, res) => {
 //An endpoint to get all thoughts
 app.get('/pos_sharing', authenticateUser)
 app.get('/pos_sharing', async (req, res) => {
+  try {
   const allPositiveThoughts = await PositiveThought.find().sort({ createdAt: -1 });
-  res.json(allPositiveThoughts);
+  res.json({
+    success: true,
+    allPositiveThoughts
+  })
+  } catch(error) {
+  res.status(400).json({ success: false, message: 'Invalid request', error })
+  }    
 });
 
 //An endpoint to share a positive thought
 app.post('/pos_sharing', authenticateUser)
 app.post('/pos_sharing', async (req, res) => {
+ const { message } = req.body
   try {
-    const newPositiveThought = await new PositiveThought(req.body).save()
+    const newPositiveThought = await new PositiveThought({ message }).save()
     res.json(newPositiveThought)
   } catch (error) {
     if (error.code === 11000) {
@@ -165,7 +173,6 @@ app.delete('/pos_sharing/:_id', async (req, res) => {
 })
 
 //An endpoint to increase the amount of thumbsup
-
 app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   const { _id } = req.params;
 
