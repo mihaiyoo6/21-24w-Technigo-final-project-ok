@@ -115,7 +115,7 @@ app.get('/', (req, res) => {
 })
 
 //An endpoint to get all the resources 
-app.get('/resources_1', authenticateUser)
+/* app.get('/resources_1', authenticateUser) */
 app.get('/resources_1', async (req, res) => {
   const { currentCategory } = req.query
   if (currentCategory) {
