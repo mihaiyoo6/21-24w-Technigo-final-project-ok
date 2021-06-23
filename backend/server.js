@@ -71,20 +71,6 @@ const resource1Schema = new mongoose.Schema({
 //Model from resourcesSchema
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
-/* const newResource1 = new Resource1({
-  "picture": "https://robohash.org/commodinatushic.png?size=50x50&set=set1",
-  "first_name": "Jody",
-  "last_name": "Gee",
-  "email": "jgee0@zdnet.com",
-  "company": "Gutkowski-Kilback",
-  "country": "Sweden",
-  "city": "Stockholm",
-  "website": "jugem.jp",
-  "modality": "in-person, remote",
-  "category": "Reiki"
-})
-newResource1.save()
- */
 
 //Seeding of our database
 if (process.env.RESET_DB) {
@@ -129,7 +115,7 @@ app.get('/', (req, res) => {
 })
 
 //An endpoint to get all the resources 
-/* app.get('/resources_1', authenticateUser) */
+app.get('/resources_1', authenticateUser)
 app.get('/resources_1', async (req, res) => {
   const { currentCategory } = req.query
   if (currentCategory) {
@@ -142,14 +128,14 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-/* app.get('/pos_sharing', authenticateUser) */
+app.get('/pos_sharing', authenticateUser)
 app.get('/pos_sharing', async (req, res) => {
   const allPositiveThoughts = await PositiveThought.find().sort({ createdAt: -1 });
   res.json(allPositiveThoughts);
 });
 
 //An endpoint to share a positive thought
-/* app.post('/pos_sharing', authenticateUser) */
+app.post('/pos_sharing', authenticateUser)
 app.post('/pos_sharing', async (req, res) => {
   try {
     const newPositiveThought = await new PositiveThought(req.body).save()
@@ -179,7 +165,7 @@ app.delete('/pos_sharing/:_id', async (req, res) => {
 })
 
 //An endpoint to increase the amount of thumbsup
-/* app.post('/pos_sharing/:_id/emojis', authenticateUser) */
+
 app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   const { _id } = req.params;
 
