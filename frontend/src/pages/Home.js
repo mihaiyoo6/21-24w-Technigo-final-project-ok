@@ -12,7 +12,7 @@ import HomeIntroText from 'components/HomeIntroText'
 import HomeSignin from 'components/HomeSignin'
 
 import user from '../reducers/user'
-import HomeSignup from './HomeSignup'
+import HomeSignup from '../components/HomeSignup'
 
 const MainContainer = styled.div`
 	width: 100vw;
