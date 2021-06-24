@@ -128,7 +128,7 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-app.get('/pos_sharing', authenticateUser)
+/* app.get('/pos_sharing', authenticateUser) */
 app.get('/pos_sharing', async (req, res) => {
   try {
   const allPositiveThoughts = await PositiveThought.find().sort({ createdAt: -1 });
