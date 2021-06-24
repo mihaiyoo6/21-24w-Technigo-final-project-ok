@@ -93,17 +93,17 @@ const PositiveSharing = () => {
           <Button type="onSubmit"> Send </Button>
         </Form>
       </GreenHeroImage>
-      
+      <ThoughtsContainer>
       {positiveThoughtsList.map(thought => (
-        <ThoughtContainer key={thought._id}>
-          <h4>{thought.message}</h4>
-          <p>{moment(thought.created).fromNow()}</p>
-          <button onClick={() => onThumbsupIncrease(thought._id)}>
+        <ThoughtWrapper key={thought._id}>
+          <p>{thought.message}</p>
+          <Date>{moment(thought.created).fromNow()}</Date>
+          <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
-          </button>  
-        </ThoughtContainer>
+          </ThumbsUpBtn>  
+        </ThoughtWrapper>        
       ))}
-    
+        </ThoughtsContainer>
     </>
   )
 }
@@ -144,13 +144,39 @@ const TextArea = styled.textarea`
   font-family: 'Roboto', sans-serif;
   font-weight:100;
   padding:10px;
-  border-radius:5px;
+  border-radius:5px;  
+`
+const ThoughtsContainer = styled.div`
+  height:2000px;
+  background-color: #E7E4DE;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:40px;
   
 `
 
-const ThoughtContainer = styled.div`
-
+const ThoughtWrapper = styled.div`
+  background-color:white;
+  border: 1px solid gray;
+  border-radius:5px;
+  margin-bottom:20px;
+  padding:20px;
+  width:500px;
+  
 `
+
+const Date = styled.p`
+  font-size:.8em;
+  margin-top:20px;
+`
+
+const ThumbsUpBtn = styled.button`
+  margin-top:5px;
+`
+
+
 
 
 export default PositiveSharing
