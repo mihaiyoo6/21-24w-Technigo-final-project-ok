@@ -101,7 +101,6 @@ const AccessContainer = styled.div`
  flex-direction:column;
  margin:0; 
 
-
  @media ${device.tablet} {
   flex-direction:row;
   

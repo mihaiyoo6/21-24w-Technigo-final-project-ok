@@ -1,0 +1,14 @@
+/** @format */
+
+.button {
+	width: 200px;
+	background-color: #aaac48;
+	font-size: 1em;
+	margin: 1em 1em 2em 1em;
+	border-radius: 5px;
+	padding: 0.5em;
+	color: white;
+	border-color: white;
+	justify-content: center;
+	cursor: grab;
+}

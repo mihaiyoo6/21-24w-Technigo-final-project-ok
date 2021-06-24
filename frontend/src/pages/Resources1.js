@@ -3,9 +3,8 @@ import styled from 'styled-components/macro'
 
 import HeroImage from '../assets/figma-pic.png' 
 
-import Navbar from 'components/Navbar'
-import Button from 'components/Button'
 
+import Navbar from 'components/Navbar'
 
 
 const Resources1 = () => {
@@ -19,13 +18,13 @@ const Resources1 = () => {
         .then((response) => (response.json()))
         .then((json) => setResources(json))
     },[currentCategory]) 
-  
+
     return (
       <>
         <Navbar />
         <GreenHeroImage>
-          <Title>Directory</Title>
-          <Subtitle>A list of specialists in different disciplines that can support you.</Subtitle>
+        <Title>Directorio</Title>
+        <Subtitle>A list of specialists in different disciplines that can support you.</Subtitle>
         <ButtonsContainer>
           <Button onClick={() => setCurrentCategory("Yoga")}>Yoga</Button>
           <Button onClick={() => setCurrentCategory("Reiki")}>Reiki</Button>
@@ -36,66 +35,64 @@ const Resources1 = () => {
           <Button onClick={() => setCurrentCategory("Somatic Therapy")}>Somatic Therapy</Button>
           <Button onClick={() => setCurrentCategory("Integrative Therapy")}>Integrative Therapy</Button>
         </ButtonsContainer>
-        </GreenHeroImage>
-        
+        </GreenHeroImage>           
         <SearchBarContainer>
-          <InputBar 
-            type="text" 
-            placeholder="Search..." 
-            onChange={(event)=> {
-              setSearchTerm(event.target.value)
-            }}
-          />
-          </SearchBarContainer>
-          <CardsContainer> 
-            {resources.filter((res) => {
-              if(searchTerm === '') {
-                return res
-              } else {
-                return (
-                  res.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  res.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  res.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  res.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  res.modality.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  res.category.toLowerCase().includes(searchTerm.toLowerCase())
-                )  
-            }})
-              .map((resource) => {
-                return (
-                  <>
-                    <CardWrapper key={resource._id}>
-                      <Span>
-                       {/*  <img src={resource.picture} alt="the picture of this therapist" /> */}
-                        <Name>{resource.first_name} {resource.last_name}</Name>
-                        <DataField>Company:{resource.company}</DataField>
-                      </Span>
-                      <Span>
-                        <DataField>Email:{resource.email}</DataField>
-                        <DataField>Website:{resource.website}</DataField>
-                        <DataField>Phone number:+46 73 480 00 00</DataField>
-                      </Span>
-                        <DataField>Modality: {resource.modality}</DataField>
-                        <DataField>Location:{resource.city}, {resource.country}</DataField>
-                      <Span>
-                        <CategoryTag>{resource.category}</CategoryTag>
-                      </Span>
-                     </CardWrapper> 
-                  </>  
-                )                 
-              })}
-          </CardsContainer> 
-      </>
-    )
+        <InputBar 
+          type="text" 
+          placeholder="Search..." 
+          onChange={(event)=> {
+            setSearchTerm(event.target.value)
+          }}
+        />
+        </SearchBarContainer>
+        <CardsContainer> 
+          {resources.filter((res) => {
+            if(searchTerm === '') {
+              return res
+            } else {
+              return (
+                res.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                res.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                res.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                res.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                res.modality.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                res.category.toLowerCase().includes(searchTerm.toLowerCase())
+              )  
+          }})
+            .map((resource) => {
+              return (
+                <>
+                  <CardWrapper key={resource._id}>
+                    <Span>                   
+                      <Name>{resource.first_name} {resource.last_name}</Name>
+                      <DataField>Company:{resource.company}</DataField>
+                    </Span>
+                    <Span>
+                      <DataField>Email:{resource.email}</DataField>
+                      <DataField>Website:{resource.website}</DataField>
+                      <DataField>Phone number:+46 73 480 00 00</DataField>
+                    </Span>
+                      <DataField>Modality: {resource.modality}</DataField>
+                      <DataField>Location:{resource.city}, {resource.country}</DataField>
+                    <Span>
+                      <CategoryTag>{resource.category}</CategoryTag>
+                    </Span>
+                    </CardWrapper> 
+                </>  
+              )                 
+            })}
+        </CardsContainer> 
+    </>
+  )
 }
 
-const GreenHeroImage = styled.div`
+ const GreenHeroImage = styled.div`
   background-image: url(${HeroImage});
   background-size:cover;
   width:100%;
   height:400px;
   padding:30px 30px;
- `
+`
 
 const Title = styled.h1`
   color: white;
@@ -114,6 +111,19 @@ const ButtonsContainer = styled.div`
   flex-wrap:wrap;
   width:auto;
   justify-content:center;   
+`
+
+const Button = styled.button`
+  width:200px;
+  background-color: #AAAC48;
+  font-size:1em;
+  margin:1em 1em 2em 1em;
+  border-radius: 5px;
+  padding:.5em;
+  color:white;
+  border-color:white;
+  justify-content:center;
+  cursor: grab;
 `
 
 const SearchBarContainer = styled.div`
@@ -166,8 +176,10 @@ const CategoryTag = styled.p`
 `
 
 const Span = styled.span`
- margin:5px;
+margin:5px;
 `
 
 
 export default Resources1
+
+
