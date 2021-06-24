@@ -27,15 +27,17 @@ const Resources1 = () => {
           <Subtitle>A list of specialists in different disciplines that can support you.</Subtitle>
         <ButtonsContainer>
           <Button onClick={() => setCurrentCategory("Yoga")}>Yoga</Button>
-          <Button onClick={() => setCurrentCategory("Reiki")} className="category-btn">Reiki</Button>
-          <Button onClick={() => setCurrentCategory("Dearmouring")} className="category-btn">Dearmouring</Button>
+          <Button onClick={() => setCurrentCategory("Reiki")}>Reiki</Button>
+          <Button onClick={() => setCurrentCategory("Dearmouring")}>Dearmouring</Button>
         </ButtonsContainer>
         <ButtonsContainer>
-          <Button onClick={() => setCurrentCategory("Eye movement desensitization and reprocessing (EDMR)")} className="category-btn">EDMR</Button>
-          <Button onClick={() => setCurrentCategory("Somatic Therapy")} className="category-btn">Somatic Therapy</Button>
-          <Button onClick={() => setCurrentCategory("Integrative Therapy")}className="category-btn">Integrative Therapy</Button>
+          <Button onClick={() => setCurrentCategory("Eye movement desensitization and reprocessing (EDMR)")}>EDMR</Button>
+          <Button onClick={() => setCurrentCategory("Somatic Therapy")}>Somatic Therapy</Button>
+          <Button onClick={() => setCurrentCategory("Integrative Therapy")}>Integrative Therapy</Button>
         </ButtonsContainer>
-        </GreenHeroImage>  
+        </GreenHeroImage>
+        
+          <SearchBar>
           <input 
             type="text" 
             placeholder="Search..." 
@@ -43,7 +45,8 @@ const Resources1 = () => {
               setSearchTerm(event.target.value)
             }}
           />
-            <div>
+            </SearchBar>
+            <CardsContainer> 
               {resources.filter((res) => {
                 if(searchTerm === '') {
                   return res
@@ -60,21 +63,22 @@ const Resources1 = () => {
               .map((resource) => {
                 return (
                   <>
-                    <div key={resource._id}>
-                      <p>{resource.first_name} {resource.last_name}</p>
-                      <p>Company:{resource.company}</p>
-                      <p>Email:{resource.email}</p>
-                      <p>Website:{resource.website}</p>
-                      <p>Phone number:+46 73 480 00 00</p>
-                      <p>Modality: {resource.modality}</p>
-                      <p>Location:{resource.city}, {resource.country}</p>
-                      <p>{resource.category}</p>
-                      <img src={resource.picture} alt="something" />
-                    </div>
-                  </>
+                    <CardWrapper key={resource._id}>
+                        <img src={resource.picture} alt="the picture of this therapist" />
+                        <p>{resource.first_name} {resource.last_name}</p>
+                        <p>Company:{resource.company}</p>
+                        <p>Email:{resource.email}</p>
+                        <p>Website:{resource.website}</p>
+                        <p>Phone number:+46 73 480 00 00</p>
+                        <p>Modality: {resource.modality}</p>
+                        <p>Location:{resource.city}, {resource.country}</p>
+                        <p>{resource.category}</p>
+                     </CardWrapper> 
+                  </>  
                 )
+                 
               })}
-            </div> 
+            </CardsContainer> 
           </>
     )
 }
@@ -84,25 +88,41 @@ const GreenHeroImage = styled.div`
   background-size:cover;
   width:100%;
   height:400px;
-  padding:20px 30px;
+  padding:30px 30px;
   
- 
-`
+ `
 const Title = styled.h1`
   color: white;
   text-align:center;
+  padding-bottom:10px;
 `
 const Subtitle = styled.p`
   color:white;
   text-align:center;
+  margin-bottom:30px;
 `
 const ButtonsContainer = styled.div`
   display:flex;
   flex-wrap:wrap;
   width:auto;
-  justify-content:center;
-  
+  justify-content:center;   
+`
 
+const SearchBar = styled.div`
+  border:1px solid black;
+`
+
+const CardsContainer = styled.div`
+    border:1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 1rem;
+    background-color:white;
+`
+
+const CardWrapper = styled.div`
+  border:1px solid black;
+  
 `
 
 export default Resources1
