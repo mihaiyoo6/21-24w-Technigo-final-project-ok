@@ -3,24 +3,18 @@ import styled from 'styled-components'
 
 import FeaturedImage from '../assets/figma-pic.png' 
 
-const HeroImage = () => {
+const GreenHeroImage = () => {
     return (
-        <FeaturedBgImage>
-           
-        </FeaturedBgImage>
+        <HeroImage></HeroImage>
     )
 }
 
-const FeaturedBgImage = styled.div`
+const HeroImage = styled.div`
   background-image: url(${FeaturedImage});
   background-size:cover;
   width:100%;
   height:400px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  cursor: pointer;
 `
 
-export default HeroImage
+export default GreenHeroImage
 

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 
 import Navbar from 'components/Navbar'
-import HeroImage from 'components/HeroImage'
+import Button from 'components/Button'
 
+import HeroImage from '../assets/figma-pic.png' 
 import './resources1.css'
 
 const Resources1 = () => {
@@ -20,15 +22,20 @@ const Resources1 = () => {
     return (
       <>
         <Navbar />
-        <HeroImage />
-         <h1>Directory</h1>
-         <p>A list of specialists in different disciplines that can support you.</p>
-        <button onClick={() => setCurrentCategory("Yoga")}>Yoga</button>
-        <button onClick={() => setCurrentCategory("Reiki")}>Reiki</button>
-        <button onClick={() => setCurrentCategory("Dearmouring")}>Dearmouring</button>
-        <button onClick={() => setCurrentCategory("Eye movement desensitization and reprocessing (EDMR)")}>EDMR</button>
-        <button onClick={() => setCurrentCategory("Somatic Therapy")}>Somatic Therapy</button>
-        <button onClick={() => setCurrentCategory("Integrative Therapy")}>Integrative Therapy</button>
+        <GreenHeroImage>
+          <Title>Directory</Title>
+          <Subtitle>A list of specialists in different disciplines that can support you.</Subtitle>
+        <ButtonsContainer>
+          <Button onClick={() => setCurrentCategory("Yoga")}>Yoga</Button>
+          <Button onClick={() => setCurrentCategory("Reiki")} className="category-btn">Reiki</Button>
+          <Button onClick={() => setCurrentCategory("Dearmouring")} className="category-btn">Dearmouring</Button>
+        </ButtonsContainer>
+        <ButtonsContainer>
+          <Button onClick={() => setCurrentCategory("Eye movement desensitization and reprocessing (EDMR)")} className="category-btn">EDMR</Button>
+          <Button onClick={() => setCurrentCategory("Somatic Therapy")} className="category-btn">Somatic Therapy</Button>
+          <Button onClick={() => setCurrentCategory("Integrative Therapy")}className="category-btn">Integrative Therapy</Button>
+        </ButtonsContainer>
+        </GreenHeroImage>  
           <input 
             type="text" 
             placeholder="Search..." 
@@ -58,9 +65,9 @@ const Resources1 = () => {
                       <p>Company:{resource.company}</p>
                       <p>Email:{resource.email}</p>
                       <p>Website:{resource.website}</p>
-                      <p><p>Phone number:+46 73 480 00 00</p></p>
+                      <p>Phone number:+46 73 480 00 00</p>
                       <p>Modality: {resource.modality}</p>
-                      <p><p>Location:{resource.city}, {resource.country}</p></p>
+                      <p>Location:{resource.city}, {resource.country}</p>
                       <p>{resource.category}</p>
                       <img src={resource.picture} alt="something" />
                     </div>
@@ -71,5 +78,31 @@ const Resources1 = () => {
           </>
     )
 }
+
+const GreenHeroImage = styled.div`
+  background-image: url(${HeroImage});
+  background-size:cover;
+  width:100%;
+  height:400px;
+  padding:20px 30px;
+  
+ 
+`
+const Title = styled.h1`
+  color: white;
+  text-align:center;
+`
+const Subtitle = styled.p`
+  color:white;
+  text-align:center;
+`
+const ButtonsContainer = styled.div`
+  display:flex;
+  flex-wrap:wrap;
+  width:auto;
+  justify-content:center;
+  
+
+`
 
 export default Resources1

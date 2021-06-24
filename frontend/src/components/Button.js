@@ -1,17 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const Button = () => {
+const Button = ( {children}) => {
     return (
-        <Button>
-            
-        </Button>
+        <GreenButton>{children}</GreenButton>
     )
 }
 
-const Button = styled.button`
-  width:100px;
+const GreenButton = styled.button`
+  width:200px;
   background-color: #AAAC48;
-  font-size:1.2em;
+  font-size:1em;
   margin:1em 1em 2em 1em;
   border-radius: 5px;
   padding:.5em;
