@@ -14,8 +14,6 @@ import HomeSignup from '../components/HomeSignup'
 
 import user from '../reducers/user'
 
-
-
 const Home = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -84,9 +82,9 @@ const Home = () => {
             onUsernameChange={onUsernameChange}
             onPasswordChange={onPasswordChange}
           />
-          {errorMessage ? <p> {errorMessage.message}</p> : ''}
+          
           <HomeSignup/>
-         
+          <ErrorMessage>{errorMessage ? <p>{errorMessage.message}</p> : ''}</ErrorMessage>
         </AccessContainer>
       </MainContainer>
     </>   
@@ -103,12 +101,16 @@ const AccessContainer = styled.div`
  flex-direction:column;
  margin:0; 
 
+
  @media ${device.tablet} {
   flex-direction:row;
   
 }
 `
-
+const ErrorMessage = styled.div` 
+  background-color: blue;
+  color:white;
+`
 export default Home
         
  

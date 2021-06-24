@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/* import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch, batch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
@@ -71,4 +71,4 @@ const Signup = () => {
 export default Signup 
 
 
- 
+  */

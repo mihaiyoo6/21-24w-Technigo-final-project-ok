@@ -9,7 +9,8 @@ const Navbar = () => {
       <nav>
         <ul>
           <li className="logo">Tröttis</li>
-          <li className="items"><Link to= "/">About</Link></li>
+          <li className="items"><Link to= "/">Home</Link></li>
+          <li className="items"><Link>About</Link></li>
           <li className="items"><Link to= "resources_1">Resources</Link></li>
           <li className="items"><Link to= "pos_sharing">Sharing</Link></li>        
         </ul>
