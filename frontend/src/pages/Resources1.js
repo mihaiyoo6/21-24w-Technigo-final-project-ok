@@ -38,7 +38,7 @@ const Resources1 = () => {
         </ButtonsContainer>
         </GreenHeroImage>
         
-          <SearchBarContainer>
+        <SearchBarContainer>
           <InputBar 
             type="text" 
             placeholder="Search..." 
@@ -46,13 +46,13 @@ const Resources1 = () => {
               setSearchTerm(event.target.value)
             }}
           />
-            </SearchBarContainer>
-            <CardsContainer> 
-              {resources.filter((res) => {
-                if(searchTerm === '') {
-                  return res
-                } else {
-                  return (
+          </SearchBarContainer>
+          <CardsContainer> 
+            {resources.filter((res) => {
+              if(searchTerm === '') {
+                return res
+              } else {
+                return (
                   res.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   res.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   res.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -60,7 +60,7 @@ const Resources1 = () => {
                   res.modality.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   res.category.toLowerCase().includes(searchTerm.toLowerCase())
                 )  
-              }})
+            }})
               .map((resource) => {
                 return (
                   <>
@@ -82,11 +82,10 @@ const Resources1 = () => {
                       </Span>
                      </CardWrapper> 
                   </>  
-                )
-                 
+                )                 
               })}
-            </CardsContainer> 
-          </>
+          </CardsContainer> 
+      </>
     )
 }
 
