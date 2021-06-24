@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
+import styled from 'styled-components/macro'
 
 import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
+import HeroImage from '../assets/figma-pic.png' 
+
+import Navbar from '../components/Navbar'
+import Button from 'components/Button'
+
 
 const PositiveSharing = () => {
   
@@ -30,8 +36,7 @@ const PositiveSharing = () => {
         setPositiveThoughtsList(thoughts.allPositiveThoughts)
         }
       })
-      .catch(err => console.error(err)) 
-    
+      .catch(err => console.error(err))   
   }
 
   const onNewPositiveThoughtChange = (event) => {
@@ -71,18 +76,22 @@ const PositiveSharing = () => {
   }  
 
   return (
-    <div>
+    <>
+    <Navbar />
+    <GreenHeroImage>
+    
       <form onSubmit={onFormSubmit}>
-        <label htmlFor="newPositiveThought">Share a positive thought!</label>
+        <label htmlFor="newPositiveThought"></label>
         <input
           id="newPositiveThought"
           type="text"
           value={newPositiveThought}
           onChange={onNewPositiveThoughtChange}
+          placeholder="Enter text..."
         />
-        <button type="onSubmit"> Send </button>
+        <Button type="onSubmit"> Send </Button>
       </form>
-
+      </GreenHeroImage>
       {positiveThoughtsList.map(thought => (
       
         <div key={thought._id}>
@@ -95,8 +104,22 @@ const PositiveSharing = () => {
           {/* <button><span role="img" aria-label="thumbsup">👍</span></button> */}
         </div>
       ))}
-    </div>
+    
+    </>
   )
 }
+
+const GreenHeroImage = styled.div`
+  background-image: url(${HeroImage});
+  background-size:cover;
+  width:100%;
+  height:400px;
+  padding:30px 30px;
+  
+`
+
+const Subtitle = styled.p`
+
+`
 
 export default PositiveSharing

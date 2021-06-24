@@ -5,7 +5,6 @@ import Navbar from 'components/Navbar'
 import Button from 'components/Button'
 
 import HeroImage from '../assets/figma-pic.png' 
-import './resources1.css'
 
 const Resources1 = () => {
   const [resources, setResources] = useState([])
@@ -37,15 +36,15 @@ const Resources1 = () => {
         </ButtonsContainer>
         </GreenHeroImage>
         
-          <SearchBar>
-          <input 
+          <SearchBarContainer>
+          <InputBar 
             type="text" 
             placeholder="Search..." 
             onChange={(event)=> {
               setSearchTerm(event.target.value)
             }}
           />
-            </SearchBar>
+            </SearchBarContainer>
             <CardsContainer> 
               {resources.filter((res) => {
                 if(searchTerm === '') {
@@ -64,15 +63,21 @@ const Resources1 = () => {
                 return (
                   <>
                     <CardWrapper key={resource._id}>
-                        <img src={resource.picture} alt="the picture of this therapist" />
-                        <p>{resource.first_name} {resource.last_name}</p>
-                        <p>Company:{resource.company}</p>
-                        <p>Email:{resource.email}</p>
-                        <p>Website:{resource.website}</p>
-                        <p>Phone number:+46 73 480 00 00</p>
-                        <p>Modality: {resource.modality}</p>
-                        <p>Location:{resource.city}, {resource.country}</p>
-                        <p>{resource.category}</p>
+                      <Span>
+                       {/*  <img src={resource.picture} alt="the picture of this therapist" /> */}
+                        <Name>{resource.first_name} {resource.last_name}</Name>
+                        <DataField>Company:{resource.company}</DataField>
+                      </Span>
+                      <Span>
+                        <DataField>Email:{resource.email}</DataField>
+                        <DataField>Website:{resource.website}</DataField>
+                        <DataField>Phone number:+46 73 480 00 00</DataField>
+                      </Span>
+                        <DataField>Modality: {resource.modality}</DataField>
+                        <DataField>Location:{resource.city}, {resource.country}</DataField>
+                      <Span>
+                        <CategoryTag>{resource.category}</CategoryTag>
+                      </Span>
                      </CardWrapper> 
                   </>  
                 )
@@ -108,21 +113,55 @@ const ButtonsContainer = styled.div`
   justify-content:center;   
 `
 
-const SearchBar = styled.div`
-  border:1px solid black;
+const SearchBarContainer = styled.div`
+  text-align:center;
+  background-color:#E7E4DE;
+  padding:40px; 
+`
+const InputBar = styled.input`
+  width:300px;
+  height:30px;
+  border-radius:5px;
+  padding-left:10px;
+  font-size:1em;
 `
 
 const CardsContainer = styled.div`
-    border:1px solid black;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 1rem;
-    background-color:white;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1rem;
+  background-color:#E7E4DE;
+  height:2200px;
+  padding-left:10px;
 `
 
 const CardWrapper = styled.div`
-  border:1px solid black;
-  
+  border:1px solid gray;
+  max-height:420px;
+  max-width:320px;
+  padding:15px;
+  border-radius:5px;
+  background-color:white;
 `
+const Name = styled.h1`
+  font-size:1.2em;
+  color:#155306;
+
+`
+const DataField = styled.p`
+  color:black;
+
+`
+const CategoryTag = styled.p`
+  background-color: #155306;
+  width:fit-content;
+  color:white;
+  padding:10px;
+  border-radius:5px;
+`
+const Span = styled.span`
+ margin:5px;
+`
+
 
 export default Resources1
