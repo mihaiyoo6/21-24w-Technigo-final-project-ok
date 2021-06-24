@@ -142,7 +142,7 @@ app.get('/pos_sharing', async (req, res) => {
 });
 
 //An endpoint to share a positive thought
-app.post('/pos_sharing', authenticateUser)
+/* app.post('/pos_sharing', authenticateUser) */
 app.post('/pos_sharing', async (req, res) => {
  const { message } = req.body
   try {
