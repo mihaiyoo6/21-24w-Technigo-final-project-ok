@@ -78,8 +78,7 @@ const PositiveSharing = () => {
   return (
     <>
       <Navbar />
-      <GreenHeroImage>
-        
+      <GreenHeroImage>      
         <Form onSubmit={onFormSubmit}>
         <Title>Share with us...</Title>
           <Label htmlFor="newPositiveThought">a positive thought or an achievement you wanna celebrate with us!</Label>
@@ -114,7 +113,6 @@ const GreenHeroImage = styled.div`
   width:100%;
   height:400px;
   padding:30px 30px;
-  
 `
 
 const Title = styled.h1`
@@ -153,8 +151,7 @@ const ThoughtsContainer = styled.div`
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding-top:40px;
-  
+  padding-top:40px; 
 `
 
 const ThoughtWrapper = styled.div`
@@ -163,8 +160,7 @@ const ThoughtWrapper = styled.div`
   border-radius:5px;
   margin-bottom:20px;
   padding:20px;
-  width:500px;
-  
+  width:500px;  
 `
 
 const Date = styled.p`
@@ -175,8 +171,5 @@ const Date = styled.p`
 const ThumbsUpBtn = styled.button`
   margin-top:5px;
 `
-
-
-
 
 export default PositiveSharing

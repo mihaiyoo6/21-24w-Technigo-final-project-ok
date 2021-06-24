@@ -95,18 +95,20 @@ const GreenHeroImage = styled.div`
   width:100%;
   height:400px;
   padding:30px 30px;
-  
  `
+
 const Title = styled.h1`
   color: white;
   text-align:center;
   padding-bottom:10px;
 `
+
 const Subtitle = styled.p`
   color:white;
   text-align:center;
   margin-bottom:30px;
 `
+
 const ButtonsContainer = styled.div`
   display:flex;
   flex-wrap:wrap;
@@ -119,6 +121,7 @@ const SearchBarContainer = styled.div`
   background-color:#E7E4DE;
   padding:40px; 
 `
+
 const InputBar = styled.input`
   width:300px;
   height:30px;
@@ -144,15 +147,16 @@ const CardWrapper = styled.div`
   border-radius:5px;
   background-color:white;
 `
+
 const Name = styled.h1`
   font-size:1.2em;
   color:#155306;
-
 `
+
 const DataField = styled.p`
   color:black;
-
 `
+
 const CategoryTag = styled.p`
   background-color: #155306;
   width:fit-content;
@@ -160,6 +164,7 @@ const CategoryTag = styled.p`
   padding:10px;
   border-radius:5px;
 `
+
 const Span = styled.span`
  margin:5px;
 `
