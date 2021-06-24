@@ -3,9 +3,7 @@ import styled from 'styled-components/macro'
 
 import HeroImage from '../assets/figma-pic.png' 
 
-
 import Navbar from 'components/Navbar'
-
 
 const Resources1 = () => {
   const [resources, setResources] = useState([])
@@ -63,7 +61,8 @@ const Resources1 = () => {
               return (
                 <>
                   <CardWrapper key={resource._id}>
-                    <Span>                   
+                    <Span>
+                      <img src={resource.picture} alt="the picture of this therapist" />
                       <Name>{resource.first_name} {resource.last_name}</Name>
                       <DataField>Company:{resource.company}</DataField>
                     </Span>
@@ -151,7 +150,7 @@ const CardsContainer = styled.div`
 
 const CardWrapper = styled.div`
   border:1px solid gray;
-  max-height:420px;
+  max-height:430px;
   max-width:320px;
   padding:15px;
   border-radius:5px;
