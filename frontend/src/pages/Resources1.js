@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
+
+import HeroImage from '../assets/figma-pic.png' 
 
 import Navbar from 'components/Navbar'
 import Button from 'components/Button'
 
-import HeroImage from '../assets/figma-pic.png' 
+
 
 const Resources1 = () => {
   const [resources, setResources] = useState([])

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-
 import { Link } from 'react-router-dom'
 
 import { device } from '../Commons/breakpoints'
@@ -11,9 +10,9 @@ const HomeSignup = () => {
       <SignupWrapper>
         <SignupTitle> Join us!</SignupTitle>
           <SignupText>Enter your personal details and start a journey with us</SignupText>
-           <Link to="/signup" ><Button type="submit">Signup</Button></Link>
-          </SignupWrapper>        
-        </>
+          <Link to="/signup"><Button type="submit">Signup</Button></Link>
+        </SignupWrapper>        
+    </>
   )
 }
 
@@ -28,8 +27,7 @@ const SignupWrapper = styled.div`
 
   @media ${device.tablet} {
     width:50%;
-    
-   }  
+  }  
 ` 
 
 const SignupTitle = styled.p`
@@ -64,6 +62,5 @@ const Button = styled.button`
   justify-content:center;
   cursor: grab;
 `
-
 
 export default HomeSignup
