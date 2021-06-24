@@ -10,9 +10,10 @@ import Navbar from 'components/Navbar'
 import HomeFeaturedArticle from 'components/HomeFeaturedArticle'
 import HomeIntroText from 'components/HomeIntroText'
 import HomeSignin from 'components/HomeSignin'
+import HomeSignup from '../components/HomeSignup'
 
 import user from '../reducers/user'
-import HomeSignup from '../components/HomeSignup'
+
 
 
 const Home = () => {

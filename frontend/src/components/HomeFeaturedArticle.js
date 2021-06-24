@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-import FeaturedImage from '../assets/forest2.jpeg' 
+import FeaturedImage from '../assets/forest3.jpeg' 
 
 import { device } from '../Commons/breakpoints'
 

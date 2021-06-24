@@ -77,32 +77,31 @@ const PositiveSharing = () => {
 
   return (
     <>
-    <Navbar />
-    <GreenHeroImage>
-    
-      <form onSubmit={onFormSubmit}>
-        <label htmlFor="newPositiveThought"></label>
-        <input
-          id="newPositiveThought"
-          type="text"
-          value={newPositiveThought}
-          onChange={onNewPositiveThoughtChange}
-          placeholder="Enter text..."
-        />
-        <Button type="onSubmit"> Send </Button>
-      </form>
+      <Navbar />
+      <GreenHeroImage>
+        
+        <Form onSubmit={onFormSubmit}>
+        <Title>Share with us...</Title>
+          <Label htmlFor="newPositiveThought">a positive thought or an achievement you wanna celebrate with us!</Label>
+          <TextArea
+            id="newPositiveThought"
+            type="text"
+            value={newPositiveThought}
+            onChange={onNewPositiveThoughtChange}
+            placeholder="Enter text..."
+          />
+          <Button type="onSubmit"> Send </Button>
+        </Form>
       </GreenHeroImage>
-      {positiveThoughtsList.map(thought => (
       
-        <div key={thought._id}>
-          
+      {positiveThoughtsList.map(thought => (
+        <ThoughtContainer key={thought._id}>
           <h4>{thought.message}</h4>
           <p>{moment(thought.created).fromNow()}</p>
           <button onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
           </button>  
-          {/* <button><span role="img" aria-label="thumbsup">👍</span></button> */}
-        </div>
+        </ThoughtContainer>
       ))}
     
     </>
@@ -118,8 +117,40 @@ const GreenHeroImage = styled.div`
   
 `
 
-const Subtitle = styled.p`
+const Title = styled.h1`
+  color:white;
+  font-weight:500;
+`
+
+const Form = styled.form`
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-top:35px;
+`
+const Label = styled.label`
+  font-size:1.4em;
+  color:white;
+  margin-bottom:20px;  
+`
+
+const TextArea = styled.textarea`
+  width:500px;
+  height:50px;
+  border:black;
+  margin:20px;
+  font-size:1.2em;
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+  padding:10px;
+  border-radius:5px;
+  
+`
+
+const ThoughtContainer = styled.div`
 
 `
+
 
 export default PositiveSharing
