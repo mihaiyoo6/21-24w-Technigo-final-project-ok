@@ -14,7 +14,7 @@ const PositiveSharing = () => {
   
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
-
+  
   const accessToken = useSelector(store => store.user.accessToken)
 
   useEffect(() => {
