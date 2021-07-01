@@ -232,6 +232,19 @@ app.get('/pos_sharing/comments', async (req, res) => {
   }    
 }); 
 
+app.post('/pos_sharing/comments', async (req, res) => {
+  const { message } = req.body
+   try {
+     const newComment = await new Comment({ message }).save()
+     res.json(newComment)
+   } catch (error) {
+     if (error.code === 11000) {
+       res.status(400).json({ message: 'Duplicated value', fields: error.keyValue })
+     }
+     res.status(400).json(error)
+   }
+ })
+
 //An endpoint to signup
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body
