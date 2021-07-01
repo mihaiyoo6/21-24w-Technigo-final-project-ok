@@ -14,7 +14,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
 mongoose.Promise = Promise
 
-//Model for Positive Thought
+//Schema for Positive Thought
 const positiveThoughtSchema = mongoose.Schema({
   message: {
     type: String,
@@ -36,6 +36,25 @@ const positiveThoughtSchema = mongoose.Schema({
 
 //PositiveThought model
 const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
+
+
+//Model of comment
+const commentSchema = mongoose.Schema({
+  message: {
+    type: String,
+    required: [true, "Please write a comment"],
+    unique: true,
+    trim: true,
+    minlength: [5, "Your message is too short. Min 5 characters, please."],
+    maxlength: [20, "Your message is too long. Max 20 characters, please."]
+  },
+  createdAT: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+const Comment = mongoose.model('Model', commentSchema)
 
 
 //A model for User
@@ -198,6 +217,19 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error });
   }
+}); 
+
+//endpoint to show comments to positive sharing
+app.get('/pos_sharing/comments', async (req, res) => {
+  try {
+  const allComments = await Comment.find().sort({ createdAt: -1 });
+  res.json({
+    success: true,
+    allComments
+  })
+  } catch(error) {
+  res.status(400).json({ success: false, message: 'Invalid request', error })
+  }    
 }); 
 
 //An endpoint to signup
