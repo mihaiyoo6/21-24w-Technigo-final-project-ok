@@ -220,7 +220,7 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
 }); 
 
 //endpoint to show comments to positive sharing
-app.get('/pos_sharing/comments', async (req, res) => {
+app.get('/pos_sharing', async (req, res) => {
   try {
   const allComments = await Comment.find().sort({ createdAt: -1 });
   res.json({
