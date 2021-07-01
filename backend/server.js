@@ -232,7 +232,7 @@ app.get('/pos_sharing', async (req, res) => {
   }    
 }); 
 
-app.post('/pos_sharing/comments', async (req, res) => {
+app.post('/pos_sharing', async (req, res) => {
   const { message } = req.body
    try {
      const newComment = await new Comment({ message }).save()
