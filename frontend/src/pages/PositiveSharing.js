@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import moment from 'moment'
 import styled from 'styled-components/macro'
 
-import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
+import { API_URL_POS_SHARING,  THUMBSUP_URL, API_URL_COMMENTS  } from '../reusable/urls'
 import HeroImage from '../assets/figma-pic.png' 
 
 import Navbar from '../components/Navbar'
@@ -14,6 +14,7 @@ const PositiveSharing = () => {
   
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
+  const [commentsList, setCommentsList] = useState('')
   
   const accessToken = useSelector(store => store.user.accessToken)
 
@@ -75,6 +76,31 @@ const PositiveSharing = () => {
       .catch(err => console.error(err)) 
   }  
 
+  useEffect(() => {
+    fetchComments()
+  }, [])
+  
+  const fetchComments = () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }     
+    }
+
+    fetch(API_URL_COMMENTS, options)
+      .then(res => res.json())
+      .then((comments) => {
+        if(comments.success) {
+        setCommentsList(comments.allComments)
+        }
+      })
+      .catch(err => console.error(err))   
+    }
+  
+ 
+ 
+ 
   return (
     <>
       <Navbar />
@@ -99,7 +125,12 @@ const PositiveSharing = () => {
           <Date>{moment(thought.created).fromNow()}</Date>
           <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
-          </ThumbsUpBtn>  
+          </ThumbsUpBtn> 
+         {commentsList.map(comment => (
+            <div key={comment._id}>
+              <p>{comment.message}</p>
+            </div> 
+          ))} 
         </ThoughtWrapper>        
       ))}
         </ThoughtsContainer>
