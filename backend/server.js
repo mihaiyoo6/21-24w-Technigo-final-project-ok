@@ -48,8 +48,6 @@ const commentSchema = mongoose.Schema({
     type: String,
     required: [true, "Please write a comment"],
     trim: true,
-    minlength: [5, "Your message is too short. Min 5 characters, please."],
-    maxlength: [20, "Your message is too long. Max 20 characters, please."]
   },
   createdAt: {
     type: Date,
@@ -239,7 +237,9 @@ app.post('/pos_sharing/comments/:postId', async (req, res) => {
   const { postId } = req.params
    try {
      const newComment = await new Comment({ message: req.body.message }).save();
-     const editedPostToAddCommentTo = await Post.findByIdAndUpdate(postId, {
+     console.log('message', req.body.message)
+
+     const editedPostToAddCommentTo = await PositiveThought.findByIdAndUpdate(postId, {
        comments: {
          $push: newComment
        }
