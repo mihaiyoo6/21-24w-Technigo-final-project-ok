@@ -47,7 +47,6 @@ const commentSchema = mongoose.Schema({
   message: {
     type: String,
     required: [true, "Please write a comment"],
-    unique: true,
     trim: true,
     minlength: [5, "Your message is too short. Min 5 characters, please."],
     maxlength: [20, "Your message is too long. Max 20 characters, please."]
