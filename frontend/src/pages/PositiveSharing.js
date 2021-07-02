@@ -99,11 +99,16 @@ const PositiveSharing = () => {
       .catch(err => console.error(err))   
     }
   
-    
- 
     const onNewCommentChange  = (event) => {
       setNewComment(event.target.value)
     }
+    
+  const onFormSubmit2 = (event) => {
+    event.preventDefault()
+
+    console.log('Form submitted:', newComment)
+  }
+
 
   return (
     <>
@@ -130,23 +135,28 @@ const PositiveSharing = () => {
           <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
           </ThumbsUpBtn>
-          <div>  
-            <form>
-              <label htmlFor="new-comment">Write a comment!</label>
-              <input
-                id="newMessage"
-                type="text"
-                value={newComment}
-                onChange={onNewCommentChange}
-              />
-            <button>Send</button>
-            </form>
+          <div>
+            <div>  
+              <form onSubmit = {onFormSubmit2}>
+                <label htmlFor="new-comment"></label>
+                <input
+                  id="new-comment"
+                  type="text"
+                  value={newComment}
+                  onChange={onNewCommentChange}
+                  placeholder="Write a comment"
+                />
+              <button type="submit">Send</button>
+              </form>
+            </div>
+            <div>
+              {commentsList.map(comment => (
+                <div key={comment._id}>
+                  <p>{comment.message}</p>
+                </div> 
+              ))} 
+            </div>
           </div>
-          {commentsList.map(comment => (
-            <div key={comment._id}>
-              <p>{comment.message}</p>
-            </div> 
-          ))} 
         </ThoughtWrapper>        
       ))}
         </ThoughtsContainer>
