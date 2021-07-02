@@ -28,7 +28,7 @@ const positiveThoughtSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  createdAT: {
+  createdAt: {
     type: Date,
     default: Date.now
   }
@@ -48,13 +48,13 @@ const commentSchema = mongoose.Schema({
     minlength: [5, "Your message is too short. Min 5 characters, please."],
     maxlength: [20, "Your message is too long. Max 20 characters, please."]
   },
-  createdAT: {
+  createdAt: {
     type: Date,
     default: Date.now
   }
 })
 
-const Comment = mongoose.model('Model', commentSchema)
+const Comment = mongoose.model('Comment', commentSchema)
 
 
 //A model for User
@@ -219,7 +219,7 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   }
 }); 
 
-//endpoint to show comments to positive sharing
+//endpoint to show comments
 app.get('/pos_sharing/comments', async (req, res) => {
   try {
   const allComments = await Comment.find().sort({ createdAt: -1 });
