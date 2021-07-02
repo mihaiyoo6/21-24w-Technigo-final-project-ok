@@ -106,9 +106,24 @@ const PositiveSharing = () => {
   const onFormSubmit2 = (event) => {
     event.preventDefault()
 
-    console.log('Form submitted:', newComment)
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: accessToken
+      },
+      body: JSON.stringify({ message: newComment })
+    }
+
+    fetch(API_URL_COMMENTS, options)
+      .then(res => res.json())
+      .then(() => fetchComments())
+      .catch(err => console.error(err))
+    setNewComment('')
   }
 
+
+  
 
   return (
     <>
@@ -135,8 +150,8 @@ const PositiveSharing = () => {
           <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
           </ThumbsUpBtn>
-          <div>
-            <div>  
+          
+            
               <form onSubmit = {onFormSubmit2}>
                 <label htmlFor="new-comment"></label>
                 <input
@@ -148,15 +163,14 @@ const PositiveSharing = () => {
                 />
               <button type="submit">Send</button>
               </form>
-            </div>
-            <div>
+            
+            
               {commentsList.map(comment => (
                 <div key={comment._id}>
                   <p>{comment.message}</p>
                 </div> 
               ))} 
-            </div>
-          </div>
+           
         </ThoughtWrapper>        
       ))}
         </ThoughtsContainer>
