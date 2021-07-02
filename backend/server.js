@@ -31,7 +31,11 @@ const positiveThoughtSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  }]
 })
 
 //PositiveThought model
@@ -220,28 +224,30 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
 }); 
 
 //endpoint to show comments
-app.get('/pos_sharing/comments', async (req, res) => {
+app.get('/pos_sharing/comments/:postId', async (req, res) => {
   try {
-  const allComments = await Comment.find().sort({ createdAt: -1 });
+  const post = await PositiveThought.findById(postId).populate('comments');
   res.json({
     success: true,
-    allComments
+    comments: post.comments
   })
   } catch(error) {
   res.status(400).json({ success: false, message: 'Invalid request', error })
   }    
 }); 
 
-app.post('/pos_sharing/comments', async (req, res) => {
-  const { message } = req.body
+app.post('/pos_sharing/comments/:postId', async (req, res) => {
+  const { postId } = req.params
    try {
-     const newComment = await new Comment({ message }).save()
-     res.json(newComment)
+     const newComment = await new Comment(req.body.message).save();
+     const editedPostToAddCommentTo = await Post.findByIdAndUpdate(postId, {
+       comments: {
+         $push: newComment
+       }
+     });
+     res.json(editedPostToAddCommentTo) // or res.json(newComment)
    } catch (error) {
-     if (error.code === 11000) {
-       res.status(400).json({ message: 'Duplicated value', fields: error.keyValue })
-     }
-     res.status(400).json(error)
+      res.status(400).json({ error: 'Ooops something went wrong', details: error })
    }
  })
 
