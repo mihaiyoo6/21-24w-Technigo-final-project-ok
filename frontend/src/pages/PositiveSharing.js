@@ -15,7 +15,8 @@ const PositiveSharing = () => {
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
   const [commentsList, setCommentsList] = useState('')
-  
+  const [newComment, setNewComment] = useState('')
+
   const accessToken = useSelector(store => store.user.accessToken)
 
   useEffect(() => {
@@ -98,9 +99,12 @@ const PositiveSharing = () => {
       .catch(err => console.error(err))   
     }
   
+    
  
- 
- 
+    const onNewCommentChange  = (event) => {
+      setNewComment(event.target.value)
+    }
+
   return (
     <>
       <Navbar />
@@ -125,8 +129,20 @@ const PositiveSharing = () => {
           <Date>{moment(thought.created).fromNow()}</Date>
           <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
-          </ThumbsUpBtn> 
-         {commentsList.map(comment => (
+          </ThumbsUpBtn>
+          <div>  
+            <form>
+              <label htmlFor="new-comment">Write a comment!</label>
+              <input
+                id="newMessage"
+                type="text"
+                value={newComment}
+                onChange={onNewCommentChange}
+              />
+            <button>Send</button>
+            </form>
+          </div>
+          {commentsList.map(comment => (
             <div key={comment._id}>
               <p>{comment.message}</p>
             </div> 
