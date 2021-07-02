@@ -15,7 +15,7 @@ const PositiveSharing = () => {
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
   const [commentsList, setCommentsList] = useState('')
-  const [newComment, setNewComment] = useState('')
+  const [newComment, setNewComment] = useState([])
 
   const accessToken = useSelector(store => store.user.accessToken)
 
@@ -99,11 +99,13 @@ const PositiveSharing = () => {
       .catch(err => console.error(err))   
     }
   
-    const onNewCommentChange  = (event) => {
-      setNewComment(event.target.value)
+    const onNewCommentChange  = (event, index) => {
+      const updatedComments = [...newComment]
+      updatedComments[index] = event.target.value;
+      setNewComment(updatedComments)
     }
     
-  const onFormSubmit2 = (event) => {
+  const onFormSubmit2 = (event, index) => {
     event.preventDefault()
 
     const options = {
@@ -112,7 +114,7 @@ const PositiveSharing = () => {
         'Content-type': 'application/json',
         Authorization: accessToken
       },
-      body: JSON.stringify({ message: newComment })
+      body: JSON.stringify({ message: newComment[index] })
     }
 
     fetch(API_URL_COMMENTS, options)
@@ -121,9 +123,6 @@ const PositiveSharing = () => {
       .catch(err => console.error(err))
     setNewComment('')
   }
-
-
-  
 
   return (
     <>
@@ -143,37 +142,32 @@ const PositiveSharing = () => {
         </Form>
       </GreenHeroImage>
       <ThoughtsContainer>
-      {positiveThoughtsList.map(thought => (
-        <ThoughtWrapper key={thought._id}>
-          <p>{thought.message}</p>
-          <Date>{moment(thought.created).fromNow()}</Date>
-          <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
-            {thought.thumbsup}👍
-          </ThumbsUpBtn>
-          
-            
-              <form onSubmit = {onFormSubmit2}>
-                <label htmlFor="new-comment"></label>
-                <input
-                  id="new-comment"
-                  type="text"
-                  value={newComment}
-                  onChange={onNewCommentChange}
-                  placeholder="Write a comment"
-                />
-              <button type="submit">Send</button>
-              </form>
-            
-            
-              {commentsList.map(comment => (
-                <div key={comment._id}>
-                  <p>{comment.message}</p>
-                </div> 
-              ))} 
-           
-        </ThoughtWrapper>        
-      ))}
-        </ThoughtsContainer>
+      {positiveThoughtsList.map((thought, index) => (
+ <ThoughtWrapper key={thought._id}>
+   <p>{thought.message}</p>
+   <Date>{moment(thought.created).fromNow()}</Date>
+   <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
+     {thought.thumbsup}👍
+   </ThumbsUpBtn>
+       <form onSubmit = {(event)=>onFormSubmit2(event, index)}>
+         <label htmlFor="new-comment"></label>
+         <input
+           id="new-comment"
+           type="text"
+           value={newComment}
+           onChange={(event)=> onNewCommentChange(event, index)}
+           placeholder="Write a comment"
+         />
+       <button type="submit">Send</button>
+       </form>
+       {commentsList.map(comment => (
+         <div key={comment._id}>
+           <p>{comment.message}</p>
+         </div> 
+       ))}          
+          </ThoughtWrapper>        
+        ))}
+      </ThoughtsContainer>
     </>
   )
 }
