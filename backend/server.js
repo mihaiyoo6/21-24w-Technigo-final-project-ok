@@ -239,7 +239,7 @@ app.get('/pos_sharing/comments/:postId', async (req, res) => {
 app.post('/pos_sharing/comments/:postId', async (req, res) => {
   const { postId } = req.params
    try {
-     const newComment = await new Comment(req.body.message).save();
+     const newComment = await new Comment({ message: req.body.message }).save();
      const editedPostToAddCommentTo = await Post.findByIdAndUpdate(postId, {
        comments: {
          $push: newComment
