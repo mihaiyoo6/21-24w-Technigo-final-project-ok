@@ -240,8 +240,8 @@ app.post('/pos_sharing/comments/:postId', async (req, res) => {
      console.log('message', req.body.message)
 
      const editedPostToAddCommentTo = await PositiveThought.findByIdAndUpdate(postId, {
-       comments: {
-         $push: newComment
+       $push: {
+         comments: newComment
        }
      });
      res.json(editedPostToAddCommentTo) // or res.json(newComment)
