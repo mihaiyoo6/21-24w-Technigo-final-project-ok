@@ -31,7 +31,7 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
 
 const SigninFormWrapper = styled.div`
   background-color:#E7E4DE;
-  border-top: 1px solid black;
+  border-top:1px solid black;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -47,13 +47,13 @@ const WelcomeTitle = styled.p`
   font-size:2em;
   font-weight:600;
   color:#155306;
-  margin: 30px 0;   
+  margin:30px 0;   
 `
 
 const InputField = styled.input`
-  margin: 5px;
-  border-radius: 5px;
-  width: 230px;
+  margin:5px;
+  border-radius:5px;
+  width:230px;
   align-items:center;
   justify-content:center;
   color:#155306; 
@@ -67,23 +67,23 @@ const InputField = styled.input`
 ` 
 
 const SigninForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 `
 
 const Button = styled.button`
   width:100px;
-  background-color: #AAAC48;
+  background-color:#AAAC48;
   font-size:1.2em;
   margin:1em 1em 2em 1em;
-  border-radius: 5px;
+  border-radius:5px;
   padding:.5em;
   color:white;
   border-color:white;
   justify-content:center;
-  cursor: grab;
+  cursor:grab;
 `
 
 export default HomeSignin

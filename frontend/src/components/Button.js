@@ -9,15 +9,15 @@ const Button = ( {children}) => {
 
 const GreenButton = styled.button`
   width:200px;
-  background-color: #AAAC48;
+  background-color:#AAAC48;
   font-size:1em;
   margin:1em 1em 2em 1em;
-  border-radius: 5px;
+  border-radius:5px;
   padding:.5em;
   color:white;
   border-color:white;
   justify-content:center;
-  cursor: grab;
+  cursor:grab;
 `
 
 export default Button

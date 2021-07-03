@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
 
-import HeroImage from '../assets/figma-pic.png' 
 import { device } from '../Commons/breakpoints'
+import HeroImage from '../assets/figma-pic.png' 
 
 import Navbar from 'components/Navbar'
 
@@ -86,17 +86,17 @@ const Resources1 = () => {
   )
 }
 
- const GreenHeroImage = styled.div`
+const GreenHeroImage = styled.div`
   background-image: url(${HeroImage});
   background-size:cover;
-  height: fit-content;
+  height:fit-content;
   padding:30px 30px; 
 `
 
 const Title = styled.h1`
-  color: white;
+  color:white;
   text-align:center;
-  padding: 30px 0;
+  padding:30px 0;
 
   @media ${device.tablet} {
     font-size:2.2em;
@@ -114,23 +114,23 @@ const Subtitle = styled.p`
 `
 
 const ButtonsContainer = styled.div`
-  display:flex;
-  flex-wrap:wrap;
-  width:auto;
-  justify-content:center;   
+display:flex;
+flex-wrap:wrap;
+width:auto;
+justify-content:center;   
 `
 
 const Button = styled.button`
-  width:200px;
-  background-color: #AAAC48;
-  font-size:1em;
-  margin:1em 1em 2em 1em;
-  border-radius: 5px;
-  padding:.5em;
-  color:white;
-  border-color:white;
-  justify-content:center;
-  cursor: grab;
+width:200px;
+background-color:#AAAC48;
+font-size:1em;
+margin:1em 1em 2em 1em;
+border-radius: 5px;
+padding:.5em;
+color:white;
+border-color:white;
+justify-content:center;
+cursor: grab;
 `
 
 const SearchBarContainer = styled.div`
@@ -150,18 +150,18 @@ const InputBar = styled.input`
   @media ${device.tablet} {
     height:50px;
     font-size: 1.2em;
-  }
-  
+  } 
 `
 
 const CardsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #E7E4DE;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-gap: 1rem;
+  background-color:#E7E4DE;
   height:9000px;
-  
+  padding-left:10px;
+  justify-content: center;
+
   @media ${device.tablet} {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -193,26 +193,25 @@ const CardWrapper = styled.div`
 `
 
 const Name = styled.h1`
-  font-size:1.2em;
-  color:#155306;
+font-size:1.2em;
+color:#155306;
 `
 
 const DataField = styled.p`
-  color:black;
+color:black;
 `
 
 const CategoryTag = styled.p`
-  background-color: #155306;
-  width:fit-content;
-  color:white;
-  padding:10px;
-  border-radius:5px;
+background-color: #155306;
+width:fit-content;
+color:white;
+padding:10px;
+border-radius:5px;
 `
 
 const Span = styled.span`
 margin:5px;
 `
-
 
 export default Resources1
 

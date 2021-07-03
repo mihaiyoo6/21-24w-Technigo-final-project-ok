@@ -102,14 +102,15 @@ const AccessContainer = styled.div`
  margin:0; 
 
  @media ${device.tablet} {
-  flex-direction:row;
-  
+  flex-direction:row;  
 }
 `
+
 const ErrorMessage = styled.div` 
   background-color: blue;
   color:white;
 `
+
 export default Home
         
  

@@ -6,10 +6,8 @@ import styled from 'styled-components/macro'
 import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
 import HeroImage from '../assets/figma-pic.png' 
 
-
 import Navbar from '../components/Navbar'
 import Button from 'components/Button'
-
 
 const PositiveSharing = () => {
   
@@ -97,7 +95,7 @@ const PositiveSharing = () => {
       {positiveThoughtsList.map(thought => (
         <ThoughtWrapper key={thought._id}>
           <p>{thought.message}</p>
-          <Date>{moment(thought.created).fromNow()}</Date>
+          <Date>{moment(thought.createdAt).fromNow()}</Date>
           <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
             {thought.thumbsup}👍
           </ThumbsUpBtn>  
@@ -109,7 +107,7 @@ const PositiveSharing = () => {
 }
 
 const GreenHeroImage = styled.div`
-  background-image: url(${HeroImage});
+  background-image:url(${HeroImage});
   background-size:cover;
   width:100%;
   height:400px;
@@ -128,6 +126,7 @@ const Form = styled.form`
   justify-content:center;
   margin-top:35px;
 `
+
 const Label = styled.label`
   font-size:1.4em;
   color:white;
@@ -140,14 +139,15 @@ const TextArea = styled.textarea`
   border:black;
   margin:20px;
   font-size:1.2em;
-  font-family: 'Roboto', sans-serif;
+  font-family:'Roboto', sans-serif;
   font-weight:100;
   padding:10px;
   border-radius:5px;  
 `
+
 const ThoughtsContainer = styled.div`
   height:2000px;
-  background-color: #E7E4DE;
+  background-color:#E7E4DE;
   padding:20px;
   display:flex;
   flex-direction:column;

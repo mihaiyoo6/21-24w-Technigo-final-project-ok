@@ -5,7 +5,6 @@ import FeaturedImage from '../assets/forest3.jpeg'
 
 import { device } from '../Commons/breakpoints'
 
-
 const FeaturedArticle = () => {
   return (
     <>
@@ -24,7 +23,7 @@ const FeaturedArticle = () => {
 
 
 const FeaturedBgImage = styled.div`
-  background-image: url(${FeaturedImage});
+  background-image:url(${FeaturedImage});
   background-size:cover;
   width:100%;
   height:400px;
@@ -53,13 +52,12 @@ const FeaturedTitle = styled.h1`
   font-size:1.6em;
   color:white;
   margin:5px 30px;
-  text-decoration:underline;
-  
+  text-decoration:underline; 
 `
 const FeaturedSubtitle = styled.h2`
   font-size:1.2em;
   color:white;
-  margin: 0 0 30px 30px;
+  margin:0 0 30px 30px;
   font-weight:200;
   text-decoration:underline;
 `

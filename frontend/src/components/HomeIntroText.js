@@ -18,9 +18,9 @@ const HomeIntroText = () => {
 }
 
 const IntroTextContainer = styled.div`
-  background-color: #E7E4DE;
-  font-family: 'Roboto', sans-serif;
-  padding: 10px;
+  background-color:#E7E4DE;
+  font-family:'Roboto', sans-serif;
+  padding:10px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -33,8 +33,8 @@ const IntroTextContainer = styled.div`
 `
 
 const Title = styled.span`
-  font-family: 'Pacifico', cursive;
-  font-size: 1.2em;
+  font-family:'Pacifico', cursive;
+  font-size:1.2em;
 
   @media ${device.tablet} {
     font-size:1.6em;
@@ -42,7 +42,7 @@ const Title = styled.span`
 `
 
 const Paragraph = styled.p`
- font-family: 'Roboto', sans-serif;
+ font-family:'Roboto', sans-serif;
  font-weight:350;
  font-size:1.2em;
  color:#155306;
