@@ -14,7 +14,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
 mongoose.Promise = Promise
 
-//Model for Positive Thought
+//Schema and model for Positive Thought
 const positiveThoughtSchema = mongoose.Schema({
   message: {
     type: String,
@@ -34,11 +34,11 @@ const positiveThoughtSchema = mongoose.Schema({
   }
 })
 
-//PositiveThought model
+
 const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
 
 
-//A model for User
+//Model for User
 const User = mongoose.model('User', {
   username: {
     type: String,
@@ -55,6 +55,7 @@ const User = mongoose.model('User', {
   }
 })
 
+//Schema and model for Resource1
 const resource1Schema = new mongoose.Schema({
   picture: String,
   first_name: String,
@@ -68,7 +69,7 @@ const resource1Schema = new mongoose.Schema({
   category: String
 })
 
-//Model from resourcesSchema
+
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
 
@@ -86,6 +87,8 @@ if (process.env.RESET_DB) {
   seedDB()
 }
 
+
+//Authentication function - middleware
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization')
 
@@ -105,9 +108,10 @@ const authenticateUser = async (req, res, next) => {
 const port = process.env.PORT || 3005
 const app = express()
 
-// Add middlewares to enable cors and json body parsing
+
 app.use(cors())
 app.use(express.json())
+
 
 // ENDPOINTS start here
 app.get('/', (req, res) => {
@@ -198,29 +202,6 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
     res.status(400).json({ message: 'Invalid request', error });
   }
 }); 
-
-//An endpoint to signup
-app.post('/signup', async (req, res) => {
-  const { username, password } = req.body
-
-  try {
-    const salt = bcrypt.genSaltSync()
-
-    const newUser = await new User({
-      username,
-      password: bcrypt.hashSync(password, salt)
-    }).save()
-
-    res.json({
-      success: true,
-      userID: newUser._id,
-      username: newUser.username,
-      accessToken: newUser.accessToken
-    })
-  } catch (error) {
-    res.status(400).json({ success: false, message: 'Invalid request', error })
-  }
-})
 
 //An endpoint to signin
 app.post('/signin', async (req, res) => {
