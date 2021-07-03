@@ -14,7 +14,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
 mongoose.Promise = Promise
 
-//Schema for Positive Thought
+//Model for Positive Thought
 const positiveThoughtSchema = mongoose.Schema({
   message: {
     type: String,
@@ -28,34 +28,14 @@ const positiveThoughtSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  comments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }]
-})
-
-//PositiveThought model
-const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
-
-
-//Model of comment
-const commentSchema = mongoose.Schema({
-  message: {
-    type: String,
-    required: [true, "Please write a comment"],
-    trim: true,
-  },
-  createdAt: {
+  createdAT: {
     type: Date,
     default: Date.now
   }
 })
 
-const Comment = mongoose.model('Comment', commentSchema)
+//PositiveThought model
+const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
 
 
 //A model for User
@@ -219,36 +199,6 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
     res.status(400).json({ message: 'Invalid request', error });
   }
 }); 
-
-//endpoint to show comments
-app.get('/pos_sharing/comments/:postId', async (req, res) => {
-  try {
-  const post = await PositiveThought.findById(postId).populate('comments');
-  res.json({
-    success: true,
-    comments: post.comments
-  })
-  } catch(error) {
-  res.status(400).json({ success: false, message: 'Invalid request', error })
-  }    
-}); 
-
-app.post('/pos_sharing/comments/:postId', async (req, res) => {
-  const { postId } = req.params
-   try {
-     const newComment = await new Comment({ message: req.body.message }).save();
-     console.log('message', req.body.message)
-
-     const editedPostToAddCommentTo = await PositiveThought.findByIdAndUpdate(postId, {
-       $push: {
-         comments: newComment
-       }
-     });
-     res.json(editedPostToAddCommentTo) // or res.json(newComment)
-   } catch (error) {
-      res.status(400).json({ error: 'Ooops something went wrong', details: error })
-   }
- })
 
 //An endpoint to signup
 app.post('/signup', async (req, res) => {
