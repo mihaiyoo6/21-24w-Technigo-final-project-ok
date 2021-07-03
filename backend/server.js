@@ -115,7 +115,6 @@ app.get('/', (req, res) => {
 })
 
 //An endpoint to get all the resources 
-/* app.get('/resources_1', authenticateUser) */
 app.get('/resources_1', async (req, res) => {
   const { currentCategory } = req.query
   if (currentCategory) {
@@ -128,7 +127,7 @@ app.get('/resources_1', async (req, res) => {
 })
 
 //An endpoint to get all thoughts
-/* app.get('/pos_sharing', authenticateUser) */
+app.get('/pos_sharing', authenticateUser) 
 app.get('/pos_sharing', async (req, res) => {
   try {
   const allPositiveThoughts = await PositiveThought.find().sort({ createdAt: -1 });
@@ -142,7 +141,7 @@ app.get('/pos_sharing', async (req, res) => {
 });
 
 //An endpoint to share a positive thought
-/* app.post('/pos_sharing', authenticateUser) */
+app.post('/pos_sharing', authenticateUser)
 app.post('/pos_sharing', async (req, res) => {
  const { message } = req.body
   try {
