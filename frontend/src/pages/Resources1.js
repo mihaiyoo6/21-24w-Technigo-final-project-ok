@@ -158,9 +158,9 @@ const CardsContainer = styled.div`
   grid-template-columns: repeat(1, auto);
   grid-gap: 1rem;
   background-color:#E7E4DE;
-  height:9000px;
-  padding-left:10px;
   justify-content: center;
+  height:fit-content;
+  padding-bottom:100px;
 
   @media ${device.tablet} {
     display: grid;
