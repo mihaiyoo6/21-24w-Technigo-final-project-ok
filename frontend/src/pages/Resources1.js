@@ -186,6 +186,7 @@ const CardWrapper = styled.div`
   border-radius:5px;
   background-color:white;
   word-wrap: break-word;
+  height:fit-content;
 
   @media ${device.tablet} {
     height:450px;

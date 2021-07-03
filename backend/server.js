@@ -14,6 +14,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
 mongoose.Promise = Promise
 
+
 //Schema and model for Positive Thought
 const positiveThoughtSchema = mongoose.Schema({
   message: {
@@ -28,12 +29,11 @@ const positiveThoughtSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  createdAT: {
+  createdAt: {
     type: Date,
     default: Date.now
   }
 })
-
 
 const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
 
@@ -55,6 +55,7 @@ const User = mongoose.model('User', {
   }
 })
 
+
 //Schema and model for Resource1
 const resource1Schema = new mongoose.Schema({
   picture: String,
@@ -69,7 +70,6 @@ const resource1Schema = new mongoose.Schema({
   category: String
 })
 
-
 const Resource1 = mongoose.model('Resource1', resource1Schema)
 
 
@@ -83,7 +83,6 @@ if (process.env.RESET_DB) {
       new Resource1(item).save()
     })
   }
-
   seedDB()
 }
 
@@ -118,6 +117,7 @@ app.get('/', (req, res) => {
   res.send(listEndpoints(app))
 })
 
+
 //An endpoint to get all the resources 
 app.get('/resources_1', async (req, res) => {
   const { currentCategory } = req.query
@@ -129,6 +129,7 @@ app.get('/resources_1', async (req, res) => {
     res.json(resources_1);
   }
 })
+
 
 //An endpoint to get all thoughts
 app.get('/pos_sharing', authenticateUser) 
@@ -143,6 +144,7 @@ app.get('/pos_sharing', async (req, res) => {
   res.status(400).json({ success: false, message: 'Invalid request', error })
   }    
 });
+
 
 //An endpoint to share a positive thought
 app.post('/pos_sharing', authenticateUser)
@@ -159,6 +161,7 @@ app.post('/pos_sharing', async (req, res) => {
   }
 })
 
+
 //An endpoint to detele a positive thought
 app.delete('/pos_sharing/:_id', async (req, res) => {
   const { _id } = req.params
@@ -174,6 +177,7 @@ app.delete('/pos_sharing/:_id', async (req, res) => {
     res.status(400).json({ message: 'Invalid request', error })
   }
 })
+
 
 //An endpoint to increase the amount of thumbsup
 app.post('/pos_sharing/:_id/emojis', async (req, res) => {
@@ -203,6 +207,7 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   }
 }); 
 
+
 //An endpoint to signin
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body
@@ -227,8 +232,8 @@ app.post('/signin', async (req, res) => {
   }
 })
 
+
 // Start the server
 app.listen(port, () => {
-  // eslint-disable-next-line
   console.log(`Server running on http://localhost:${port}`)
 })
