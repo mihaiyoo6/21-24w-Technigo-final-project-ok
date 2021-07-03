@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import moment from 'moment'
 import styled from 'styled-components/macro'
 
-import { API_URL_POS_SHARING,  THUMBSUP_URL, API_URL_COMMENTS  } from '../reusable/urls'
+import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
 import HeroImage from '../assets/figma-pic.png' 
 
 import Navbar from '../components/Navbar'
@@ -14,8 +14,6 @@ const PositiveSharing = () => {
   
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
-  const [commentsList, setCommentsList] = useState('')
-  const [newComment, setNewComment] = useState([])
 
   const accessToken = useSelector(store => store.user.accessToken)
 
@@ -77,53 +75,6 @@ const PositiveSharing = () => {
       .catch(err => console.error(err)) 
   }  
 
-  useEffect(() => {
-    fetchComments()
-  }, [])
-  
-  const fetchComments = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: accessToken
-      }     
-    }
-
-    fetch(API_URL_COMMENTS, options)
-      .then(res => res.json())
-      .then((comments) => {
-        if(comments.success) {
-        setCommentsList(comments.allComments)
-        }
-      })
-      .catch(err => console.error(err))   
-    }
-  
-    const onNewCommentChange  = (event, index) => {
-      const updatedComments = [...newComment]
-      updatedComments[index] = event.target.value;
-      setNewComment(updatedComments)
-    }
-    
-  const onFormSubmit2 = (event, index) => {
-    event.preventDefault()
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: accessToken
-      },
-      body: JSON.stringify({ message: newComment[index] })
-    }
-
-    fetch(API_URL_COMMENTS, options)
-      .then(res => res.json())
-      .then(() => fetchComments())
-      .catch(err => console.error(err))
-    setNewComment('')
-  }
-
   return (
     <>
       <Navbar />
@@ -142,32 +93,16 @@ const PositiveSharing = () => {
         </Form>
       </GreenHeroImage>
       <ThoughtsContainer>
-      {positiveThoughtsList.map((thought, index) => (
- <ThoughtWrapper key={thought._id}>
-   <p>{thought.message}</p>
-   <Date>{moment(thought.created).fromNow()}</Date>
-   <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
-     {thought.thumbsup}👍
-   </ThumbsUpBtn>
-       <form onSubmit = {(event)=>onFormSubmit2(event, index)}>
-         <label htmlFor="new-comment"></label>
-         <input
-           id="new-comment"
-           type="text"
-           value={newComment}
-           onChange={(event)=> onNewCommentChange(event, index)}
-           placeholder="Write a comment"
-         />
-       <button type="submit">Send</button>
-       </form>
-       {commentsList.map(comment => (
-         <div key={comment._id}>
-           <p>{comment.message}</p>
-         </div> 
-       ))}          
-          </ThoughtWrapper>        
-        ))}
-      </ThoughtsContainer>
+      {positiveThoughtsList.map(thought => (
+        <ThoughtWrapper key={thought._id}>
+          <p>{thought.message}</p>
+          <Date>{moment(thought.created).fromNow()}</Date>
+          <ThumbsUpBtn onClick={() => onThumbsupIncrease(thought._id)}>
+            {thought.thumbsup}👍
+          </ThumbsUpBtn>  
+        </ThoughtWrapper>        
+      ))}
+        </ThoughtsContainer>
     </>
   )
 }
@@ -238,3 +173,4 @@ const ThumbsUpBtn = styled.button`
 `
 
 export default PositiveSharing
+
