@@ -6,6 +6,7 @@ import styled from 'styled-components/macro'
 import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
 import HeroImage from '../assets/figma-pic.png' 
 
+
 import Navbar from '../components/Navbar'
 import Button from 'components/Button'
 

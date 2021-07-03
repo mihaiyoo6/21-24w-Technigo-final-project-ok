@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
 
 import HeroImage from '../assets/figma-pic.png' 
+import { device } from '../Commons/breakpoints'
 
 import Navbar from 'components/Navbar'
 
@@ -21,7 +22,7 @@ const Resources1 = () => {
       <>
         <Navbar />
         <GreenHeroImage>
-        <Title>Directorio</Title>
+        <Title>Directory</Title>
         <Subtitle>A list of specialists in different disciplines that can support you.</Subtitle>
         <ButtonsContainer>
           <Button onClick={() => setCurrentCategory("Yoga")}>Yoga</Button>
@@ -88,21 +89,28 @@ const Resources1 = () => {
  const GreenHeroImage = styled.div`
   background-image: url(${HeroImage});
   background-size:cover;
-  width:100%;
-  height:400px;
-  padding:30px 30px;
+  height: fit-content;
+  padding:30px 30px; 
 `
 
 const Title = styled.h1`
   color: white;
   text-align:center;
-  padding-bottom:10px;
+  padding: 30px 0;
+
+  @media ${device.tablet} {
+    font-size:2.2em;
+  }
 `
 
 const Subtitle = styled.p`
   color:white;
   text-align:center;
   margin-bottom:30px;
+
+  @media ${device.tablet} {
+    font-size:1.2em;
+  }
 `
 
 const ButtonsContainer = styled.div`
@@ -128,33 +136,60 @@ const Button = styled.button`
 const SearchBarContainer = styled.div`
   text-align:center;
   background-color:#E7E4DE;
-  padding:40px; 
+  padding:30px; 
 `
 
 const InputBar = styled.input`
-  width:300px;
-  height:30px;
-  border-radius:5px;
-  padding-left:10px;
-  font-size:1em;
+  width: 280px;
+  height: 35px;
+  border-radius: 5px;
+  padding: 20px 10px;
+  font-size: 1em;
+  margin:30px 0;
+
+  @media ${device.tablet} {
+    height:50px;
+    font-size: 1.2em;
+  }
+  
 `
 
 const CardsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 1rem;
-  background-color:#E7E4DE;
-  height:2200px;
-  padding-left:10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #E7E4DE;
+  justify-content: center;
+  align-items: center;
+  height:9000px;
+  
+  @media ${device.tablet} {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 2rem; 
+    height: 5200px;
+  }
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 1rem;
+    height:3600px;
+    padding-left:10px;
+  }
 `
 
 const CardWrapper = styled.div`
+  margin-top: 15px;
   border:1px solid gray;
-  max-height:430px;
-  max-width:320px;
+  width:280px;
   padding:15px;
   border-radius:5px;
   background-color:white;
+  word-wrap: break-word;
+
+  @media ${device.tablet} {
+    height:450px;
+  }
 `
 
 const Name = styled.h1`
