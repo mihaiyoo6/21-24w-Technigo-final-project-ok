@@ -9,17 +9,19 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
       <SigninFormWrapper>
         <WelcomeTitle>Welcome back!</WelcomeTitle>        
         <SigninForm onSubmit={handleSubmit}>
-          <label htlmFor={username}></label>
+          <label htlmfor={username}></label>
           <InputField
             type="text"
             value={username}
             onChange={onUsernameChange}
+            placeholder="username"
           />
-          <label htmlFor={password}></label> 
+          <label htmlfor={password}></label> 
           <InputField
             type="password"
             value={password}
             onChange={onPasswordChange}
+            placeholder="password"
           />
           <Button type="submit">Login</Button>
         </SigninForm>
@@ -56,7 +58,7 @@ const InputField = styled.input`
   width:230px;
   align-items:center;
   justify-content:center;
-  color:#155306; 
+  color:#155306;
   font-size:1em;
   height:1.8em;
 

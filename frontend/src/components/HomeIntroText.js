@@ -11,7 +11,13 @@ const HomeIntroText = () => {
           burnout syndrome. 
       </Paragraph> 
       <Paragraph>
-        Because we understand your experience, we want to offer our members resources and support in your healing process in a safe space.
+        Because we understand your experience and needs, we want to offer you  two alternatives:     
+      </Paragraph>
+      <Paragraph>
+        As a <BoldText>non-member</BoldText> you have access to most content and our resources section where you can find useful information and practicioners that can support you in your healing process.  
+      </Paragraph>
+      <Paragraph>
+        As a <BoldText>member</BoldText> you have access to all content and sections, including our private Sharing section. You will also receive exclusive offers and discounts from partners and sponsors.
       </Paragraph>       
     </IntroTextContainer>
   )
@@ -52,5 +58,8 @@ const Paragraph = styled.p`
   font-size:1.3em;
 }
 `
+const BoldText = styled.span`
+  font-weight: 600;
 
+`
 export default HomeIntroText

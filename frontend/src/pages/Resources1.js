@@ -63,7 +63,7 @@ const Resources1 = () => {
                 <>
                   <CardWrapper key={resource._id}>
                     <Span>
-                      <img src={resource.picture} alt="the picture of this therapist" />
+                      <img src={resource.picture} alt="therapist" />
                       <Name>{resource.first_name} {resource.last_name}</Name>
                       <DataField>Company:{resource.company}</DataField>
                     </Span>
