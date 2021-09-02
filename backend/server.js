@@ -207,6 +207,28 @@ app.post('/pos_sharing/:_id/emojis', async (req, res) => {
   }
 }); 
 
+//An endpoint to sign up 
+app.post('/signup', async (req, res) => {
+  const { username, password } = req.body
+
+  try {
+    const salt = bcrypt.genSaltSync()
+
+    const newUser = await new User({
+      username,
+      password: bcrypt.hashSync(password, salt)
+    }).save()
+
+    res.json({
+     success: true,
+     userID: newUser._id,
+     username: newUser.username,
+     accessToken: newUser.accessToken
+    })
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'Invalid request', error })
+  }
+})
 
 //An endpoint to signin
 app.post('/signin', async (req, res) => {
