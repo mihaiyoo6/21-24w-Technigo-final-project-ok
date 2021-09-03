@@ -4,9 +4,10 @@ import Navbar from '../components/Navbar'
 
 const Main = () => {
     return (
-        <>
-            <Navbar />
-        </>
+        <div>
+          <Navbar />
+          Hey, this is the main page! 
+        </div>
     )
 }
 

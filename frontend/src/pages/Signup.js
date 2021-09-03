@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { batch, useDispatch, useSelector } from 'react-redux'
-import { useHistory, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 import user from '../reducers/user' 
@@ -16,13 +16,14 @@ const Signup = () => {
   const accessToken = useSelector(store => store.user.accessToken)
   const errorMessage = useSelector(store => store.user.errors);
   const dispatch = useDispatch()
-  const history = useHistory()
+ 
 
   useEffect(() => {
-    if (accessToken) {
-      history.push("/");
+    console.log('checking accesstoken', accessToken)
+    if (errorMessage) {
+      dispatch(user.actions.setErrors(null))
     }
-  }, [accessToken, history])
+  }, [])
 
   
   const onFormSubmit = (e) => {
@@ -49,6 +50,8 @@ const Signup = () => {
 
       } else {
         dispatch(user.actions.setErrors(data))
+        setUsername('')
+        setPassword('')
       }
     })
     .catch()    
@@ -57,11 +60,14 @@ const Signup = () => {
   return (
     <> 
       <Navbar  />
+      
         <MainContainer>
+        {!accessToken
+          ?
+        <>
         <WelcomeTitle>Welcome to our community!</WelcomeTitle> 
         <WelcomeParagraph>Create your username and password.</WelcomeParagraph>
-          {!accessToken
-            ?
+        
             <Form onSubmit={onFormSubmit}>            
               <Label htlmFor="username">Username:</Label> 
               <InputField
@@ -81,15 +87,18 @@ const Signup = () => {
               />        
               <Button type="submit">Signup</Button>             
             </Form>
+            </>
             :
             <>
               <SignupConfirmationText>Your account has been created!</SignupConfirmationText>
-              <SignupConfirmationText><Underline><HomeLink to="/main">Back to Home page</HomeLink></Underline></SignupConfirmationText>
+              <SignupConfirmationText><Underline><HomeLink to="/main">Go to Main page</HomeLink></Underline></SignupConfirmationText>
             </>
+            
             }
-              </MainContainer>   
-
-    </>  
+            
+          </MainContainer>   
+    </>
+     
          
     )
 }
