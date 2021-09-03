@@ -33,7 +33,7 @@ const IntroTextContainer = styled.div`
   align-items:center;
 
   @media ${device.tablet} {
-   height:320px;
+   height:580px;
    padding:20px 30px;
   }
 `

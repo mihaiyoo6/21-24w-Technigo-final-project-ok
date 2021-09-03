@@ -3,12 +3,13 @@ import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import user from "./reducers/user";
 import Home from "./pages/Home"
 import PositiveSharing from "pages/PositiveSharing";
 import Resources1 from "pages/Resources1"
 import Signup from "pages/Signup"
 import Main from "pages/Main"
+
+import user from "./reducers/user";
 
 const reducer = combineReducers({
   user: user.reducer,

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { batch, useDispatch, useSelector } from 'react-redux'
-import { useHistory, Link } from 'react-router-dom'
+import React, { useState/* , useEffect */ } from 'react'
+/* import { batch, useDispatch, useSelector } from 'react-redux' */
+import { /* useHistory, */ Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
-import user from '../reducers/user'
+import user from '../reducers/user' 
 
 import { API_URL } from '../reusable/urls'
 
@@ -13,17 +13,6 @@ const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   
-  const accessToken = useSelector(store => store.user.accessToken)
-  const errorMessage = useSelector(store => store.user.errors);
-  const dispatch = useDispatch()
-  const history = useHistory()
-
-  useEffect(() => {
-    if (accessToken) {
-      history.push("/");
-    }
-  }, [accessToken, history])
-
   const onFormSubmit = (e) => {
     e.preventDefault()
 
@@ -36,19 +25,16 @@ const Signup = () => {
     }
 
     fetch(API_URL('signup'), options)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
-        batch(() => {
-          dispatch(user.actions.setUsername(data.username))
-          dispatch(user.actions.setAccessToken(data.accessToken))
-          dispatch(user.actions.setErrors(null))
-        });
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.success) {
+
       } else {
-        dispatch(user.actions.setErrors(data))
+
       }
     })
-    .catch()
+    
   }
 
   return (
@@ -57,16 +43,14 @@ const Signup = () => {
         <MainContainer>
         <WelcomeTitle>Welcome to our community!</WelcomeTitle> 
         <WelcomeParagraph>Create your username and password.</WelcomeParagraph>
-          {!accessToken
-            ?
+        
             <Form onSubmit={onFormSubmit}>
+              
               <Label htlmFor="username">Username:</Label> 
               <InputField
                 id="username"
                 type="text"
-                required
-                minlength="4"
-                placeholder="username"
+                required            
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -74,22 +58,20 @@ const Signup = () => {
               <InputField
                 id="password"
                 type="password"
-                required
-                minlength="6"
-                placeholder="password"
+                required             
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {errorMessage ? <p>{errorMessage.message}</p> : ''}
-              {/* <ErrorMessage>{errors && errors.message}</ErrorMessage> */}
+        
               <Button type="submit">Signup</Button>
+             
             </Form>
-            :
-            <div>
-              <p>Your account is set up!</p>
-              <button><Link to="/main"></Link>Main</button>
-            </div>
-            }
+            
+            
+              <SignupConfirmationText>Your account has been created!</SignupConfirmationText>
+              <SignupConfirmationText><Underline><HomeLink to="/main">Back to Home page</HomeLink></Underline></SignupConfirmationText>
+            
+            
         </MainContainer>   
     </>  
          
@@ -107,9 +89,9 @@ const MainContainer = styled.div`
 `
 
 const WelcomeTitle = styled.p`
-  font-size:2em;
+  font-size:1.5em;
   font-weight:600;
-  color:#155306;   
+  color:#155306;     
 `
 
 const WelcomeParagraph = styled.p`
@@ -119,29 +101,27 @@ const WelcomeParagraph = styled.p`
   padding-top:15px;   
 `
 
-const Label = styled.label`
-  color:white; 
-  font-size:1em;
-`
-
 const Form = styled.div`
   margin:40px;
   background-color:#155306;
   border-radius:5px;
-  padding-top:2em;
+  padding:50px;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
+  flex-wrap:wrap;
   border:1px solid black;
-  width:500px;  
+  width:380px;  
 `
 
-
+const Label = styled.label`
+  color:white; 
+  font-size:1.2em;
+`
 const InputField = styled.input`
   margin:5px;
   border-radius:5px;
-  width:230px;
+  width:160px;
   align-items:center;
   justify-content:center;
   color:#0F3904; 
@@ -149,17 +129,37 @@ const InputField = styled.input`
   height:1.8em;
 `
 
+
 const Button = styled.button`
   width:100px;
   background-color:#AAAC48;
   font-size:1.2em;
-  margin:1em 1em 2em 1em;
+  margin:2em 1em 1em 1em;
   border-radius:5px;
   padding:.5em;
   color:white;
   border-color:white;
   justify-content:center;
   cursor:grab;
+  
+`
+
+
+
+const SignupConfirmationText = styled.p`
+  font-weight:350;
+  font-size:1.2em;
+  color: #155306;
+`
+
+const HomeLink = styled(Link)`
+  text-decoration:none;
+  color:black;
+  color: #155306;
+`
+
+const Underline = styled.span`
+  border-bottom: #155306 solid 1px;
 `
 
 export default Signup
