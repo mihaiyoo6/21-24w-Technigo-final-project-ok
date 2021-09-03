@@ -27,7 +27,7 @@ const Home = () => {
   useEffect(() => {
     console.log('checking access token', accessToken)
     if(accessToken) {
-      history.push('/pos_sharing')
+      history.push('/main')
     }  
   },[accessToken, history])
 
@@ -73,16 +73,14 @@ const Home = () => {
         <Navbar />
         <HomeFeaturedArticle />
         <HomeIntroText />
-        <AccessContainer>
-        
+        <AccessContainer>      
           <HomeSignin
             handleSubmit={handleSubmit}
             username={username}
             password={password}
             onUsernameChange={onUsernameChange}
             onPasswordChange={onPasswordChange}
-          />
-          
+          />     
           <HomeSignup/>
           <ErrorMessage>{errorMessage ? <p>{errorMessage.message}</p> : ''}</ErrorMessage>
         </AccessContainer>

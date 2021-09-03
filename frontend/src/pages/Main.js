@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Navbar from '../components/Navbar'
+
 const Main = () => {
     return (
-        <div>
-            <p>Main Content</p>
-        </div>
+        <>
+            <Navbar />
+        </>
     )
 }
 

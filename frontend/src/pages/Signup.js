@@ -1,6 +1,6 @@
-import React, { useState/* , useEffect */ } from 'react'
-/* import { batch, useDispatch, useSelector } from 'react-redux' */
-import { /* useHistory, */ Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { batch, useDispatch, useSelector } from 'react-redux'
+import { useHistory, Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 import user from '../reducers/user' 
@@ -12,9 +12,21 @@ import Navbar from 'components/Navbar'
 const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const accessToken = useSelector(store => store.user.accessToken)
+  const errorMessage = useSelector(store => store.user.errors);
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    if (accessToken) {
+      history.push("/");
+    }
+  }, [accessToken, history])
+
   
   const onFormSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault()   
 
     const options = {
       method: 'POST',
@@ -29,12 +41,17 @@ const Signup = () => {
     .then(data => {
       console.log(data);
       if(data.success) {
+        batch(() => {
+          dispatch(user.actions.setUsername(data.username))
+          dispatch(user.actions.setAccessToken(data.accessToken))
+          dispatch(user.actions.setErrors(null))
+        });  
 
       } else {
-
+        dispatch(user.actions.setErrors(data))
       }
     })
-    
+    .catch()    
   }
 
   return (
@@ -43,9 +60,9 @@ const Signup = () => {
         <MainContainer>
         <WelcomeTitle>Welcome to our community!</WelcomeTitle> 
         <WelcomeParagraph>Create your username and password.</WelcomeParagraph>
-        
-            <Form onSubmit={onFormSubmit}>
-              
+          {!accessToken
+            ?
+            <Form onSubmit={onFormSubmit}>            
               <Label htlmFor="username">Username:</Label> 
               <InputField
                 id="username"
@@ -61,18 +78,17 @@ const Signup = () => {
                 required             
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
-        
-              <Button type="submit">Signup</Button>
-             
+              />        
+              <Button type="submit">Signup</Button>             
             </Form>
-            
-            
+            :
+            <>
               <SignupConfirmationText>Your account has been created!</SignupConfirmationText>
               <SignupConfirmationText><Underline><HomeLink to="/main">Back to Home page</HomeLink></Underline></SignupConfirmationText>
-            
-            
-        </MainContainer>   
+            </>
+            }
+              </MainContainer>   
+
     </>  
          
     )
@@ -101,7 +117,7 @@ const WelcomeParagraph = styled.p`
   padding-top:15px;   
 `
 
-const Form = styled.div`
+const Form = styled.form`
   margin:40px;
   background-color:#155306;
   border-radius:5px;
@@ -118,6 +134,7 @@ const Label = styled.label`
   color:white; 
   font-size:1.2em;
 `
+
 const InputField = styled.input`
   margin:5px;
   border-radius:5px;
@@ -129,7 +146,6 @@ const InputField = styled.input`
   height:1.8em;
 `
 
-
 const Button = styled.button`
   width:100px;
   background-color:#AAAC48;
@@ -140,11 +156,8 @@ const Button = styled.button`
   color:white;
   border-color:white;
   justify-content:center;
-  cursor:grab;
-  
+  cursor:grab; 
 `
-
-
 
 const SignupConfirmationText = styled.p`
   font-weight:350;
