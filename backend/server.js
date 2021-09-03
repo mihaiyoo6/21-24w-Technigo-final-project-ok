@@ -42,12 +42,14 @@ const PositiveThought = mongoose.model('PositiveThought', positiveThoughtSchema)
 const User = mongoose.model('User', {
   username: {
     type: String,
-    required: true,
-    unique: true
+    required: [true,'Username is required'],
+    unique: [true, 'Sorry, that username already exists'],
+    minlength:[4, 'Username should be at least 4 characters long']
   },
   password: {
     type: String,
-    required: true
+    required:[true,'Password is required'],
+    minlength:[6, 'Password should be at least 6 characters long']
   },
   accessToken: {
     type: String,
@@ -226,7 +228,10 @@ app.post('/signup', async (req, res) => {
      accessToken: newUser.accessToken
     })
   } catch (error) {
-    res.status(400).json({ success: false, message: 'Invalid request', error })
+    if(error.code === 11000) {
+      res.status(400).json({ success: false, message: 'Sorry, that username is already in use', error })
+    }
+    res.status(400).json({ success: false, message: 'Invalid request. Please try again', error })
   }
 })
 
