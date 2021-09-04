@@ -9,6 +9,7 @@ import Resources1 from "pages/Resources1"
 import Signup from "pages/Signup"
 import Main from "pages/Main"
 
+import Navbar from "components/Navbar";
 
 import user from "./reducers/user";
 
@@ -22,13 +23,14 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <Switch>
-         <Route exact path="/" component={Home}/>
-         <Route path="/pos_sharing" component={PositiveSharing}/> 
-         <Route path="/resources_1" component={Resources1} />
-         <Route path="/signup" component={Signup} />
-         <Route path="/main" component={Main} /> 
-        </Switch>
+        <Navbar  />
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/pos_sharing" component={PositiveSharing}/> 
+            <Route path="/resources_1" component={Resources1} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/main" component={Main} /> 
+          </Switch>
       </Provider>
     </BrowserRouter>
   );

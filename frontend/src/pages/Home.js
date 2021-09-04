@@ -6,7 +6,6 @@ import styled from 'styled-components/macro'
 import { device } from '../Commons/breakpoints'
 import { API_URL } from '../reusable/urls'
 
-import Navbar from 'components/Navbar'
 import HomeFeaturedArticle from 'components/HomeFeaturedArticle'
 import HomeIntroText from 'components/HomeIntroText'
 import HomeSignin from 'components/HomeSignin'
@@ -69,8 +68,7 @@ const Home = () => {
 
   return (
     <>
-      <MainContainer>
-        <Navbar />
+      <MainContainer>  
         <HomeFeaturedArticle />
         <HomeIntroText />
         <AccessContainer>      

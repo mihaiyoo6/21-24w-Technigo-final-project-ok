@@ -4,8 +4,6 @@ import styled from 'styled-components/macro'
 import { device } from '../Commons/breakpoints'
 import HeroImage from '../assets/figma-pic.png' 
 
-import Navbar from 'components/Navbar'
-
 const Resources1 = () => {
   const [resources, setResources] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -20,7 +18,6 @@ const Resources1 = () => {
 
     return (
       <>
-        <Navbar />
         <GreenHeroImage>
         <Title>Directory</Title>
         <Subtitle>A list of specialists in different disciplines that can support you.</Subtitle>

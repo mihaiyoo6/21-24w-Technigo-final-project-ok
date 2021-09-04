@@ -7,8 +7,6 @@ import user from '../reducers/user'
 
 import { API_URL } from '../reusable/urls'
 
-import Navbar from 'components/Navbar'
-
 const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -19,7 +17,6 @@ const Signup = () => {
  
 
   useEffect(() => {
-    console.log('checking accesstoken', accessToken)
     if (errorMessage) {
       dispatch(user.actions.setErrors(null))
     }
@@ -59,14 +56,12 @@ const Signup = () => {
 
   return (
     <> 
-      <Navbar  />
-      
-        <MainContainer>
+      <MainContainer>
         {!accessToken
           ?
-        <>
-        <WelcomeTitle>Welcome to our community!</WelcomeTitle> 
-        <WelcomeParagraph>Create your username and password.</WelcomeParagraph>
+          <>
+          <WelcomeTitle>Welcome to our community!</WelcomeTitle> 
+          <WelcomeParagraph>Create your username and password.</WelcomeParagraph>
         
             <Form onSubmit={onFormSubmit}>            
               <Label htlmFor="username">Username:</Label> 

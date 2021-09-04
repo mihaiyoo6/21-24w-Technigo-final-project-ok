@@ -6,7 +6,6 @@ import styled from 'styled-components/macro'
 import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
 import HeroImage from '../assets/figma-pic.png' 
 
-import Navbar from '../components/Navbar'
 import Button from 'components/Button'
 
 const PositiveSharing = () => {
@@ -76,7 +75,7 @@ const PositiveSharing = () => {
 
   return (
     <>
-      <Navbar />
+    
       <GreenHeroImage>      
         <Form onSubmit={onFormSubmit}>
         <Title>Share with us...</Title>
@@ -91,6 +90,9 @@ const PositiveSharing = () => {
           <Button type="onSubmit"> Send </Button>
         </Form>
       </GreenHeroImage>
+      
+      {accessToken ? 
+    
       <ThoughtsContainer>
       {positiveThoughtsList.map(thought => (
         <ThoughtWrapper key={thought._id}>
@@ -102,6 +104,13 @@ const PositiveSharing = () => {
         </ThoughtWrapper>        
       ))}
         </ThoughtsContainer>
+      
+        :
+        <>
+          <p>Become a member</p>
+          <button>Signup</button>
+        </>
+}
     </>
   )
 }
