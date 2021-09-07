@@ -12,12 +12,12 @@ const Signup = () => {
   const [password, setPassword] = useState('')
 
   const accessToken = useSelector(store => store.user.accessToken)
-  const errorMessage = useSelector(store => store.user.errors);
+  const errors = useSelector(store => store.user.errors);
   const dispatch = useDispatch()
  
 
   useEffect(() => {
-    if (errorMessage) {
+    if (errors) {
       dispatch(user.actions.setErrors(null))
     }
   }, [])
@@ -52,8 +52,8 @@ const Signup = () => {
 
       } else {
         dispatch(user.actions.setErrors(data))
-      /*   setUsername('')
-        setPassword('') */
+        setUsername('')
+        setPassword('') 
       }
     })
     .catch()    
@@ -87,6 +87,7 @@ const Signup = () => {
               />        
               <Button type="submit">Signup</Button>             
             </Form>
+            <ErrorMessage>{errors && <p>{errors.message}</p>}</ErrorMessage>
             </>
             :
             <>
@@ -166,6 +167,14 @@ const Button = styled.button`
   border-color:white;
   justify-content:center;
   cursor:grab; 
+`
+
+const ErrorMessage = styled.div` 
+  background-color: #E7E4DE;
+  color:red;
+  font-weight:300;
+  padding:15px;
+  text-align:center;
 `
 
 const SignupConfirmationText = styled.p`

@@ -19,7 +19,7 @@ const Home = () => {
   
   
   const accessToken = useSelector(store => store.user.accessToken)
-  const errorMessage = useSelector(store => store.user.errors);
+  const errors = useSelector(store => store.user.errors);
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -67,6 +67,8 @@ const Home = () => {
           })
           } else {
             dispatch(user.actions.setErrors(data))
+            setUsername('')
+            setPassword('')
           }
         })
         .catch()  
@@ -84,9 +86,10 @@ const Home = () => {
             password={password}
             onUsernameChange={onUsernameChange}
             onPasswordChange={onPasswordChange}
-          />     
+          />  
+          <ErrorMessage>{errors && <p>{errors.message}</p>}</ErrorMessage>   
           <HomeSignup/>
-          <ErrorMessage>{errorMessage ? <p>{errorMessage.message}</p> : ''}</ErrorMessage>
+          
         </AccessContainer>
       </MainContainer>
     </>   
@@ -109,8 +112,11 @@ const AccessContainer = styled.div`
 `
 
 const ErrorMessage = styled.div` 
-  background-color: blue;
-  color:white;
+  background-color: #E7E4DE;
+  color:red;
+  font-weight:300;
+  padding:15px;
+  text-align:center;
 `
 
 export default Home
