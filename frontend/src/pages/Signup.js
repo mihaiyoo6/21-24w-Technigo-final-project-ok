@@ -37,18 +37,23 @@ const Signup = () => {
     fetch(API_URL('signup'), options)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      console.log(data)
       if(data.success) {
         batch(() => {
-          dispatch(user.actions.setUsername(data.username))
-          dispatch(user.actions.setAccessToken(data.accessToken))
-          dispatch(user.actions.setErrors(null))
-        });  
+          dispatch(user.actions.setUsername(data.username));
+          dispatch(user.actions.setAccessToken(data.accessToken));
+          dispatch(user.actions.setErrors(null));
+
+          localStorage.setItem('user', JSON.stringify({
+            username: data.username,
+            accessToken: data.accessToken
+          }));
+        });
 
       } else {
         dispatch(user.actions.setErrors(data))
-        setUsername('')
-        setPassword('')
+      /*   setUsername('')
+        setPassword('') */
       }
     })
     .catch()    

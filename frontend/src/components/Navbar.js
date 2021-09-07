@@ -14,6 +14,8 @@ const Navbar = () => {
     batch(()=> {
       dispatch(user.actions.setUsername(null))
       dispatch(user.actions.setAccessToken(null))
+
+      localStorage.removeItem('user')
     })
   }
 
@@ -26,11 +28,11 @@ const Navbar = () => {
           <li className="items"><Link to="/main">Main</Link></li>
           <li className="items"><Link to= "resources_1">Resources</Link></li>
           <li className="items"><Link to= "pos_sharing">Sharing</Link></li>
-          {accessToken ? <li className="items"><button onClick={onButtonClick}>Logout</button></li> : null}                 
+          {accessToken && <li className="items"><button onClick={onButtonClick}>Logout</button></li>}                 
         </ul>        
       </nav>    
     </header>
-  )
+  ) 
 }
 
 export default Navbar
