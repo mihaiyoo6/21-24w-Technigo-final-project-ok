@@ -15,6 +15,7 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
             value={username}
             onChange={onUsernameChange}
             placeholder="username"
+            minlength="4"
           />
           <label htmlfor={password}></label> 
           <InputField
@@ -22,6 +23,7 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
             value={password}
             onChange={onPasswordChange}
             placeholder="password"
+            minlength="6"
           />
           <Button type="submit">Login</Button>
         </SigninForm>

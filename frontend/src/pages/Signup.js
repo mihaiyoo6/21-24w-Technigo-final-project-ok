@@ -73,7 +73,8 @@ const Signup = () => {
               <InputField
                 id="username"
                 type="text"
-                required            
+                required
+                minlength="4"            
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -81,7 +82,8 @@ const Signup = () => {
               <InputField
                 id="password"
                 type="password"
-                required             
+                required 
+                minlength="6"            
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />        
