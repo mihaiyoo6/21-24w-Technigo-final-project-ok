@@ -66,6 +66,18 @@ nav ul li.items:hover:after {
 	opacity: 0;
 }
 
+.signoutBtn {
+	width: 100px;
+	background-color: #aaac48;
+	font-size: 1em;
+	border-radius: 5px;
+	padding: 0.5em;
+	color: white;
+	border-color: white;
+	justify-content: center;
+	cursor: grab;
+}
+
 @media all and (min-width: 768px) {
 	nav ul {
 		display: flex;

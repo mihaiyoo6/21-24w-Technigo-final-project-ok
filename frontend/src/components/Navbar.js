@@ -28,9 +28,9 @@ const Navbar = () => {
           <li className="items"><Link to="/main">Main</Link></li>
           <li className="items"><Link to= "resources_1">Resources</Link></li>
           <li className="items"><Link to= "pos_sharing">Sharing</Link></li>
-          <li className="items sign"><Link to= "login">Login</Link></li>
-          <li className="items sign"><Link to= "signup">Signup</Link></li>
-          {accessToken && <li className="items"><button onClick={onButtonClick}>Logout</button></li>}                 
+          {!accessToken && <li className="items sign"><Link to= "login">Login</Link></li>}
+          {!accessToken && <li className="items sign"><Link to= "signup">Signup</Link></li>}
+          {accessToken && <li className="items"><button className="signoutBtn" onClick={onButtonClick}>Logout</button></li>}                 
         </ul>        
       </nav>    
     </header>
