@@ -107,8 +107,11 @@ const PositiveSharing = () => {
       
         :
         <>
-          <p>Become a member</p>
-          <button>Signup</button>
+          <SignupWrapper>
+            <SignupText>This is a safe space for members of our community</SignupText>
+            <SignupText>Not yet a member? Join us and start sharing!</SignupText>
+            <SignupButton>Signup</SignupButton>
+          </SignupWrapper>
         </>
 }
     </>
@@ -180,6 +183,35 @@ const Date = styled.p`
 
 const ThumbsUpBtn = styled.button`
   margin-top:5px;
+`
+
+const SignupWrapper = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:2em;
+
+`
+
+const SignupText = styled.p`
+  color:#155306;
+  font-weight:350;
+  font-size:1.2em;
+`
+
+const SignupButton = styled.button`
+  width:100px;
+  background-color:#AAAC48;
+  font-size:1.2em;
+  margin:1em 1em 2em 1em;
+  border-radius:5px;
+  padding:.5em;
+  color:white;
+  border-color:white;
+  justify-content:center;
+  cursor: grab;
+  
 `
 
 export default PositiveSharing
