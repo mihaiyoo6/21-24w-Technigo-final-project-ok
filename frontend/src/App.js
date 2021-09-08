@@ -8,6 +8,7 @@ import PositiveSharing from "pages/PositiveSharing";
 import Resources1 from "pages/Resources1"
 import Signup from "pages/Signup"
 import Main from "pages/Main"
+import Login from "pages/Login"
 
 import Navbar from "components/Navbar";
 
@@ -26,6 +27,7 @@ export const App = () => {
         <Navbar  />
           <Switch>
             <Route exact path="/" component={Home}/>
+            <Route path="/login" component={Login}/>
             <Route path="/pos_sharing" component={PositiveSharing}/> 
             <Route path="/resources_1" component={Resources1} />
             <Route path="/signup" component={Signup} />

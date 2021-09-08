@@ -35,7 +35,6 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
 
 const SigninFormWrapper = styled.div`
   background-color:#E7E4DE;
-  border-top:1px solid black;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -54,6 +53,15 @@ const WelcomeTitle = styled.p`
   margin:30px 0;   
 `
 
+
+
+const SigninForm = styled.form`
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+`
+
 const InputField = styled.input`
   margin:5px;
   border-radius:5px;
@@ -69,13 +77,6 @@ const InputField = styled.input`
     padding-left:10px;
   }
 ` 
-
-const SigninForm = styled.form`
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-`
 
 const Button = styled.button`
   width:100px;

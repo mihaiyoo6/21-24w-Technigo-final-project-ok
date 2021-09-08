@@ -50,7 +50,7 @@ const Main = () => {
 }
 
 const GridContainer = styled.div`
-  background-color: white;
+  background-color:#E7E4DE;
 `
 
 const GridWrapper = styled.div`

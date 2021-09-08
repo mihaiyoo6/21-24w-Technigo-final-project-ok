@@ -31,6 +31,7 @@ const IntroTextContainer = styled.div`
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  border-bottom:solid 1px black;
 
   @media ${device.tablet} {
    height:580px;

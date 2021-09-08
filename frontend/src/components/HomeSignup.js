@@ -19,7 +19,6 @@ const HomeSignup = () => {
 
 const SignupWrapper = styled.div`
   background-color:#155306;
-  border-top: 1px solid black;
   display:flex;
   flex-direction:column;
   align-items:center;

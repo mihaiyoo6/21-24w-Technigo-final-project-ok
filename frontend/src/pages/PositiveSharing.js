@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 import styled from 'styled-components/macro'
 
@@ -108,9 +109,11 @@ const PositiveSharing = () => {
         :
         <>
           <SignupWrapper>
-            <SignupText>This is a safe space for members of our community</SignupText>
-            <SignupText>Not yet a member? Join us and start sharing!</SignupText>
-            <SignupButton>Signup</SignupButton>
+            <SignText>This is a safe space for members of our community</SignText>
+            <SignText>Join us and start sharing!</SignText>
+            <Link to="/signup"><SignButton type="submit">Signup</SignButton></Link>
+            <SignText>Already a member?</SignText>
+            <Link to="/login"><SignButton type="submit">Login</SignButton></Link>
           </SignupWrapper>
         </>
 }
@@ -194,13 +197,13 @@ const SignupWrapper = styled.div`
 
 `
 
-const SignupText = styled.p`
+const SignText = styled.p`
   color:#155306;
   font-weight:350;
   font-size:1.2em;
 `
 
-const SignupButton = styled.button`
+const SignButton = styled.button`
   width:100px;
   background-color:#AAAC48;
   font-size:1.2em;
