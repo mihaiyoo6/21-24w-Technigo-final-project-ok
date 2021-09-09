@@ -26,7 +26,7 @@ const Home = () => {
   useEffect(() => {
     console.log('checking access token', accessToken)
     if(accessToken) {
-      history.push('/main')
+      history.push('/')
     }  
   },[accessToken, history])
 
@@ -40,6 +40,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
 
     const options = {
       method: 'POST',
@@ -61,7 +62,8 @@ const Home = () => {
             
             localStorage.setItem('user', JSON.stringify({
               username: data.username,
-              accessToken: data.accessToken
+              accessToken: data.accessToken,
+                          
             }))
 
           })
@@ -79,7 +81,8 @@ const Home = () => {
       <MainContainer>  
         <HomeFeaturedArticle />
         <HomeIntroText />
-        <AccessContainer>      
+        <AccessContainer>
+                
           <HomeSignin
             handleSubmit={handleSubmit}
             username={username}

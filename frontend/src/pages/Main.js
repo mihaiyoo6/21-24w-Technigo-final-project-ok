@@ -10,7 +10,6 @@ import MeditationSrc from '../assets/meditation.jpeg'
 import RecipeSrc from '../assets/recipe.jpeg'
 import InterviewSrc from '../assets/interview.jpeg'
 
-
 const Main = () => {
   return (
   
@@ -18,10 +17,8 @@ const Main = () => {
       <Title>This week's...</Title>
       <GridWrapper>
         <QuoteWrapper> 
-          
-            <Subtitle>Quote</Subtitle>
-            <Quote src = {QuoteSrc} />
-          
+          <Subtitle>Quote</Subtitle>
+          <Quote src = {QuoteSrc} />
         </QuoteWrapper>
         <ArticleWrapper>
           <Subtitle>Article</Subtitle>
@@ -45,8 +42,7 @@ const Main = () => {
         </InterviewWrapper> 
       </GridWrapper>
     </GridContainer>
-    
-    )
+  )
 }
 
 const GridContainer = styled.div`
@@ -69,15 +65,13 @@ const GridWrapper = styled.div`
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 20px;
   }
-
 ` 
 
 const Title = styled.h1`
   font-size:3em;
   color:#155306;
-  padding: 1em 2em 1em .5em;
+  padding: 1em 2em 1em 1em;
 `
-
 
 const QuoteWrapper = styled.div`
   grid-area: 1 / 1 / 2 / 2; 
@@ -153,11 +147,10 @@ const Interview = styled.img`
   cursor: pointer;
 `
 
-
 const Subtitle = styled.h2`
   font-size:2em;
   color:#155306;
-  padding-left: 1em;
+  padding-left: 0.5em;
 ` 
 
 export default Main

@@ -93,8 +93,8 @@ const Signup = () => {
             </>
             :
             <>
-              <SignupConfirmationText>Your account has been created!</SignupConfirmationText>
-              <SignupConfirmationText><Underline><HomeLink to="/main">Go to Main page</HomeLink></Underline></SignupConfirmationText>
+              <SignConfirmationText>Your account has been created!</SignConfirmationText>
+              <SignConfirmationText><Underline><HomeLink to="/main">Go to Main page</HomeLink></Underline></SignConfirmationText>
             </>
             
             }
@@ -179,7 +179,7 @@ const ErrorMessage = styled.div`
   text-align:center;
 `
 
-const SignupConfirmationText = styled.p`
+const SignConfirmationText = styled.p`
   font-weight:350;
   font-size:1.2em;
   color: #155306;

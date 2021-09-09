@@ -5,7 +5,8 @@ import moment from 'moment'
 import styled from 'styled-components/macro'
 
 import { API_URL_POS_SHARING,  THUMBSUP_URL  } from '../reusable/urls'
-import HeroImage from '../assets/figma-pic.png' 
+import HeroImage from '../assets/figma-pic.png'
+import { device } from '../Commons/breakpoints' 
 
 import Button from 'components/Button'
 
@@ -80,7 +81,7 @@ const PositiveSharing = () => {
       <GreenHeroImage>      
         <Form onSubmit={onFormSubmit}>
         <Title>Share with us...</Title>
-          <Label htmlFor="newPositiveThought">a positive thought or an achievement you wanna celebrate with us!</Label>
+          <Paragraph>a positive thought or an achievement you want to celebrate with us!</Paragraph>
           <TextArea
             id="newPositiveThought"
             type="text"
@@ -125,13 +126,7 @@ const GreenHeroImage = styled.div`
   background-image:url(${HeroImage});
   background-size:cover;
   width:100%;
-  height:400px;
-  padding:30px 30px;
-`
-
-const Title = styled.h1`
-  color:white;
-  font-weight:500;
+  padding:30px;
 `
 
 const Form = styled.form`
@@ -139,29 +134,44 @@ const Form = styled.form`
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  margin-top:35px;
+  margin:2.2em;
 `
 
-const Label = styled.label`
-  font-size:1.4em;
+const Title = styled.h1`
   color:white;
-  margin-bottom:20px;  
+  font-weight:500;
+`
+
+const Paragraph = styled.p`
+  font-size:1.2em;
+  color:white;
+  margin-bottom:20px;
+  text-align:center; 
+  
+  @media ${device.tablet} {
+    width:500px; 
+  }
 `
 
 const TextArea = styled.textarea`
-  width:500px;
+  width:350px;
   height:50px;
   border:black;
-  margin:20px;
+  margin:20px 0 42px 0;
   font-size:1.2em;
   font-family:'Roboto', sans-serif;
   font-weight:100;
   padding:10px;
-  border-radius:5px;  
+  border-radius:5px;
+  text-align: center;  
+
+  @media ${device.tablet} {
+    width:500px; 
+  }
 `
 
 const ThoughtsContainer = styled.div`
-  height:2000px;
+  height:fit-content;
   background-color:#E7E4DE;
   padding:20px;
   display:flex;
@@ -176,7 +186,11 @@ const ThoughtWrapper = styled.div`
   border-radius:5px;
   margin-bottom:20px;
   padding:20px;
-  width:500px;  
+  width:350px; 
+  
+  @media ${device.tablet} {
+    width:500px; 
+  }
 `
 
 const Date = styled.p`

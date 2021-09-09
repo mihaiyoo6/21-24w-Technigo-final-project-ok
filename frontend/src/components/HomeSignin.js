@@ -1,13 +1,23 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { device } from '../Commons/breakpoints'
 
 const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUsernameChange }) => {
+  
+  const accessToken = useSelector(store => store.user.accessToken)
+  
+
   return (
     <>
       <SigninFormWrapper>
-        <WelcomeTitle>Welcome back!</WelcomeTitle>        
+        {!accessToken
+        ?
+        <>
+        <Title>Login</Title>
+        <Paragraph>Please enter your login details</Paragraph>        
         <SigninForm onSubmit={handleSubmit}>
           <label htlmfor={username}></label>
           <InputField
@@ -27,6 +37,14 @@ const HomeSignin = ({ handleSubmit, username, onPasswordChange, password, onUser
           />
           <Button type="submit">Login</Button>
         </SigninForm>
+      </>
+        :
+        <>
+          <Title>Welcome back {username}!</Title>
+          <Paragraph><Underline><HomeLink to="/main">Go to Main page</HomeLink></Underline></Paragraph>
+        </>
+        }
+
       </SigninFormWrapper>
     </>           
   )
@@ -46,11 +64,19 @@ const SigninFormWrapper = styled.div`
   }
 `
 
-const WelcomeTitle = styled.p`
+const Title = styled.p`
   font-size:2em;
   font-weight:600;
   color:#155306;
   margin:30px 0;   
+`
+
+const Paragraph = styled.p`
+ font-family:'Roboto', sans-serif;
+ font-weight:350;
+ font-size:1.2em;
+ color:#155306;
+ padding:20px 30px;
 `
 
 
@@ -89,6 +115,22 @@ const Button = styled.button`
   border-color:white;
   justify-content:center;
   cursor:grab;
+`
+
+const SignConfirmationText = styled.p`
+  font-weight:350;
+  font-size:1.2em;
+  color: #155306;
+`
+
+const HomeLink = styled(Link)`
+  text-decoration:none;
+  color:black;
+  color: #155306;
+`
+
+const Underline = styled.span`
+  border-bottom: #155306 solid 1px;
 `
 
 export default HomeSignin

@@ -11,7 +11,6 @@ const GreenButton = styled.button`
   width:200px;
   background-color:#AAAC48;
   font-size:1em;
-  margin:1em 1em 2em 1em;
   border-radius:5px;
   padding:.5em;
   color:white;

@@ -87,20 +87,24 @@ const GreenHeroImage = styled.div`
   background-image: url(${HeroImage});
   background-size:cover;
   height:fit-content;
-  padding:30px 30px; 
+  padding:30px;
+  
+  @media ${device.tablet} {
+    padding:60px;
+  }
 `
 
 const Title = styled.h1`
   color:white;
   text-align:center;
-  padding:30px 0;
-
+  font-size:2em;
+  
   @media ${device.tablet} {
     font-size:2.2em;
   }
 `
 
-const Subtitle = styled.p`
+const Subtitle = styled.h2`
   color:white;
   text-align:center;
   margin-bottom:30px;
@@ -111,23 +115,29 @@ const Subtitle = styled.p`
 `
 
 const ButtonsContainer = styled.div`
-display:flex;
-flex-wrap:wrap;
-width:auto;
-justify-content:center;   
+  display:flex;
+  flex-wrap:nowrap;
+  width:auto;
+  justify-content:center;   
 `
 
 const Button = styled.button`
-width:200px;
-background-color:#AAAC48;
-font-size:1em;
-margin:1em 1em 2em 1em;
-border-radius: 5px;
-padding:.5em;
-color:white;
-border-color:white;
-justify-content:center;
-cursor: grab;
+  width:200px;
+  background-color:#AAAC48;
+  font-size:0.8em;
+  margin:1em;
+  border-radius: 5px;
+  padding:.5em;
+  color:white;
+  border-color:white;
+  justify-content:center;
+  cursor: grab;
+
+  @media ${device.tablet} {
+    font-size:1em;
+  }
+
+
 `
 
 const SearchBarContainer = styled.div`
