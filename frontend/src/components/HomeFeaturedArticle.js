@@ -30,7 +30,7 @@ const FeaturedBgImage = styled.div`
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
-  cursor: pointer;
+  
 
 @media ${device.tablet} {
   padding:20px 30px;

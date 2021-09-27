@@ -79,7 +79,6 @@ const QuoteWrapper = styled.div`
 
 const Quote = styled.img`
   width:100%;
-  cursor: pointer;
 `
 
 const ArticleWrapper = styled.div`
@@ -92,7 +91,6 @@ const ArticleWrapper = styled.div`
 
 const Article = styled.img`
   width:100%;
-  cursor: pointer; 
 `
 
 const ActivityWrapper = styled.div`
@@ -105,7 +103,6 @@ const ActivityWrapper = styled.div`
 
 const Activity = styled.img`
   width:100%;
-  cursor: pointer;
 `
 
 const MeditationWrapper = styled.div`
@@ -118,7 +115,6 @@ const MeditationWrapper = styled.div`
 
 const Meditation = styled.img`
   width:100%;
-  cursor: pointer;
 `
 
 const RecipeWrapper = styled.div`
@@ -131,7 +127,6 @@ const RecipeWrapper = styled.div`
 
 const Recipe = styled.img`
   width:100%;
-  cursor: pointer;
 `
 
 const InterviewWrapper = styled.div`
@@ -144,7 +139,6 @@ const InterviewWrapper = styled.div`
 
 const Interview = styled.img`
   width:100%;
-  cursor: pointer;
 `
 
 const Subtitle = styled.h2`

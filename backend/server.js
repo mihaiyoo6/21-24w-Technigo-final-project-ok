@@ -215,25 +215,24 @@ app.post('/signup', async (req, res) => {
 
   try {
     const salt = bcrypt.genSaltSync()
-
     const newUser = await new User({
       username,
       password: bcrypt.hashSync(password, salt)
     }).save()
-
     res.json({
-     success: true,
-     userID: newUser._id,
-     username: newUser.username,
-     accessToken: newUser.accessToken
-    })
-  } catch (error) {
-    if(error.code === 11000) {
-      res.status(400).json({ success: false, message: 'Sorry, that username is already in use', error })
-    }
-    res.status(400).json({ success: false, message: 'Invalid request. Please try again', error })
-  }
-})
+      success: true,
+      userID: newUser._id,
+      username: newUser.username,
+      accessToken: newUser.accessToken
+     })
+   } catch (error) {
+     if(error.code === 11000) {
+       res.status(400).json({ success: false, message: 'Sorry, that username is already in use', error })
+     } else {
+     res.status(400).json({ success: false, message: 'Invalid request. Please try again', error })
+   }}
+ })
+
 
 //An endpoint to signin
 app.post('/signin', async (req, res) => {
