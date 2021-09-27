@@ -117,12 +117,6 @@ const Button = styled.button`
   cursor:grab;
 `
 
-const SignConfirmationText = styled.p`
-  font-weight:350;
-  font-size:1.2em;
-  color: #155306;
-`
-
 const HomeLink = styled(Link)`
   text-decoration:none;
   color:black;
