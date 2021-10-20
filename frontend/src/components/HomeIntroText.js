@@ -7,7 +7,7 @@ const HomeIntroText = () => {
   return (
     <IntroTextContainer>
       <Paragraph>
-        <Title>Tröttis</Title> is your community for you experiencing 
+        <Title>Safe space</Title> is your community for you experiencing 
           burnout syndrome. 
       </Paragraph> 
       <Paragraph>
@@ -30,7 +30,7 @@ const IntroTextContainer = styled.div`
   display:flex;
   flex-direction:column;
   justify-content:center;
-  align-items:center;
+  align-items:start;
   border-bottom:solid 1px black;
 
   @media ${device.tablet} {

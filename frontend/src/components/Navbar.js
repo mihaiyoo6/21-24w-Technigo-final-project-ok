@@ -23,7 +23,7 @@ const Navbar = () => {
     <header>
       <nav>
         <ul>
-          <li className="logo">Tröttis</li>
+          <li className="logo">Safe space</li>
           <li className="items"><Link to= "/">Home</Link></li>
           <li className="items"><Link to="/main">Main</Link></li>
           <li className="items"><Link to= "resources_1">Resources</Link></li>
