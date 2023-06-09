@@ -7,7 +7,7 @@ const HomeIntroText = () => {
   return (
     <IntroTextContainer>
       <Paragraph>
-        <Title>Safe space</Title> is your community for you experiencing 
+        <Title>This is your safe space</Title> is your community for you experiencing 
           burnout syndrome. 
       </Paragraph> 
       <Paragraph>
