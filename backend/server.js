@@ -10,6 +10,8 @@ dotenv.config()
 
 import data from './data.json'
 
+const app = express(); // Create an instance of the Express application
+
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
 mongoose.Promise = Promise
