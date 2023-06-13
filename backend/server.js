@@ -105,14 +105,8 @@ const authenticateUser = async (req, res, next) => {
   }
 }
 
-
-const port = process.env.PORT || 3005
-const app = express()
-
-
 app.use(cors())
 app.use(express.json())
-
 
 // ENDPOINTS start here
 app.get('/', (req, res) => {
