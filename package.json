@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "postinstall": "npm install --prefix backend --legacy-peer-deps"
-
+  },
+  "dependencies": {
+    "caniuse-lite": "^1.0.30001502"
   }
 }
