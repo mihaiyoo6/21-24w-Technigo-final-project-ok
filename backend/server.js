@@ -254,6 +254,8 @@ app.post('/signin', async (req, res) => {
   }
 })
 
+const port = 3000; // Define the port number
+
 
 // Start the server
 app.listen(port, () => {
