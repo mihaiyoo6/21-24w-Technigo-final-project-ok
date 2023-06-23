@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import styled from 'styled-components/macro'
@@ -15,66 +14,57 @@ const PositiveSharing = () => {
   const [positiveThoughtsList, setPositiveThoughtsList] = useState([])
   const [newPositiveThought, setNewPositiveThought] = useState('')
 
-  const accessToken = useSelector(store => store.user.accessToken)
-
+ 
   useEffect(() => {
     fetchPositiveThoughts()
   }, [])
 
-  const fetchPositiveThoughts = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: accessToken
-      }     
+    const fetchPositiveThoughts = () => {
+      fetch(API_URL_POS_SHARING)
+        .then((res) => res.json())
+        .then((thoughts) => {
+          if (thoughts.success) {
+            setPositiveThoughtsList(thoughts.allPositiveThoughts)
+          }
+        })
+        .catch((err) => console.error(err))
+    }
+  
+    const onNewPositiveThoughtChange = (event) => {
+      setNewPositiveThought(event.target.value)
     }
 
-    fetch(API_URL_POS_SHARING, options)
-      .then(res => res.json())
-      .then((thoughts) => {
-        if(thoughts.success) {
-        setPositiveThoughtsList(thoughts.allPositiveThoughts)
-        }
-      })
-      .catch(err => console.error(err))   
-  }
-
-  const onNewPositiveThoughtChange = (event) => {
-    setNewPositiveThought(event.target.value)
-  }
-
-  const onFormSubmit = (event) => {
-    event.preventDefault()
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: accessToken
-      },
-      body: JSON.stringify({ message: newPositiveThought })
+    const onFormSubmit = (event) => {
+      event.preventDefault()
+  
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ message: newPositiveThought }),
+      }
+  
+      fetch(API_URL_POS_SHARING, options)
+        .then((res) => res.json())
+        .then(() => fetchPositiveThoughts())
+        .catch((err) => console.error(err))
+  
+      setNewPositiveThought('')
     }
-
-    fetch(API_URL_POS_SHARING, options)
-      .then(res => res.json())
-      .then(() => fetchPositiveThoughts())
-      .catch(err => console.error(err))
-    setNewPositiveThought('')
-  }
-
- const onThumbsupIncrease = (_id) => {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+  
+    const onThumbsupIncrease = (_id) => {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+      fetch(THUMBSUP_URL(_id), options)
+        .then((res) => res.json())
+        .then(() => fetchPositiveThoughts())
+        .catch((err) => console.error(err))
     }
-    fetch(THUMBSUP_URL(_id), options)
-      .then(res => res.json())
-      .then(() => fetchPositiveThoughts())
-      .catch(err => console.error(err)) 
-  }  
-
   return (
     <>
     
@@ -93,7 +83,7 @@ const PositiveSharing = () => {
         </Form>
       </GreenHeroImage>
       
-      {accessToken ? 
+      {/* {accessToken ?  */}
     
       <ThoughtsContainer>
       {positiveThoughtsList.map(thought => (
@@ -107,7 +97,7 @@ const PositiveSharing = () => {
       ))}
         </ThoughtsContainer>
       
-        :
+      {/*   : */}
         <>
           <SignupWrapper>
             <SignText>This is a safe space for members of our community</SignText>
@@ -117,7 +107,7 @@ const PositiveSharing = () => {
             <Link to="/login"><SignButton type="submit">Login</SignButton></Link>
           </SignupWrapper>
         </>
-}
+{/* } */}
     </>
   )
 }

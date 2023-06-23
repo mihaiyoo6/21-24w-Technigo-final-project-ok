@@ -57,12 +57,14 @@ const Home = () => {
           if(data.success) {
             batch(() => {
             dispatch(user.actions.setUsername(data.username))
-            dispatch(user.actions.setAccessToken(data.accessToken))
+            dispatch(user.actions.setAccessToken(''))
+            //dispatch(user.actions.setAccessToken(data.accessToken))
             dispatch(user.actions.setErrors(null))
             
             localStorage.setItem('user', JSON.stringify({
               username: data.username,
-              accessToken: data.accessToken,
+              accessToken: '',
+              //accessToken: data.accessToken,
                           
             }))
 

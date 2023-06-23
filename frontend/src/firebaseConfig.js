@@ -38,21 +38,3 @@ export const db = getFirestore(app);
 // });
 
 
-try {
-  const docRef = await addDoc(collection(db, "contact-list"), {
-    picture: "https://robohash.org/deseruntsapienteeos.png?size=50x50&set=set1",
-    first_name: "Hillyer" ,
-    last_name: "Denver",
-    email: "hdenver0@163.com",
-    company: "Schumm, Collins and Cole",
-    country: "Sweden",
-    city: "Västra Frölunda",
-    website: "si.edu",
-    modality: "in-person, remote",
-    category: "Reiki",
-
-  });
-  console.log("Document contact-list", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
-}

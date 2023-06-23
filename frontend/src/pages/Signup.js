@@ -20,7 +20,7 @@ const Signup = () => {
     if (errors) {
       dispatch(user.actions.setErrors(null))
     }
-  }, [])
+  }, [dispatch, errors])
 
   
   const onFormSubmit = (e) => {
