@@ -1,13 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 //import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebase = require('firebase/app');
+const firebase = require('firebase/app'); // needed??
 
 const firebaseConfig = {
   apiKey: "AIzaSyBeE8KfMO2IAAe6YMv5IkotncXqcmK39n4",
@@ -24,8 +24,8 @@ const app = initializeApp(firebaseConfig);
 
 
 // Initialize Auth and Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-const messagesCol = collection(db, 'messages');
+export const db = getFirestore(app);
+
 //const auth = getAuth(app);
 
 // Detect auth state
@@ -36,3 +36,23 @@ const messagesCol = collection(db, 'messages');
 //     console.log('No user');
 //   }
 // });
+
+
+try {
+  const docRef = await addDoc(collection(db, "contact-list"), {
+    picture: "https://robohash.org/deseruntsapienteeos.png?size=50x50&set=set1",
+    first_name: "Hillyer" ,
+    last_name: "Denver",
+    email: "hdenver0@163.com",
+    company: "Schumm, Collins and Cole",
+    country: "Sweden",
+    city: "Västra Frölunda",
+    website: "si.edu",
+    modality: "in-person, remote",
+    category: "Reiki",
+
+  });
+  console.log("Document contact-list", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
+}
