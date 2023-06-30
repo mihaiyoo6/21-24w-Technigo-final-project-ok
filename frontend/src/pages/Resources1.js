@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 
 import { device } from '../Commons/breakpoints'
 import HeroImage from '../assets/figma-pic.png' 
+import { BASE_URL } from 'reusable/urls'
 
 const Resources1 = () => {
   const [resources, setResources] = useState([])
@@ -11,7 +12,7 @@ const Resources1 = () => {
 
      useEffect(() => {
        console.log(currentCategory)
-       fetch(`https://final-project-dannuzak.herokuapp.com/resources_1?currentCategory=${currentCategory}`)
+       fetch(`${BASE_URL}/resources_1?currentCategory=${currentCategory}`)
         .then((response) => (response.json()))
         .then((json) => setResources(json))
     },[currentCategory]) 
